@@ -1,6 +1,7 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			etiquetas: ["Alimentos", "Bebidas", "Fast-Food", "Servicios", "Otros"],
 			demo: [
 				{
 					title: "FIRST",
