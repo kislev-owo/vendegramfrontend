@@ -1,5 +1,5 @@
 import React from "react";
-
+import { Link, useHistory } from "react-router-dom";
 import "../../styles/home.scss";
 
 // Función Buscar para generar los inputs de búsqueda de Producos en General y por Zona
@@ -21,13 +21,15 @@ export const Buscar = () => (
 			</a>
 
 			<div className="input-group-append">
-				<button
-					className="btn btn-outline-secondary"
-					type="button"
-					id="button-addon2"
-					onClick="{e => buscarProducto()}">
-					{"Buscar"}
-				</button>
+				<Link to="/Productos">
+					<button
+						className="btn btn-outline-secondary"
+						type="button"
+						id="button-addon2"
+						onClick="{e => buscarProducto()}">
+						{"Buscar"}
+					</button>
+				</Link>
 			</div>
 		</div>
 

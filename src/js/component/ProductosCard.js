@@ -4,18 +4,17 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-export const SingleCard = ({ title, idToRender, data }) => {
+export const Productos = ({ title, idToRender, data }) => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
-	
-	let productos = ["Climate", "Population", "Terrain", "Gravity", "Diameter"];
-	
+
+	let productos = ["name", "imagen", "description", "precio", "cantidad", "categorias"];
+
 	return (
 		<div className="jumbotron">
 			<h1 className="display-4" />
 			<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
 				{store[title.toLowerCase()].map((item, index) => {
-					
 					if (index == idToRender) {
 						return (
 							<div key={index} className="container mt-2">
@@ -71,7 +70,7 @@ export const SingleCard = ({ title, idToRender, data }) => {
 	);
 };
 
-SingleCard.propTypes = {
+Productos.propTypes = {
 	title: PropTypes.string,
 	item: PropTypes.array,
 	data: PropTypes.array,
