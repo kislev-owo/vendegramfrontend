@@ -1,9 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+// var cloudinary = require("cloudinary-core");
+// import { Cloudinary } from "cloudinary-core";
+//  var cl = new cloudinary.Cloudinary({ cloud_name: "vendegram", secure: true });
+//  var tag = cl.url("sample.jpg");
 
 export const Navbar = () => {
 	return (
-
 		<nav className="navbar navbar-expand-lg navbar-light " style={{ background: "#C4C4C4" }}>
 			<div className="mr-auto p-2">
 				<a className="navbar-brand " href="#">
@@ -55,7 +58,6 @@ export const Navbar = () => {
 						</li>
 					</ul>
 				</div>
-
 			</div>
 		</nav>
 	);
