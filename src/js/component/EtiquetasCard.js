@@ -10,6 +10,8 @@ import "../../styles/home.scss";
 export const EtiquetasCard = props => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
+	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
+
 	return (
 		<>
 			{store.etiquetas.map((etiqueta, index) => {
@@ -23,7 +25,7 @@ export const EtiquetasCard = props => {
 										className="btn btn-success"
 										type="button"
 										id="button-addon2"
-										onClick="{e => buscarCategoria()}">
+										onClick={e => setBuscarCategoria(e.target.value)}>
 										<h5 className="card-title">{etiqueta}</h5>
 									</button>
 								</div>

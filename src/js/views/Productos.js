@@ -8,7 +8,10 @@ export const Productos = props => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
 
-	//	let productos = ["name", "imagen", "description", "precio", "cantidad", "categorias"];
+	//  const [buscarProducto, setBuscarProducto] = useState("");
+	//  const productosFiltrado = store.productos.filter(producto => {
+	//		return producto.toLowerCase().includes(buscarProducto.toLocaleLowerCase());
+	//	});
 
 	return (
 		<>

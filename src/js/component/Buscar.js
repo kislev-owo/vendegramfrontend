@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../../styles/home.scss";
 
@@ -16,9 +16,6 @@ export const Buscar = () => (
 				aria-label="Recipient's username"
 				aria-describedby="basic-addon2"
 			/>
-			<a href="#" className="badge badge-light">
-				<i className="fa fa-search" aria-hidden="true" />
-			</a>
 
 			<div className="input-group-append">
 				<Link to="/Productos">
@@ -26,7 +23,7 @@ export const Buscar = () => (
 						className="btn btn-outline-secondary"
 						type="button"
 						id="button-addon2"
-						onClick="{e => buscarProducto()}">
+						onClick="{e => setBuscarProducto(e.target.value)}">
 						{"Buscar"}
 					</button>
 				</Link>
