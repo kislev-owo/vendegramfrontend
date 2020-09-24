@@ -4,6 +4,7 @@ import { Link } from "react-router-dom";
 // import { Cloudinary } from "cloudinary-core";
 //  var cl = new cloudinary.Cloudinary({ cloud_name: "vendegram", secure: true });
 //  var tag = cl.url("sample.jpg");
+
 export const Navbar = () => {
 	return (
 		<nav className="navbar navbar-expand-lg navbar-light " style={{ background: "#C4C4C4" }}>
