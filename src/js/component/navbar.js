@@ -20,7 +20,7 @@ export const Navbar = () => {
 				<a className="navbar-brand" href="#" style={{ fontSize: "25px" }}>
 					Vendegram
 				</a>
-				<span className="navbar-text">Tu vendedor de confianza</span>
+				<span className="navbar-text">Tu vendedor de confiansa</span>
 			</div>
 			<div className="p-2">
 				<div className="collapse navbar-collapse" id="navbarNav">
