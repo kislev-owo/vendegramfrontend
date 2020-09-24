@@ -1,6 +1,38 @@
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			etiquetas: ["Alimentos", "Bebidas", "Fast-Food", "Servicios", "Otros"],
+			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
+			productos: [
+				{
+					id: "1",
+					nombre: "Tomates",
+					imagen: "URL",
+					descripcion: "tomates rojos y maduros. Todo fresco",
+					precio: "1$ x kg",
+					cantidad: "40 kgs",
+					categorias: "Alimentos"
+				},
+				{
+					id: "2",
+					nombre: "Bicicleta montañera",
+					imagen: "URL",
+					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
+					precio: "50$",
+					cantidad: "1",
+					categorias: "Otros"
+				},
+				{
+					id: "3",
+					nombre: "Servico reparación TV",
+					imagen: "URL",
+					descripcion: "Arreglamos todo tipo de Televisores",
+					precio: "5$ por visita",
+					cantidad: "10",
+					categorias: "Servicios"
+				}
+			],
+
 			demo: [
 				{
 					title: "FIRST",
