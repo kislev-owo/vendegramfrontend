@@ -6,10 +6,12 @@ import "../../styles/home.scss";
 export const Home = () => (
 	<div className="container">
 		<div className="jumbotron ml-5 mr-3 mt-3">
-			<div className="text-center ">
-				<h1>¿Que estás buscando?</h1>
+			<div className="text-center mb-2">
+				<button type="button" className="btn btn-light btn-sm btn-block border border-info rounded-pill">
+					<h3>¿Que estás buscando?</h3>
+				</button>
 
-				<div>
+				<div className="mt-1">
 					<Buscar />
 				</div>
 

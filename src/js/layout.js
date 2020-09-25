@@ -7,6 +7,7 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import { Productos } from "./views/Productos";
+import { ProdFiltrado } from "./views/ProdFiltrado";
 import { Etiquetas } from "./views/Etiquetas";
 
 import { Navbar } from "./component/navbar";
@@ -29,6 +30,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/Productos">
 							<Productos />
+						</Route>
+						<Route exact path="/ProdFiltrado">
+							<ProdFiltrado />
 						</Route>
 						<Route exact path="/Etiquetas/:categorias">
 							<Etiquetas />
