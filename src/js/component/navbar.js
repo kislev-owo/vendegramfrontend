@@ -47,9 +47,9 @@ export const Navbar = () => {
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
-								Registrate
-							</a>
+							<Link className="nav-link" href="#" tabIndex="-1" aria-disabled="true" to="/registrate">
+								{" Registrate"}
+							</Link>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
