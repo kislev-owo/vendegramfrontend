@@ -4,17 +4,32 @@ import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 
-// Función que genera las vistas de los objetos existentes en el arreglo "productos"
+// Función que genera las vistas de los objetos filtrados por nombre del arreglo "productos"
 export const Productos = props => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
 
+	// Funciones que guardan el resultado de la búsqueda de productos y actualizan su estado
+	const [buscarProducto, setBuscarProducto] = useState("");
+	const productoFiltrado = store.productos.filter(producto =>
+		producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
+	);
+	console.log(productoFiltrado);
+
 	return (
 		<>
+			<h2 className="text-info ml-4 margen">Productos encontrados</h2>
+			<input
+				className="w-25 ml-4"
+				type="text"
+				placeholder="Search"
+				onChange={e => setBuscarProducto(e.target.value)}
+			/>
+
 			<div className="jumbotron">
 				<h1 className="display-4" />
 				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
-					{store.productos.map((item, index) => {
+					{productoFiltrado.map((item, index) => {
 						return (
 							<div key={index} className="container mt-2">
 								<div className="card mb-3">
@@ -60,7 +75,9 @@ export const Productos = props => {
 					})}
 				</div>
 				<Link to="/">
-					<button className="btn btn-primary">Back home</button>
+					<button className="btn btn-primary" style={{ background: "#03989E" }}>
+						Home
+					</button>
 				</Link>
 			</div>
 		</>

@@ -26,7 +26,7 @@ export const EtiquetasCard = props => {
 										type="button"
 										id="button-addon2"
 										style={{ background: "#03989E" }}
-										onClick={e => setBuscarCategoria(e.target.value)}>
+										onClick={e => history.push(`../Etiquetas`)}>
 										<h5 className="card-title">{etiqueta}</h5>
 									</button>
 								</div>

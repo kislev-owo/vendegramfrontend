@@ -5,6 +5,7 @@ import "../../styles/home.scss";
 
 // Función Buscar para generar los inputs de búsqueda de Productos en General y por Zona
 export const Buscar = () => {
+	const history = useHistory();
 	const [productoABuscar, setProductoABuscar] = useState("");
 	//	const productosFiltrado = store.productos.filter(producto =>
 	//		producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
@@ -25,17 +26,15 @@ export const Buscar = () => {
 				/>
 
 				<div className="input-group-append">
-					<Link to="/ProdFiltrado">
-						<button
-							className="btn btn-outline-secondary"
-							type="button"
-							id="button-addon2"
-							value={productoABuscar}
-							onChange={e => setProductoABuscar(e.target.value)}
-							onClick="{actions.buscarProductos}">
-							{"Buscar todos"}
-						</button>
-					</Link>
+					<button
+						className="btn btn-outline-secondary"
+						type="button"
+						id="button-addon2"
+						value={productoABuscar}
+						onChange={e => setProductoABuscar(e.target.value)}
+						onClick={e => history.push(`../Productos`)}>
+						{"Buscar todos"}
+					</button>
 				</div>
 			</div>
 

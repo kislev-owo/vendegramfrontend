@@ -24,12 +24,21 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: "3",
-					nombre: "Servico reparación TV",
+					nombre: "Servicio reparación TV",
 					imagen: "URL",
 					descripcion: "Arreglamos todo tipo de Televisores",
 					precio: "5$ por visita",
 					cantidad: "10",
 					categorias: "Servicios"
+				},
+				{
+					id: "4",
+					nombre: "Resma de Papel Bond base 20",
+					imagen: "URL",
+					descripcion: "Materiales para oficina",
+					precio: "3$",
+					cantidad: "20",
+					categorias: "Otros"
 				}
 			],
 
@@ -47,6 +56,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 			]
 		},
 		actions: {
+			buscarProductos: productoABuscar => {
+				let filteredList = strore.productos.filter(producto => producto.nombre.search(productoABuscar) != -1);
+				setStore({
+					resultadosBusqueda: filteredList
+				});
+			},
+
 			// Use getActions to call a function within a fuction
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");

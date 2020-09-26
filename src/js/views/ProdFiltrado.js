@@ -75,7 +75,9 @@ export const ProdFiltrado = props => {
 					})}
 				</div>
 				<Link to="/">
-					<button className="btn btn-primary">Back home</button>
+					<button className="btn btn-primary" style={{ background: "#03989E" }}>
+						Home
+					</button>
 				</Link>
 			</div>
 		</>

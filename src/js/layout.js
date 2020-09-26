@@ -34,7 +34,7 @@ const Layout = () => {
 						<Route exact path="/ProdFiltrado">
 							<ProdFiltrado />
 						</Route>
-						<Route exact path="/Etiquetas/:categorias">
+						<Route exact path="/Etiquetas">
 							<Etiquetas />
 						</Route>
 						<Route exact path="/demo">
