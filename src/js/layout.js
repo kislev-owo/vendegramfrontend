@@ -11,7 +11,16 @@ import { Etiquetas } from "./views/Etiquetas";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
+import { Condiciones } from "./component/Condiciones";
 import { Registrate } from "./views/registrate";
+import { RegistrateVendedor } from "./views/RegistrateVendedor";
+import { Nosotros } from "./views/Nosotros";
+import { Contactanos } from "./views/Contactanos";
+
+import { PlanSubscripcion } from "./views/PlanSubscripcion";
+import { ConfirmarPago } from "./views/ConfirmarPago";
+import { ResumenInformacion } from "./views/ResumenInformacion";
+import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
 
 //create your first component
 const Layout = () => {
@@ -40,8 +49,33 @@ const Layout = () => {
 						<Route exact path="/registrate">
 							<Registrate />
 						</Route>
+						<Route exact path="/nosotros">
+							<Nosotros />
+						</Route>
+						<Route exact path="/contactanos">
+							<Contactanos />
+						</Route>
+						<Route exact path="/reg-vendedor">
+							<RegistrateVendedor />
+						</Route>
+
+						<Route exact path="/plan">
+							<PlanSubscripcion />
+						</Route>
+						<Route exact path="/confirmar-pago">
+							<ConfirmarPago />
+						</Route>
+						<Route exact path="/resumen-informacion">
+							<ResumenInformacion />
+						</Route>
+						<Route exact path="/finalizar-registro-vendedor">
+							<FinalizarRegistroVendedor />
+						</Route>
 						<Route exact path="/single/:theid">
 							<Single />
+						</Route>
+						<Route exact path="/condiciones">
+							<Condiciones />
 						</Route>
 						<Route>
 							<h1>Not found!</h1>
