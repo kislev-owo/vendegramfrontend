@@ -22,8 +22,14 @@ export const Footer = () => (
 							{`Preguntas Frecuentes`}
 						</button>
 					</div>
-					<div className="row justify-content-center">0212-2575258</div>
-					<div className="row justify-content-center">vendegram@gmail.com</div>
+					<div className="row justify-content-center my-2">
+						<i className="fas fa-phone-alt mx-2" style={{ color: "#03989E" }} />
+						0212-2575258
+					</div>
+					<div className="row justify-content-center my-2">
+						<i className="fas fa-envelope mx-2" style={{ color: "#03989E" }} />
+						vendegram@gmail.com
+					</div>
 				</div>
 
 				<div className="col-4 ">
