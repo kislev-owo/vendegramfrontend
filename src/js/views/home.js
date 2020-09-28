@@ -11,7 +11,7 @@ export const Home = () => (
 					<h3>¿Que estás buscando?</h3>
 				</button>
 
-				<div className="mt-1">
+				<div className="mt-1 ">
 					<Buscar />
 				</div>
 

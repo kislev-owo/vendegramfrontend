@@ -11,9 +11,7 @@ export const Etiquetas = props => {
 
 	// Funciones que guardan el resultado de la búsqueda de productos y actualizan su estado
 	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
-	const productoEtiqueta = store.productos.filter(
-		producto => producto.categorias.toLowerCase() == buscarEtiqueta.toLowerCase()
-	);
+	const productoEtiqueta = store.productos.filter(producto => producto.categorias.search(buscarEtiqueta) != -1);
 	console.log(productoEtiqueta);
 
 	return (

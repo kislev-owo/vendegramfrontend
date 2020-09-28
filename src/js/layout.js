@@ -7,12 +7,12 @@ import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import { Productos } from "./views/Productos";
-import { ProdFiltrado } from "./views/ProdFiltrado";
 import { Etiquetas } from "./views/Etiquetas";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Registrate } from "./views/registrate";
+import { ComoFunciona } from "./views/ComoFunciona";
 
 //create your first component
 const Layout = () => {
@@ -32,14 +32,15 @@ const Layout = () => {
 						<Route exact path="/Productos">
 							<Productos />
 						</Route>
-						<Route exact path="/ProdFiltrado">
-							<ProdFiltrado />
-						</Route>
+
 						<Route exact path="/Etiquetas">
 							<Etiquetas />
 						</Route>
 						<Route exact path="/demo">
 							<Demo />
+						</Route>
+						<Route exact path="/ComoFunciona">
+							<ComoFunciona />
 						</Route>
 						<Route exact path="/registrate">
 							<Registrate />

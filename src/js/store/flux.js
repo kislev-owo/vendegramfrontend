@@ -57,9 +57,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		actions: {
 			buscarProductos: productoABuscar => {
-				let filteredList = strore.productos.filter(producto => producto.nombre.search(productoABuscar) != -1);
+				const store = getStore();
+				let filteredList = store.productos.filter(producto => producto.nombre.search(productoABuscar) != -1);
 				setStore({
 					resultadosBusqueda: filteredList
+				});
+				console.log(filteredList);
+			},
+
+			buscarEtiquetas: etiquetaABuscar => {
+				let filteredTagList = store.productos.filter(
+					producto => producto.categorias.search(etiquetaABuscar) != -1
+				);
+				setStore({
+					resultadosBusqueda: filteredTagList
 				});
 			},
 

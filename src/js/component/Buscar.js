@@ -1,15 +1,18 @@
 import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
-import { ProdFiltrado } from "../views/ProdFiltrado";
+import { Context } from "../store/appContext";
+import { Productos } from "../views/Productos";
 import "../../styles/home.scss";
 
 // Función Buscar para generar los inputs de búsqueda de Productos en General y por Zona
 export const Buscar = () => {
 	const history = useHistory();
+	const { store, actions } = useContext(Context);
 	const [productoABuscar, setProductoABuscar] = useState("");
 	//	const productosFiltrado = store.productos.filter(producto =>
 	//		producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
 	//	);
+	console.log(productoABuscar);
 
 	return (
 		<div className="row">
@@ -23,6 +26,8 @@ export const Buscar = () => {
 					placeholder="Escribir búsqueda"
 					aria-label="Recipient's username"
 					aria-describedby="basic-addon2"
+					value={productoABuscar}
+					onChange={e => setProductoABuscar(e.target.value)}
 				/>
 
 				<div className="input-group-append">
@@ -30,9 +35,10 @@ export const Buscar = () => {
 						className="btn btn-outline-secondary"
 						type="button"
 						id="button-addon2"
-						value={productoABuscar}
-						onChange={e => setProductoABuscar(e.target.value)}
-						onClick={e => history.push(`../Productos`)}>
+						onClick={() => {
+							actions.buscarProductos(productoABuscar);
+							history.push("../Productos");
+						}}>
 						{"Buscar todos"}
 					</button>
 				</div>
@@ -68,3 +74,4 @@ export const Buscar = () => {
 		</div>
 	);
 };
+//{"history.push("../Productos")"}

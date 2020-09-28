@@ -32,14 +32,14 @@ export const Navbar = () => {
 							</a>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
+							<Link className="nav-link" href="#" to="/ComoFunciona">
 								¿Cómo Funciona?
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
+							<Link className="nav-link" href="#" to="/Contactanos">
 								Contáctanos
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
 							<a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
