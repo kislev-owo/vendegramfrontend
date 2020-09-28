@@ -40,11 +40,7 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-<<<<<<< HEAD
-							<Link className="nav-link" href="#" to="/contactanos">
-=======
 							<Link className="nav-link" href="#" to="/Contactanos">
->>>>>>> francisco
 								Contáctanos
 							</Link>
 						</li>
