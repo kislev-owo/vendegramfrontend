@@ -35,12 +35,16 @@ export const Navbar = () => {
 							</Link>
 						</li>
 						<li className="nav-item">
-							<a className="nav-link" href="#">
+							<Link className="nav-link" href="#" to="/ComoFunciona">
 								¿Cómo Funciona?
-							</a>
+							</Link>
 						</li>
 						<li className="nav-item">
+<<<<<<< HEAD
 							<Link className="nav-link" href="#" to="/contactanos">
+=======
+							<Link className="nav-link" href="#" to="/Contactanos">
+>>>>>>> francisco
 								Contáctanos
 							</Link>
 						</li>
