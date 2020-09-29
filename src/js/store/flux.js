@@ -11,7 +11,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "tomates rojos y maduros. Todo fresco",
 					precio: "1$ x kg",
 					cantidad: "40 kgs",
-					categorias: "Alimentos"
+					etiquetas: "Alimentos"
 				},
 				{
 					id: "2",
@@ -20,7 +20,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
 					precio: "50$",
 					cantidad: "1",
-					categorias: "Otros"
+					etiquetas: "Otros"
 				},
 				{
 					id: "3",
@@ -29,7 +29,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Arreglamos todo tipo de Televisores",
 					precio: "5$ por visita",
 					cantidad: "10",
-					categorias: "Servicios"
+					etiquetas: "Servicios"
 				},
 				{
 					id: "4",
@@ -38,7 +38,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Materiales para oficina",
 					precio: "3$",
 					cantidad: "20",
-					categorias: "Otros"
+					etiquetas: "Otros"
 				}
 			],
 
@@ -58,20 +58,22 @@ const getState = ({ getStore, getActions, setStore }) => {
 		actions: {
 			buscarProductos: productoABuscar => {
 				const store = getStore();
-				let filteredList = store.productos.filter(producto => producto.nombre.search(productoABuscar) != -1);
+				let filteredList = store.productos.filter(
+					producto => producto.nombre.toLowerCase().search(productoABuscar) != -1
+				);
 				setStore({
 					resultadosBusqueda: filteredList
 				});
 				console.log(filteredList);
 			},
 
-			buscarEtiquetas: etiquetaABuscar => {
-				let filteredTagList = store.productos.filter(
-					producto => producto.categorias.search(etiquetaABuscar) != -1
-				);
+			buscarEtiquetas: etiqueta => {
+				const store = getStore();
+				let filteredTagList = store.productos.filter(producto => producto.etiquetas.search(etiqueta) != -1);
 				setStore({
 					resultadosBusqueda: filteredTagList
 				});
+				console.log(filteredTagList);
 			},
 
 			// Use getActions to call a function within a fuction
