@@ -13,7 +13,6 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Condiciones } from "./component/Condiciones";
 import { Registrate } from "./views/registrate";
-<<<<<<< HEAD
 import { RegistrateVendedor } from "./views/RegistrateVendedor";
 import { Nosotros } from "./views/Nosotros";
 import { Contactanos } from "./views/Contactanos";
@@ -22,9 +21,7 @@ import { PlanSubscripcion } from "./views/PlanSubscripcion";
 import { ConfirmarPago } from "./views/ConfirmarPago";
 import { ResumenInformacion } from "./views/ResumenInformacion";
 import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
-=======
 import { ComoFunciona } from "./views/ComoFunciona";
->>>>>>> francisco
 
 //create your first component
 const Layout = () => {
