@@ -8,12 +8,13 @@ import { Single } from "./views/single";
 import injectContext from "./store/appContext";
 import { Productos } from "./views/Productos";
 import { Etiquetas } from "./views/Etiquetas";
+import { Carrousel } from "./views/CarrouselReact";
+import { DetalleProducto } from "./views/DetalleProducto";
 
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Condiciones } from "./component/Condiciones";
 import { Registrate } from "./views/registrate";
-
 
 import { Nosotros } from "./views/Nosotros";
 import { Contactanos } from "./views/Contactanos";
@@ -42,10 +43,17 @@ const Layout = () => {
 						<Route exact path="/Productos">
 							<Productos />
 						</Route>
+						<Route exact path="/DetalleProducto/:detallesId">
+							<DetalleProducto />
+						</Route>
 
 						<Route exact path="/Etiquetas">
 							<Etiquetas />
 						</Route>
+						<Route exact path="/CarrouselReact">
+							<Carrousel />
+						</Route>
+
 						<Route exact path="/demo">
 							<Demo />
 						</Route>

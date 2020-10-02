@@ -10,7 +10,9 @@ import "../../styles/home.scss";
 export const EtiquetasCard = props => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
+	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
+
+	console.log(etiquetaABuscar);
 
 	return (
 		<>
@@ -25,8 +27,12 @@ export const EtiquetasCard = props => {
 										className="btn btn-primary rounded-lg"
 										type="button"
 										id="button-addon2"
+										value={etiqueta}
 										style={{ background: "#03989E" }}
-										onClick={e => history.push(`../Etiquetas`)}>
+										onClick={() => {
+											actions.buscarEtiquetas(etiqueta);
+											history.push("../Etiquetas");
+										}}>
 										<h5 className="card-title">{etiqueta}</h5>
 									</button>
 								</div>

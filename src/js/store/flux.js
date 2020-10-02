@@ -6,39 +6,47 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productos: [
 				{
 					id: "1",
-					nombre: "Tomates",
-					imagen: "URL",
+					titulo: "Tomates",
+					foto: "URL",
 					descripcion: "tomates rojos y maduros. Todo fresco",
 					precio: "1$ x kg",
 					cantidad: "40 kgs",
-					categorias: "Alimentos"
+					etiqueta1: "Alimentos",
+					etiqueta2: "Bebidas",
+					etiqueta3: "Fast-Food"
 				},
 				{
 					id: "2",
-					nombre: "Bicicleta montañera",
-					imagen: "URL",
+					titulo: "Bicicleta montañera",
+					foto: "URL",
 					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
 					precio: "50$",
 					cantidad: "1",
-					categorias: "Otros"
+					etiqueta1: "Otros",
+					etiqueta2: "Vehiculos",
+					etiqueta3: "Deportes"
 				},
 				{
 					id: "3",
-					nombre: "Servicio reparación TV",
-					imagen: "URL",
+					titulo: "Servicio reparación TV",
+					foto: "URL",
 					descripcion: "Arreglamos todo tipo de Televisores",
 					precio: "5$ por visita",
 					cantidad: "10",
-					categorias: "Servicios"
+					etiqueta1: "Servicios",
+					etiqueta2: "Tecnologia",
+					etiqueta3: "Computadoras"
 				},
 				{
 					id: "4",
-					nombre: "Resma de Papel Bond base 20",
-					imagen: "URL",
+					titulo: "Resma de Papel Bond base 20",
+					foto: "URL",
 					descripcion: "Materiales para oficina",
 					precio: "3$",
 					cantidad: "20",
-					categorias: "Otros"
+					etiqueta1: "Otros",
+					etiqueta2: "Papeleria",
+					etiqueta3: "Papel"
 				}
 			],
 			datos_registro: {
@@ -66,23 +74,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
+		// Búsqueda por Producto o general por defecto
 		actions: {
 			buscarProductos: productoABuscar => {
 				const store = getStore();
-				let filteredList = store.productos.filter(producto => producto.nombre.search(productoABuscar) != -1);
+				let filteredList = store.productos.filter(
+					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
+				);
 				setStore({
 					resultadosBusqueda: filteredList
 				});
 				console.log(filteredList);
 			},
 
+			// Búsqueda por Etiqueta
 			buscarEtiquetas: etiquetaABuscar => {
+				const store = getStore();
 				let filteredTagList = store.productos.filter(
-					producto => producto.categorias.search(etiquetaABuscar) != -1
+					producto => producto.etiqueta1.search(etiquetaABuscar) != -1
 				);
 				setStore({
 					resultadosBusqueda: filteredTagList
 				});
+				console.log(filteredTagList);
+			},
+
+			// Búsqueda por Zona
+			buscarXZonas: zonaABuscar => {
+				const store = getStore();
+				let filteredZoneList = store.productos.filter(producto => producto.zona.search(zonaABuscar) != -1);
+				setStore({
+					resultadosBusqueda: filteredZoneList
+				});
+				console.log(filteredZoneList);
 			},
 
 			// Use getActions to call a function within a fuction
@@ -93,22 +117,19 @@ const getState = ({ getStore, getActions, setStore }) => {
 				const store = getStore();
 				setStore({
 					datos_registro: {
-                        nombre: datos.nombre,
-                        apellido: datos.apellido,
-                        correo: datos.correo,
-                        telefono: datos.codigo + datos.numero,
-                        nombre_usuario: datos.nombre_usuario,
-                        clave: datos.clave,
-                        fecha_nacimiento: datos.fecha_nacimiento,
-                    }
-				
-			
-                });
-                
-				
+						nombre: datos.nombre,
+						apellido: datos.apellido,
+						correo: datos.correo,
+						telefono: datos.codigo + datos.numero,
+						nombre_usuario: datos.nombre_usuario,
+						clave: datos.clave,
+						fecha_nacimiento: datos.fecha_nacimiento
+					}
+				});
+
 				console.log("ENTRE!");
-            },
-            
+			},
+
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))
@@ -133,3 +154,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+
+//  or producto.etiqueta2.search(etiqueta) or producto.etiqueta3.search(etiqueta))

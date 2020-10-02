@@ -9,75 +9,64 @@ export const Etiquetas = props => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
 
-	// Funciones que guardan el resultado de la búsqueda de productos y actualizan su estado
+	// Funciones que guardan el resultado de la búsqueda de etiquetas y actualizan su estado
 	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
-	const productoEtiqueta = store.productos.filter(producto => producto.categorias.search(buscarEtiqueta) != -1);
-	console.log(productoEtiqueta);
 
 	return (
 		<>
 			<h2 className="text-info ml-4 margen">Productos encontrados</h2>
 
-			<input
-				className="w-25 ml-4"
-				type="text"
-				placeholder="Search"
-				onChange={e => setBuscarEtiqueta(e.target.value)}
-			/>
-
 			<div className="jumbotron">
 				<h1 className="display-4" />
 				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
-					{productoEtiqueta.map((item, index) => {
-						return (
-							<div key={index} className="container mt-2">
-								<div className="card mb-3">
-									<div className="row no-gutters">
-										<div className="col-md-4">
-											<img
-												src="https://via.placeholder.com/500x400"
-												className="card-img"
-												alt="Foto del Producto"
-											/>
-										</div>
-										<div className="col-md-8">
-											<div className="card-body">
-												<h5 className="card-title">{item.nombre}</h5>
+					{store.resultadosBusqueda &&
+						store.resultadosBusqueda.map((item, index) => {
+							console.log(store.resultadosBusqueda);
+							return (
+								<div key={index} className="container mt-2">
+									<div className="card mb-3">
+										<div className="row no-gutters">
+											<div className="col-md-4">
+												<img
+													src="https://via.placeholder.com/500x400"
+													className="card-img-top"
+													alt="Foto del Producto"
+												/>
+											</div>
+											<div className="col-md-8">
+												<div className="card-body">
+													<h5 className="card-title">{item.titulo}</h5>
+												</div>
+												<div className="col">
+													<h5>Producto:</h5>
+													<p>{item.titulo}</p>
+												</div>
+
+												<div className="col">
+													<h5>Precio:</h5>
+													<p>{item.precio}</p>
+												</div>
+
+												<div className="col">
+													<h5>Categorías:</h5>
+													<p>{item.etiqueta1}</p>
+												</div>
 											</div>
 										</div>
 									</div>
-								</div>
-								<div className="row more-info">
-									<div className="col">
-										<h5>Producto:</h5>
-										<p>{item.nombre}</p>
-									</div>
-									<div className="col">
-										<h5>Descripción:</h5>
-										<p>{item.descripcion}</p>
-									</div>
-									<div className="col">
-										<h5>Precio:</h5>
-										<p>{item.precio}</p>
-									</div>
-									<div className="col">
-										<h5>Cantidad:</h5>
-										<p>{item.cantidad}</p>
-									</div>
-									<div className="col">
-										<h5>Categorías:</h5>
-										<p>{item.categorias}</p>
+									<div className="row more-info">
+										<button
+											className="btn btn-primary rounded-sm"
+											type="button"
+											id="button-addon2"
+											style={{ background: "#03989E" }}>
+											<h6 className="card-title">Más detalles</h6>
+										</button>
 									</div>
 								</div>
-							</div>
-						);
-					})}
+							);
+						})}
 				</div>
-				<Link to="/">
-					<button className="btn btn-primary" style={{ background: "#03989E" }}>
-						Home
-					</button>
-				</Link>
 			</div>
 		</>
 	);
