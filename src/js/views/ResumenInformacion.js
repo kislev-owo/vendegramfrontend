@@ -6,6 +6,8 @@ import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
 export const ResumenInformacion = () => {
+	const { store, actions } = useContext(Context);
+	var posicion = 0;
 	return (
 		<div className="container">
 			<div className="row  justify-content-center">
@@ -21,12 +23,12 @@ export const ResumenInformacion = () => {
 						</h1>
 					</div>
 					<div className="text-center rounded-top mx-2" style={{ background: "#c4c4c4" }}>
-						<p style={{ color: "#ffffff" }}>{`nombre`}</p>
-						<p style={{ color: "#ffffff" }}>{`apellido`}</p>
-						<p style={{ color: "#ffffff" }}>{`numero de telefono`}</p>
-						<p style={{ color: "#ffffff" }}>{`nombre de usuario`}</p>
-						<p style={{ color: "#ffffff" }}>{`correo electrónico`}</p>
-						<p style={{ color: "#ffffff" }}>{`fecha de nacimiento`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.apellido}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.telefono}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre_usuario}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.correo}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.fecha_nacimiento}`}</p>
 					</div>
 				</div>
 			</div>

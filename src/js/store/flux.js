@@ -41,7 +41,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 					categorias: "Otros"
 				}
 			],
-
+			datos_registro: {
+				telefono: "",
+				clave: "",
+				nombre: "",
+				apellido: "",
+				nombre_tienda: "",
+				nombre_usuario: "",
+				fecha_nacimiento: "",
+				administrador: false,
+				foto_perfil: "",
+				subscripcion: false
+			},
 			demo: [
 				{
 					title: "FIRST",
@@ -78,6 +89,26 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			datosRegistroComprador: datos => {
+				const store = getStore();
+				setStore({
+					datos_registro: {
+                        nombre: datos.nombre,
+                        apellido: datos.apellido,
+                        correo: datos.correo,
+                        telefono: datos.codigo + datos.numero,
+                        nombre_usuario: datos.nombre_usuario,
+                        clave: datos.clave,
+                        fecha_nacimiento: datos.fecha_nacimiento,
+                    }
+				
+			
+                });
+                
+				
+				console.log("ENTRE!");
+            },
+            
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))

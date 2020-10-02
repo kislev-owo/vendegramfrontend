@@ -6,6 +6,24 @@ import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
 export const Registrate = () => {
+	const { store, actions } = useContext(Context);
+	const [cont2, setCont2] = useState("");
+	const [cont1, setCont1] = useState("");
+	//const [codigo, setCodigo] = useState("");
+	const [datos, setDatos] = useState({
+		correo: store.datos_registro.correo,
+		numero: "",
+		codigo: "",
+		clave: "",
+		nombre: store.datos_registro.nombre,
+		apellido: store.datos_registro.apellido,
+		nombre_usuario: store.datos_registro.nombre_usuario,
+		fecha_nacimiento: store.datos_registro.fecha_nacimiento,
+		administrador: false,
+		foto_perfil: "",
+		subscripcion: false
+	});
+
 	return (
 		<div
 			className="container  justify-content-center my-5  rounded  px-0"
@@ -24,6 +42,10 @@ export const Registrate = () => {
 						className="form-control rounded-lg"
 						id="exampleInputEmail1"
 						aria-describedby="nombreHelp"
+						value={datos.nombre}
+						onChange={e => {
+							setDatos({ ...datos, nombre: e.target.value });
+						}}
 					/>
 					<small id="nombreHelp" className="form-text text-muted">
 						{"Por ejemplo: Pedro"}
@@ -36,6 +58,10 @@ export const Registrate = () => {
 						className="form-control rounded-lg"
 						id="exampleInputEmail1"
 						aria-describedby="apellidoHelp"
+						value={datos.apellido}
+						onChange={e => {
+							setDatos({ ...datos, apellido: e.target.value });
+						}}
 					/>
 					<small id="apellidoHelp" className="form-text text-muted">
 						{"Por ejemplo: Pérez"}
@@ -44,14 +70,19 @@ export const Registrate = () => {
 				<label className="px-3" htmlFor="inlineFormCustomSelect">{`Introduzca su número telefónico`}</label>
 				<div className="form-row align-items-center">
 					<div className="col-auto my-1 px-3">
-						<select className="custom-select mr-sm-2" id="inlineFormCustomSelect">
+						<select
+							className="custom-select mr-sm-2"
+							id="inlineFormCustomSelect"
+							onChange={e => {
+								setDatos({ ...datos, codigo: e.target.value });
+							}}>
 							<option selected>{`Escoja`}</option>
-							<option value="1">{`0412`}</option>
-							<option value="1">{`0414`}</option>
-							<option value="1">{`0416`}</option>
-							<option value="1">{`0424`}</option>
-							<option value="1">{`0426`}</option>
-							<option value="1">{`0212`}</option>
+							<option value="0412">{`0412`}</option>
+							<option value="0414">{`0414`}</option>
+							<option value="0416">{`0416`}</option>
+							<option value="0424">{`0424`}</option>
+							<option value="0426">{`0426`}</option>
+							<option value="0212">{`0212`}</option>
 						</select>
 					</div>
 					<div className="col-auto my-1 px-3">
@@ -61,6 +92,11 @@ export const Registrate = () => {
 							className="form-control rounded-lg"
 							id="exampleInputEmail1"
 							aria-describedby="telefonoHelp"
+							//value={datos.telefono}
+							onChange={e => {
+								let telf = e.target.value;
+								setDatos({ ...datos, numero: telf });
+							}}
 						/>
 						<small id="telefonoHelp" className="form-text text-muted">
 							{"Por ejemplo: 0412 123 45 67"}
@@ -75,6 +111,10 @@ export const Registrate = () => {
 						className="form-control rounded-lg"
 						id="exampleInputEmail1"
 						aria-describedby="nombreuHelp"
+						value={datos.nombre_usuario}
+						onChange={e => {
+							setDatos({ ...datos, nombre_usuario: e.target.value });
+						}}
 					/>
 					<small id="nombreuHelp" className="form-text text-muted">
 						{"Con este nombre podrán encontrarle los demás usuarios de Vendegram"}
@@ -87,6 +127,10 @@ export const Registrate = () => {
 						className="form-control rounded-lg"
 						id="exampleInputEmail1"
 						aria-describedby="emailHelp"
+						value={datos.correo}
+						onChange={e => {
+							setDatos({ ...datos, correo: e.target.value });
+						}}
 					/>
 					<small id="emailHelp" className="form-text text-muted">
 						{"Ejemplo: vendegram@gmail.com"}
@@ -99,6 +143,17 @@ export const Registrate = () => {
 						className="form-control rounded-lg"
 						id="exampleInputEmail1"
 						aria-describedby="contrasenaHelp"
+						value={cont1}
+						onChange={e => {
+							if (datos.clave != "") {
+								setDatos({ ...datos, clave: "" });
+							} else {
+								if (e.target.value == cont2 && cont2 != "") {
+									setDatos({ ...datos, clave: e.target.value });
+								}
+							}
+							setCont1(e.target.value);
+						}}
 					/>
 					<small id="contrasenaHelp" className="form-text text-muted">
 						{"La contraseña debe contener un caracter especial, una mayúscula, una minúscula y un número"}
@@ -106,11 +161,45 @@ export const Registrate = () => {
 				</div>
 				<div className="form-group px-3">
 					<label htmlFor="exampleInputEmail1">{`Confirmar contraseña`}</label>
-					<input type="password" className="form-control rounded-lg" id="exampleInputEmail1" />
+					<input
+						type="password"
+						className="form-control rounded-lg"
+						id="exampleInputEmail1"
+						value={cont2}
+						onChange={e => {
+							if (e.target.value == cont1) {
+								setDatos({ ...datos, clave: e.target.value });
+							} else {
+								if (datos.clave != "") {
+									setDatos({ ...datos, clave: "" });
+								}
+							}
+							setCont2(e.target.value);
+						}}
+
+						// onChange={e => {
+						// 	setCont2(e.target.value);
+						// 	if (cont1 == cont2) {
+						// 		let nueva = cont1;
+						// 		console.log(nueva);
+						// 		setDatos({ ...datos, clave: nueva });
+						// 	} else {
+						// 		console.log("Las contraseñas deben ser iguales");
+						// 	}
+						// }}
+					/>
 				</div>
 				<div className="form-group px-3">
 					<label htmlFor="exampleInputEmail1">{`Fecha de nacimiento`}</label>
-					<input type="password" className="form-control rounded-lg" id="exampleInputEmail1" />
+					<input
+						type="text"
+						className="form-control rounded-lg"
+						id="exampleInputEmail1"
+						value={datos.fecha_nacimiento}
+						onChange={e => {
+							setDatos({ ...datos, fecha_nacimiento: e.target.value });
+						}}
+					/>
 				</div>
 				<div className="form-group form-check text-center">
 					<input type="checkbox" className="form-check-input" id="exampleCheck1" />
@@ -124,7 +213,12 @@ export const Registrate = () => {
 						type="submit"
 						to="/resumen-informacion"
 						className="btn btn-primary my-3 "
-						style={{ background: "#03989E", border: "none" }}>
+						style={{ background: "#03989E", border: "none" }}
+						onClick={() => {
+							actions.datosRegistroComprador(datos);
+						}}
+						//onClick={() => actions.addFavorite(people.name)}>
+					>
 						{"Soy Comprador"}
 					</Link>
 
@@ -132,6 +226,9 @@ export const Registrate = () => {
 						type="submit"
 						className="btn btn-primary my-3"
 						to="/reg-vendedor"
+						onClick={() => {
+							actions.datosRegistroVendedor(datos);
+						}}
 						style={{ background: "#03989E", border: "none" }}>
 						{"Soy Vendedor"}
 					</Link>
