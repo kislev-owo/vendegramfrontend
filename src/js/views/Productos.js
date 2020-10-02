@@ -18,22 +18,7 @@ export const Productos = props => {
 
 	return (
 		<>
-			<div className="d-flex justify-content-between align-items-center">
-				<div>
-					<h2 className="text-info ml-4 margen">Productos encontrados</h2>
-					<input
-						className="w-25 ml-4"
-						type="text"
-						placeholder="Search"
-						onChange={e => setBuscarProducto(e.target.value)}
-					/>
-				</div>
-				<Link to="/">
-					<button className="btn btn-primary mr-4" style={{ background: "#03989E" }}>
-						Home
-					</button>
-				</Link>
-			</div>
+			<h2 className="text-info ml-4 margen">Productos encontrados</h2>
 
 			<div className="jumbotron">
 				<h1 className="display-4" />
@@ -43,36 +28,32 @@ export const Productos = props => {
 							console.log(store.resultadosBusqueda);
 							return (
 								<div key={index} className="container mt-2">
-									<div className="card mb-1 h-100">
-										<div className="row no-gutters">
+									<div className="card border-info mb-1 h-100">
+										<div className="no-gutters">
 											<div className="col-md-4">
 												<img
 													src="https://via.placeholder.com/500x400"
-													className="card-img"
+													className="card-img-top"
 													alt="Foto del Producto"
 												/>
 											</div>
 											<div className="">
 												<div className="card-body">
 													<h6 className="card-title">{item.nombre}</h6>
-													<div className="col">
-														<h6>Id:</h6>
-														<p>{item.id}</p>
-													</div>
-													<div className="col">
-														<h6>Descripción:</h6>
-														<p>{item.descripcion}</p>
-													</div>
+
 													<div className="col">
 														<h6>Precio:</h6>
 														<p>{item.precio}</p>
 													</div>
+												</div>
+												<div className="card-footer">
 													<button
 														className="btn btn-primary rounded-sm"
 														type="button"
 														id="button-addon2"
-														style={{ background: "#03989E" }}>
-														<h6 className="card-title">{item.nombre}</h6>
+														style={{ background: "#03989E" }}
+														onClick={e => history.push(`./DetalleProducto/${item}`)}>
+														<h6 className="card-title">Más detalles</h6>
 													</button>
 												</div>
 											</div>
@@ -99,5 +80,7 @@ Productos.propTypes = {
 	descripcion: PropTypes.string,
 	precio: PropTypes.string,
 	cantidad: PropTypes.string,
-	categorias: PropTypes.string
+	etiqueta1: PropTypes.string
 };
+
+// onClick={e => history.push(`/DetalleProducto/${index}`)}

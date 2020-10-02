@@ -10,7 +10,9 @@ import "../../styles/home.scss";
 export const EtiquetasCard = props => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const [EtiquetaABuscar, setEtiquetaABuscar] = useState("");
+	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
+
+	console.log(etiquetaABuscar);
 
 	return (
 		<>

@@ -11,7 +11,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "tomates rojos y maduros. Todo fresco",
 					precio: "1$ x kg",
 					cantidad: "40 kgs",
-					etiquetas: "Alimentos"
+					etiqueta1: "Alimentos",
+					etiqueta2: "Bebidas",
+					etiqueta3: "Fast-Food"
 				},
 				{
 					id: "2",
@@ -20,7 +22,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
 					precio: "50$",
 					cantidad: "1",
-					etiquetas: "Otros"
+					etiqueta1: "Otros",
+					etiqueta2: "Vehiculos",
+					etiqueta3: "Deportes"
 				},
 				{
 					id: "3",
@@ -29,7 +33,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Arreglamos todo tipo de Televisores",
 					precio: "5$ por visita",
 					cantidad: "10",
-					etiquetas: "Servicios"
+					etiqueta1: "Servicios",
+					etiqueta2: "Tecnologia",
+					etiqueta3: "Computadoras"
 				},
 				{
 					id: "4",
@@ -38,7 +44,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					descripcion: "Materiales para oficina",
 					precio: "3$",
 					cantidad: "20",
-					etiquetas: "Otros"
+					etiqueta1: "Otros",
+					etiqueta2: "Papeleria",
+					etiqueta3: "Papel"
 				}
 			],
 
@@ -67,13 +75,24 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredList);
 			},
 
-			buscarEtiquetas: etiqueta => {
+			buscarEtiquetas: etiquetaABuscar => {
 				const store = getStore();
-				let filteredTagList = store.productos.filter(producto => producto.etiquetas.search(etiqueta) != -1);
+				let filteredTagList = store.productos.filter(
+					producto => producto.etiqueta1.search(etiquetaABuscar) != -1
+				);
 				setStore({
 					resultadosBusqueda: filteredTagList
 				});
 				console.log(filteredTagList);
+			},
+
+			buscarZonas: zona => {
+				const store = getStore();
+				let filteredZoneList = store.productos.filter(producto => producto.zona.search(zona) != -1);
+				setStore({
+					resultadosBusqueda: filteredZoneList
+				});
+				console.log(filteredZoneList);
 			},
 
 			// Use getActions to call a function within a fuction
@@ -104,3 +123,5 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
+
+//  or producto.etiqueta2.search(etiqueta) or producto.etiqueta3.search(etiqueta))
