@@ -17,14 +17,30 @@ export const Buscar = () => {
 
 	// Funcion para la búsqueda simultanea por Producto, Etiqueta y Zona
 	const Busqueda = () => {
-		if (productoABuscar != []) {
-			if (etiquetaABuscar != []) {
-				if (zonaABuscar != []) {
-					actions.buscarProductos(productoABuscar, etiquetaABuscar, zonaABuscar);
-				}
+		if (zonaABuscar != "") {
+			//			if (etiquetaABuscar != "") {
+			//				if (productoABuscar != "") {
+			//					actions.buscarXZonaEtiquetaProducto(
+			//						zonaABuscar,
+			//						etiquetaABuscar,
+			//						productoABuscar
+			//					); /* caso(5) 1,1,1 zona + etiqueta + producto */
+			//				}
+			//				actions.buscarXZonaEtiqueta(zonaABuscar, etiquetaABuscar); /* caso(6) 1,1,0 zona + etiqueta */
+			//			} else if (productoABuscar != "") {
+			//				actions.buscarXZonaProducto(zonaABuscar, productoABuscar); /* caso(8) 1,0,1 zona + producto */
+			//		        }
+			actions.buscarXZona(zonaABuscar); /* caso(7) 1,0,0 zona */
+		} else if (etiquetaABuscar != "") {
+			if (productoABuscar != "") {
+				actions.buscarxEtiquetaProducto(
+					etiquetaABuscar,
+					productoABuscar
+				); /* caso(3) 0,1,1 etiqueta + producto */
 			}
+			actions.buscarEtiquetas(etiquetaABuscar); /* caso(4) 0,1,0 etiqueta */
 		}
-		actions.buscarProductos(productoABuscar);
+		actions.buscarProductos(productoABuscar); /* caso(1-2) 0,0,0 - 0,0,1 todos - producto */
 	};
 
 	console.log(productoABuscar);
@@ -32,17 +48,17 @@ export const Buscar = () => {
 	return (
 		<div className="d-flex align-items-center ml-4 mr-4">
 			{/* div que contiene el componente para la búsqueda por zonas*/}
-			<div className="mb-1 col-3">
+			<div className="mb-1 col-4">
 				<BuscarZona />
 			</div>
 
 			{/* Componente para búsqueda por Etiquetas*/}
-			<div className="mb-1 col-3">
+			<div className="mb-1 col-4">
 				<BuscarEtiqueta />
 			</div>
 
 			{/* Input de búsqueda general de Productos*/}
-			<div className="input-group mb-1 col-3 ">
+			<div className="input-group mb-1 col-4 ">
 				<input
 					type="text"
 					className="form-control"
@@ -60,7 +76,7 @@ export const Buscar = () => {
 						id="button-addon2"
 						style={{ background: "#03989E" }}
 						onClick={() => {
-							actions.buscarProductos(productoABuscar);
+							Busqueda(productoABuscar);
 							history.push("../Productos");
 						}}>
 						{"Ver todos"}

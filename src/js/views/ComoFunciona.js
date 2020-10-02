@@ -9,9 +9,11 @@ import comprador from "../../img/Vendegram-Comprador.png";
 export const ComoFunciona = () => {
 	return (
 		<div className="container">
-			<div className="jumbotron ml-5 mr-3 mt-3">
+			<div className="jumbotron ml-3 mr-3 mt-2 pt-4">
 				<div className="text-center mb-2">
-					<button type="button" className="btn btn-light btn-sm btn-block border border-info rounded-pill">
+					<button
+						type="button"
+						className="btn btn-light btn-sm btn-block border border-info rounded-pill mb-4">
 						<h3>¿Cómo funciona Vendegram?</h3>
 					</button>
 
@@ -40,11 +42,6 @@ export const ComoFunciona = () => {
 							</button>
 						</div>
 					</div>
-					<Link to="/">
-						<button className="btn btn-primary" style={{ background: "#03989E" }}>
-							Home
-						</button>
-					</Link>
 				</div>
 			</div>
 		</div>

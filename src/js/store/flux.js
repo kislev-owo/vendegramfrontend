@@ -6,8 +6,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productos: [
 				{
 					id: "1",
-					nombre: "Tomates",
-					imagen: "URL",
+					titulo: "Tomates",
+					foto: "URL",
 					descripcion: "tomates rojos y maduros. Todo fresco",
 					precio: "1$ x kg",
 					cantidad: "40 kgs",
@@ -17,8 +17,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: "2",
-					nombre: "Bicicleta montañera",
-					imagen: "URL",
+					titulo: "Bicicleta montañera",
+					foto: "URL",
 					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
 					precio: "50$",
 					cantidad: "1",
@@ -28,8 +28,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: "3",
-					nombre: "Servicio reparación TV",
-					imagen: "URL",
+					titulo: "Servicio reparación TV",
+					foto: "URL",
 					descripcion: "Arreglamos todo tipo de Televisores",
 					precio: "5$ por visita",
 					cantidad: "10",
@@ -39,8 +39,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				},
 				{
 					id: "4",
-					nombre: "Resma de Papel Bond base 20",
-					imagen: "URL",
+					titulo: "Resma de Papel Bond base 20",
+					foto: "URL",
 					descripcion: "Materiales para oficina",
 					precio: "3$",
 					cantidad: "20",
@@ -63,11 +63,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
+		// Búsqueda por Producto o general por defecto
 		actions: {
 			buscarProductos: productoABuscar => {
 				const store = getStore();
 				let filteredList = store.productos.filter(
-					producto => producto.nombre.toLowerCase().search(productoABuscar) != -1
+					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
 				);
 				setStore({
 					resultadosBusqueda: filteredList
@@ -75,6 +76,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredList);
 			},
 
+			// Búsqueda por Etiqueta
 			buscarEtiquetas: etiquetaABuscar => {
 				const store = getStore();
 				let filteredTagList = store.productos.filter(
@@ -86,9 +88,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredTagList);
 			},
 
-			buscarZonas: zona => {
+			// Búsqueda por Zona
+			buscarXZonas: zonaABuscar => {
 				const store = getStore();
-				let filteredZoneList = store.productos.filter(producto => producto.zona.search(zona) != -1);
+				let filteredZoneList = store.productos.filter(producto => producto.zona.search(zonaABuscar) != -1);
 				setStore({
 					resultadosBusqueda: filteredZoneList
 				});

@@ -35,7 +35,7 @@ export const Home = () => (
 					</ul>
 				</div>
 
-				<div className="col-5 ml-3 mt-5">
+				<div className="col-3 ml-auto mt-5">
 					<a href="#" className="btn btn-primary rounded align-center" style={{ background: "#03989E" }}>
 						Ve a nuestro Telegram
 						<a href="#" className="badge badge-primary">

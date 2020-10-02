@@ -33,11 +33,11 @@ function DetalleProducto() {
 									</div>
 									<div className="col-md-8">
 										<div className="card-body">
-											<h5 className="card-title">{item.nombre}</h5>
+											<h5 className="card-title">{item.titulo}</h5>
 										</div>
 										<div className="col">
 											<h5>Producto:</h5>
-											<p>{item.nombre}</p>
+											<p>{item.titulo}</p>
 										</div>
 
 										<div className="col">

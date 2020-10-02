@@ -11,10 +11,6 @@ export const Productos = props => {
 
 	// Funciones que guardan el resultado de la búsqueda de productos y actualizan su estado
 	const [buscarProducto, setBuscarProducto] = useState("");
-	//const productoFiltrado = store.productos.filter(producto =>
-	//	producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
-	//);
-	//console.log(productoFiltrado);
 
 	return (
 		<>
@@ -39,7 +35,7 @@ export const Productos = props => {
 											</div>
 											<div className="">
 												<div className="card-body">
-													<h6 className="card-title">{item.nombre}</h6>
+													<h6 className="card-title">{item.titulo}</h6>
 
 													<div className="col">
 														<h6>Precio:</h6>
@@ -52,7 +48,7 @@ export const Productos = props => {
 														type="button"
 														id="button-addon2"
 														style={{ background: "#03989E" }}
-														onClick={e => history.push(`./DetalleProducto/${item}`)}>
+														onClick={e => history.push(`./DetalleProducto/${item.id}`)}>
 														<h6 className="card-title">Más detalles</h6>
 													</button>
 												</div>
@@ -63,11 +59,6 @@ export const Productos = props => {
 							);
 						})}
 				</div>
-				<Link to="/">
-					<button className="btn btn-primary" style={{ background: "#03989E" }}>
-						Home
-					</button>
-				</Link>
 			</div>
 		</>
 	);
@@ -84,3 +75,7 @@ Productos.propTypes = {
 };
 
 // onClick={e => history.push(`/DetalleProducto/${index}`)}
+//const productoFiltrado = store.productos.filter(producto =>
+//	producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
+//);
+//console.log(productoFiltrado);
