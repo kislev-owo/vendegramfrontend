@@ -22,10 +22,11 @@ export const EtiquetasCard = props => {
 								<img src="https://via.placeholder.com/150x50" className="card-img-top" alt="Foto" />
 								<div className="card-body">
 									<button
-										className="btn btn-success"
+										className="btn btn-primary rounded-lg"
 										type="button"
 										id="button-addon2"
-										onClick={e => setBuscarCategoria(e.target.value)}>
+										style={{ background: "#03989E" }}
+										onClick={e => history.push(`../Etiquetas`)}>
 										<h5 className="card-title">{etiqueta}</h5>
 									</button>
 								</div>
