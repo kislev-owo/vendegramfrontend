@@ -42,11 +42,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			],
 			datos_registro: {
-				correo: "",
 				telefono: "",
 				clave: "",
 				nombre: "",
 				apellido: "",
+				nombre_tienda: "",
 				nombre_usuario: "",
 				fecha_nacimiento: "",
 				administrador: false,
@@ -89,15 +89,34 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
-			// datos_registro:(datos)=>{
-			//     const store=getStore();
-
-			//     setStore({...datos_registro, nombre: datos.nombre});
-			//     store.apellido=datos.apellido;
-			//     store.correo=datos.correo;
-			//     store.telefono= datos.codigo+ datos.numero;
-
-			// },
+			datosRegistroComprador: datos => {
+				const store = getStore();
+				setStore({
+					datos_registro: { ...store.datos_registro, nombre: datos.nombre }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, apellido: datos.apellido }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, correo: datos.correo }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, telefono: datos.codigo + datos.numero }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, nombre_usuario: datos.nombre_usuario }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, clave: datos.clave }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, fecha_nacimiento: datos.fecha_nacimiento }
+				});
+				setStore({
+					datos_registro: { ...store.datos_registro, nombre: datos.nombre }
+				});
+				console.log("ENTRE!");
+			},
 			loadSomeData: () => {
 				/**
 					fetch().then().then(data => setStore({ "foo": data.bar }))

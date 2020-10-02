@@ -13,19 +13,14 @@ import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 import { Condiciones } from "./component/Condiciones";
 import { Registrate } from "./views/registrate";
-<<<<<<< HEAD
-import { RegistrateVendedor } from "./views/RegistrateVendedor";
+import { ComoFunciona } from "./views/ComoFunciona";
 import { Nosotros } from "./views/Nosotros";
 import { Contactanos } from "./views/Contactanos";
-
+import { RegistrateVendedor } from "./views/RegistrateVendedor";
+import { ResumenInformacion } from "./views/ResumenInformacion";
 import { PlanSubscripcion } from "./views/PlanSubscripcion";
 import { ConfirmarPago } from "./views/ConfirmarPago";
-import { ResumenInformacion } from "./views/ResumenInformacion";
 import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
-=======
-import { ComoFunciona } from "./views/ComoFunciona";
->>>>>>> francisco
-
 //create your first component
 const Layout = () => {
 	//the basename is used when your project is published in a subdirectory and not in the root of the domain

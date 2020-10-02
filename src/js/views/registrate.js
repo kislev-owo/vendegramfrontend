@@ -11,14 +11,14 @@ export const Registrate = () => {
 	const [cont1, setCont1] = useState("");
 	//const [codigo, setCodigo] = useState("");
 	const [datos, setDatos] = useState({
-		correo: "",
+		correo: store.datos_registro.correo,
 		numero: "",
 		codigo: "",
 		clave: "",
-		nombre: "",
-		apellido: "",
-		nombre_usuario: "",
-		fecha_nacimiento: "",
+		nombre: store.datos_registro.nombre,
+		apellido: store.datos_registro.apellido,
+		nombre_usuario: store.datos_registro.nombre_usuario,
+		fecha_nacimiento: store.datos_registro.fecha_nacimiento,
 		administrador: false,
 		foto_perfil: "",
 		subscripcion: false
@@ -215,15 +215,10 @@ export const Registrate = () => {
 						className="btn btn-primary my-3 "
 						style={{ background: "#03989E", border: "none" }}
 						onClick={() => {
-							const store = setStore();
-							setStore({ ...store, nombre: datos.nombre });
-							setStore({ ...store, apellido: datos.apellido });
-							setStore({ ...store, correo: datos.correo });
-							setStore({ ...store, nombre_usuario: datos.nombre_usuario });
-							setStore({ ...store, telefono: datos.codigo + datos.numero });
-							setStore({ ...store, fecha_nacimiento: datos.fecha_nacimiento });
-							setStore({ ...store, clave: datos.clave });
-						}}>
+							actions.datosRegistroComprador(datos);
+						}}
+						//onClick={() => actions.addFavorite(people.name)}>
+					>
 						{"Soy Comprador"}
 					</Link>
 
@@ -231,6 +226,9 @@ export const Registrate = () => {
 						type="submit"
 						className="btn btn-primary my-3"
 						to="/reg-vendedor"
+						onClick={() => {
+							actions.datosRegistroVendedor(datos);
+						}}
 						style={{ background: "#03989E", border: "none" }}>
 						{"Soy Vendedor"}
 					</Link>
