@@ -176,17 +176,6 @@ export const Registrate = () => {
 							}
 							setCont2(e.target.value);
 						}}
-
-						// onChange={e => {
-						// 	setCont2(e.target.value);
-						// 	if (cont1 == cont2) {
-						// 		let nueva = cont1;
-						// 		console.log(nueva);
-						// 		setDatos({ ...datos, clave: nueva });
-						// 	} else {
-						// 		console.log("Las contraseñas deben ser iguales");
-						// 	}
-						// }}
 					/>
 				</div>
 				<div className="form-group px-3">
@@ -227,7 +216,7 @@ export const Registrate = () => {
 						className="btn btn-primary my-3"
 						to="/reg-vendedor"
 						onClick={() => {
-							actions.datosRegistroVendedor(datos);
+							actions.datosRegistroCompra(datos);
 						}}
 						style={{ background: "#03989E", border: "none" }}>
 						{"Soy Vendedor"}

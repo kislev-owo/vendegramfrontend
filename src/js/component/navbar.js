@@ -12,7 +12,7 @@ export const Navbar = () => {
 		<>
 			<nav className="navbar navbar-expand-lg navbar-light " style={{ background: "#C4C4C4" }}>
 				<div className="row mr-auto p-2">
-					<a className="navbar-brand " href="#">
+					<Link className="navbar-brand " to="/" href="#">
 						<img
 							src={`https://res.cloudinary.com/vendegram/image/upload/v1600811711/Search-Bot_2_dzesqu.png`}
 							width="80"
@@ -20,7 +20,7 @@ export const Navbar = () => {
 							alt=""
 							loading="lazy"
 						/>
-					</a>
+					</Link>
 					<div>
 						<div>
 							<a className="navbar-brand" href="#" style={{ fontSize: "25px" }}>

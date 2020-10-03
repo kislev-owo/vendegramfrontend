@@ -57,6 +57,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				nombre_tienda: "",
 				nombre_usuario: "",
 				fecha_nacimiento: "",
+				nombre_tienda: "",
 				administrador: false,
 				foto_perfil: "",
 				subscripcion: false
@@ -126,6 +127,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 						fecha_nacimiento: datos.fecha_nacimiento
 					}
 				});
+			},
+			datosRegistroVendedor: (datos, plan) => {
+				const store = getStore();
+				if (plan == 0) {
+					setStore({
+						datos_registro: {
+							nombre: datos.nombre,
+							apellido: datos.apellido,
+							correo: datos.correo,
+							telefono: datos.codigo + datos.numero,
+							nombre_usuario: datos.nombre_usuario,
+							clave: datos.clave,
+							nombre_tienda: datos.nombre_tienda,
+							fecha_nacimiento: datos.fecha_nacimiento
+						}
+					});
+				}
+				if (plan == 1) {
+				}
 
 				console.log("ENTRE!");
 			},

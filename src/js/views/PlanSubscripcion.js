@@ -6,10 +6,25 @@ import { Context } from "../store/appContext";
 import "../../styles/demo.scss";
 
 export const PlanSubscripcion = () => {
+	const { store, actions } = useContext(Context);
+	const [datos, setDatos] = useState({
+		correo: store.datos_registro.correo,
+		numero: "",
+		codigo: "",
+		clave: "",
+		nombre_tienda: store.datos_registro.nombre_tienda,
+		nombre: store.datos_registro.nombre,
+		apellido: store.datos_registro.apellido,
+		nombre_usuario: store.datos_registro.nombre_usuario,
+		fecha_nacimiento: store.datos_registro.fecha_nacimiento,
+		administrador: false,
+		foto_perfil: "",
+		subscripcion: false
+	});
 	return (
 		<div>
 			<div className="row justify-content-center my-5">
-				<div className="col-4">
+				<div className="col-5">
 					<div className="text-center rounded-top" style={{ background: "#03989E" }}>
 						<h1 style={{ color: "#ffffff" }}>
 							<i className="fas fa-user-circle  mx-2 my-2" style={{ color: "#ffffff" }} />
@@ -17,7 +32,7 @@ export const PlanSubscripcion = () => {
 						</h1>
 					</div>
 					<div className="text-center rounded-top" style={{ background: "#c4c4c4" }}>
-						<ul>
+						<ol>
 							<li>
 								<p style={{ color: "#ffffff" }}>{`-Permite asociar una zona de entrega`}</p>
 							</li>
@@ -30,7 +45,7 @@ export const PlanSubscripcion = () => {
 							<li>
 								<p style={{ color: "#ffffff" }}>{`-Incluye aparición en las búsquedas por telegram`}</p>
 							</li>
-						</ul>
+						</ol>
 						<Link
 							type="submit"
 							className="btn btn-primary my-3"
@@ -41,7 +56,7 @@ export const PlanSubscripcion = () => {
 					</div>
 				</div>
 
-				<div className="col-4">
+				<div className="col-5">
 					<div className="text-center rounded-top" style={{ background: "#03989E" }}>
 						<h1 style={{ color: "#ffffff" }}>
 							<i className="fas fa-user-circle  mx-2 my-2" style={{ color: "#ffffff" }} />
@@ -70,6 +85,9 @@ export const PlanSubscripcion = () => {
 							type="submit"
 							className="btn btn-primary my-3"
 							to="/confirmar-pago"
+							onClick={() => {
+								actions.datosRegistroVendedor(datos, 1);
+							}}
 							style={{ background: "#03989E", border: "none" }}>
 							{"$5 *tarifa mensual"}
 						</Link>
