@@ -22,8 +22,10 @@ import { RegistrateVendedor } from "./views/RegistrateVendedor";
 import { ResumenInformacion } from "./views/ResumenInformacion";
 import { PlanSubscripcion } from "./views/PlanSubscripcion";
 import { ConfirmarPago } from "./views/ConfirmarPago";
+import { Finalizar } from "./views/Finalizar";
 import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
 import { ComoFunciona } from "./views/ComoFunciona";
+import { PerfilVendedor } from "./views/PerfilVendedor";
 
 //create your first component
 const Layout = () => {
@@ -69,6 +71,9 @@ const Layout = () => {
 						<Route exact path="/contactanos">
 							<Contactanos />
 						</Route>
+						<Route exact path="/perfil-vendedor/:tiendaId">
+							<PerfilVendedor />
+						</Route>
 						<Route exact path="/reg-vendedor">
 							<RegistrateVendedor />
 						</Route>
@@ -81,6 +86,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/resumen-informacion">
 							<ResumenInformacion />
+						</Route>
+						<Route exact path="/finalizar">
+							<Finalizar />
 						</Route>
 						<Route exact path="/finalizar-registro-vendedor">
 							<FinalizarRegistroVendedor />

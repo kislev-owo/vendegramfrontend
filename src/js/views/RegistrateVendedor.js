@@ -56,7 +56,7 @@ export const RegistrateVendedor = () => {
 					type="submit"
 					to="/plan"
 					onClick={() => {
-						actions.datosRegistroVendedor(datos);
+						actions.datosRegistro(datos);
 					}}
 					className="btn btn-primary my-3   "
 					style={{ background: "#03989E", border: "none" }}>
