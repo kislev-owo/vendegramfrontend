@@ -10,9 +10,9 @@ import "../../styles/home.scss";
 export const EtiquetasCard = props => {
 	const { store, actions } = useContext(Context);
 	const history = useHistory();
-	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
+	//	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
 
-	console.log(etiquetaABuscar);
+	//	console.log(etiquetaABuscar);
 
 	return (
 		<>
@@ -31,6 +31,7 @@ export const EtiquetasCard = props => {
 										style={{ background: "#03989E" }}
 										onClick={() => {
 											actions.buscarEtiquetas(etiqueta);
+											console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");
 											history.push("../Etiquetas");
 										}}>
 										<h5 className="card-title">{etiqueta}</h5>

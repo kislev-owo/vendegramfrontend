@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Buscar } from "../component/Buscar";
 
 // Función que genera las vistas de los objetos filtrados por nombre del arreglo "productos"
 export const Productos = props => {
@@ -14,14 +15,22 @@ export const Productos = props => {
 
 	return (
 		<>
-			<h2 className="text-info ml-4 margen">Productos encontrados</h2>
+			<div>
+				<div className="mt-1 ">
+					<Buscar />
+				</div>
+			</div>
 
-			<div className="jumbotron">
-				<h1 className="display-4" />
-				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4">
-					{store.resultadosBusqueda &&
-						store.resultadosBusqueda.map((item, index) => {
-							console.log(store.resultadosBusqueda);
+			<div className="jumbotron ml-3 mr-3 mt-2 pt-4">
+				<h2 className="text-center ml-4 mb-2 m-auto">
+					<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
+						Productos encontrados
+					</span>
+				</h2>
+
+				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-2">
+					{store.productos &&
+						store.productos.map((item, index) => {
 							return (
 								<div key={index} className="container mt-2">
 									<div className="card border-info mb-1 h-100">
@@ -40,6 +49,10 @@ export const Productos = props => {
 													<div className="col">
 														<h6>Precio:</h6>
 														<p>{item.precio}</p>
+													</div>
+													<div className="col">
+														<h6>Categoría:</h6>
+														<p>{item.etiqueta_general}</p>
 													</div>
 												</div>
 												<div className="card-footer">
@@ -79,3 +92,5 @@ Productos.propTypes = {
 //	producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
 //);
 //console.log(productoFiltrado);
+
+// <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4">

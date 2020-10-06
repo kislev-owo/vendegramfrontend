@@ -1,53 +1,73 @@
+const BaseAPIurl = "https://labvendegram.herokuapp.com/";
+
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			etiquetas: ["Alimentos", "Bebidas", "Fast-Food", "Servicios", "Otros"],
+			etiquetas: [
+				"alimentos",
+				"Bebidas",
+				"Cereales",
+				"Decoraciones",
+				"Detergentes",
+				"Enlatados",
+				"Jabones",
+				"Mantenimientos",
+				"Maquillajes",
+				"Medicamentos",
+				"Peluquería",
+				"Peluquería_veterinaria",
+				"Plomería",
+				"Reparaciones",
+				"Ropa",
+				"Salsas",
+				"servicios"
+			],
 			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
 			productos: [
-				{
-					id: "1",
-					titulo: "Tomates",
-					foto: "URL",
-					descripcion: "tomates rojos y maduros. Todo fresco",
-					precio: "1$ x kg",
-					cantidad: "40 kgs",
-					etiqueta1: "Alimentos",
-					etiqueta2: "Bebidas",
-					etiqueta3: "Fast-Food"
-				},
-				{
-					id: "2",
-					titulo: "Bicicleta montañera",
-					foto: "URL",
-					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
-					precio: "50$",
-					cantidad: "1",
-					etiqueta1: "Otros",
-					etiqueta2: "Vehiculos",
-					etiqueta3: "Deportes"
-				},
-				{
-					id: "3",
-					titulo: "Servicio reparación TV",
-					foto: "URL",
-					descripcion: "Arreglamos todo tipo de Televisores",
-					precio: "5$ por visita",
-					cantidad: "10",
-					etiqueta1: "Servicios",
-					etiqueta2: "Tecnologia",
-					etiqueta3: "Computadoras"
-				},
-				{
-					id: "4",
-					titulo: "Resma de Papel Bond base 20",
-					foto: "URL",
-					descripcion: "Materiales para oficina",
-					precio: "3$",
-					cantidad: "20",
-					etiqueta1: "Otros",
-					etiqueta2: "Papeleria",
-					etiqueta3: "Papel"
-				}
+				// {
+				// 	id: "1",
+				// 	titulo: "Tomates",
+				// 	foto: "foto",
+				// 	descripcion: "tomates rojos y maduros. Todo fresco",
+				// 	precio: "1$ x kg",
+				// 	cantidad: "40 kgs",
+				// 	etiqueta1: "Alimentos",
+				// 	etiqueta2: "Bebidas",
+				// 	etiqueta3: "Fast-Food"
+				// },
+				// {
+				// 	id: "2",
+				// 	titulo: "Bicicleta montañera",
+				// 	foto: "foto",
+				// 	descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
+				// 	precio: "50$",
+				// 	cantidad: "1",
+				// 	etiqueta1: "Otros",
+				// 	etiqueta2: "Vehiculos",
+				// 	etiqueta3: "Deportes"
+				// },
+				// {
+				// 	id: "3",
+				// 	titulo: "Servicio reparación TV",
+				// 	foto: "foto",
+				// 	descripcion: "Arreglamos todo tipo de Televisores",
+				// 	precio: "5$ por visita",
+				// 	cantidad: "10",
+				// 	etiqueta1: "Servicios",
+				// 	etiqueta2: "Tecnologia",
+				// 	etiqueta3: "Computadoras"
+				// },
+				// {
+				// 	id: "4",
+				// 	titulo: "Resma de Papel Bond base 20",
+				// 	foto: "foto",
+				// 	descripcion: "Materiales para oficina",
+				// 	precio: "3$",
+				// 	cantidad: "20",
+				// 	etiqueta1: "Otros",
+				// 	etiqueta2: "Papeleria",
+				// 	etiqueta3: "Papel"
+				// }
 			],
 			datos_registro: {
 				telefono: "",
@@ -76,7 +96,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		// Búsqueda por Producto o general por defecto
 		actions: {
-			buscarProductos: productoABuscar => {
+			buscarProductos: (productoABuscar, etiquetaABuscar, zonaABuscar) => {
 				const store = getStore();
 				let filteredList = store.productos.filter(
 					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
@@ -87,16 +107,79 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredList);
 			},
 
-			// Búsqueda por Etiqueta
+			// ##### Fetch para Cargar Productos desde la Api ##### 1
+			fetchCargarProductos: async (productoABuscar, etiquetaGeneralABuscar, etiquetaABuscar, zonaABuscar) => {
+				let productos = [];
+				console.log(etiquetaABuscar);
+				console.log(etiquetaGeneralABuscar);
+
+				let url = `https://labvendegram.herokuapp.com/producto?`;
+				if (productoABuscar == "") {
+					url = url;
+				} else {
+					url += `titulo=${productoABuscar}`;
+					console.log(url);
+				}
+				if (etiquetaGeneralABuscar != "") {
+					url += `&etiqueta_general=${etiquetaGeneralABuscar}`;
+				}
+
+				if (etiquetaABuscar != "") {
+					url += `&etiqueta=${etiquetaABuscar}`;
+				}
+				if (zonaABuscar != "") {
+					url += `&zona=${zonaABuscar}`;
+				}
+				let response = await fetch(url);
+				if (response.ok) {
+					let productos = await response.json();
+					setStore({
+						productos: productos
+					});
+					console.log(productos);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						productos: []
+					});
+					return false;
+				}
+			},
+
+			// Función para Búsqueda por Etiqueta
 			buscarEtiquetas: etiquetaABuscar => {
 				const store = getStore();
 				let filteredTagList = store.productos.filter(
-					producto => producto.etiqueta1.search(etiquetaABuscar) != -1
+					producto => producto.etiqueta_general.search(etiquetaABuscar) != -1
 				);
 				setStore({
-					resultadosBusqueda: filteredTagList
+					resultadosEtiqueta: filteredTagList
 				});
+				console.log("Esta es busqueda por la etiqueta " + etiquetaABuscar + " del flux");
 				console.log(filteredTagList);
+			},
+
+			// ##### Fetch para Cargar Etiquetas desde la Api ##### 2
+			fetchCargarEtiquetas: async () => {
+				let etiquetas = [];
+				let url = `https://labvendegram.herokuapp.com/etiqueta`;
+
+				let response = await fetch(url);
+				if (response.ok) {
+					let etiquetas = await response.json();
+					setStore({
+						etiquetas: etiquetas
+					});
+					console.log(etiquetas);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						etiquetas: []
+					});
+					return false;
+				}
 			},
 
 			// Búsqueda por Zona
@@ -113,6 +196,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+
 			datosRegistroComprador: datos => {
 				const store = getStore();
 				setStore({
@@ -156,3 +240,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 //  or producto.etiqueta2.search(etiqueta) or producto.etiqueta3.search(etiqueta))
+// ?titulo=${titulo}

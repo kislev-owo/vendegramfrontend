@@ -2,10 +2,6 @@ import React from "react";
 import { Link } from "react-router-dom";
 import { Home } from "../views/home.js";
 import { Buscar } from "./Buscar";
-// var cloudinary = require("cloudinary-core");
-// import { Cloudinary } from "cloudinary-core";
-//  var cl = new cloudinary.Cloudinary({ cloud_name: "vendegram", secure: true });
-//  var tag = cl.url("sample.jpg");
 
 export const Navbar = () => {
 	return (
@@ -69,11 +65,6 @@ export const Navbar = () => {
 					</div>
 				</div>
 			</nav>
-			<div>
-				<div className="mt-1 ">
-					<Buscar />
-				</div>
-			</div>
 		</>
 	);
 };
