@@ -86,7 +86,7 @@ export const PlanSubscripcion = () => {
 							className="btn btn-primary my-3"
 							to="/confirmar-pago"
 							onClick={() => {
-								actions.datosRegistroVendedor(datos, 1);
+								actions.datosRegistro(datos);
 							}}
 							style={{ background: "#03989E", border: "none" }}>
 							{"$5 *tarifa mensual"}

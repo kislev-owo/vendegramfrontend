@@ -18,6 +18,7 @@ export const Navbar = () => {
 							width="80"
 							height="80"
 							alt=""
+							to="/"
 							loading="lazy"
 						/>
 					</Link>
@@ -51,9 +52,9 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
+								<Link to="/nosotros" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
 									Nosotros
-								</a>
+								</Link>
 							</li>
 							<li className="nav-item">
 								<Link className="nav-link" href="#" tabIndex="-1" aria-disabled="true" to="/registrate">

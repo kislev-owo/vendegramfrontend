@@ -7,7 +7,7 @@ import "../../styles/demo.scss";
 
 export const ResumenInformacion = () => {
 	const { store, actions } = useContext(Context);
-	var posicion = 0;
+
 	return (
 		<div className="container">
 			<div className="row  justify-content-center">
@@ -29,6 +29,7 @@ export const ResumenInformacion = () => {
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre_usuario}`}</p>
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.correo}`}</p>
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.fecha_nacimiento}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre_tienda}`}</p>
 					</div>
 				</div>
 			</div>
@@ -37,6 +38,9 @@ export const ResumenInformacion = () => {
 					type="submit"
 					className="btn btn-primary my-3"
 					to="/finalizar"
+					onClick={() => {
+						actions.crearUsuario();
+					}}
 					style={{ background: "#03989E", border: "none" }}>
 					{"Continuar"}
 				</Link>
