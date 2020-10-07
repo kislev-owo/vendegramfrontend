@@ -23,53 +23,53 @@ const getState = ({ getStore, getActions, setStore }) => {
 			],
 			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
 			productos: [
-				{
-					id: "1",
-					titulo: "Tomates",
-					foto: "URL",
-					descripcion: "tomates rojos y maduros. Todo fresco",
-					precio: "1$ x kg",
-					cantidad: "40 kgs",
-					etiqueta_uno: "Alimentos",
-					etiqueta_dos: "Bebidas",
-					etiqueta_tres: "Fast-Food"
-				},
-				{
-					id: "2",
-					titulo: "Bicicleta montañera",
-					foto: "URL",
-					descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
-					precio: "50$",
-					cantidad: "1",
-					etiqueta_uno: "Otros",
-					etiqueta_dos: "Vehiculos",
-					etiqueta_tres: "Deportes",
-					etiqueta_general: "Servicios"
-				},
-				{
-					id: "3",
-					titulo: "Servicio reparación TV",
-					foto: "URL",
-					descripcion: "Arreglamos todo tipo de Televisores",
-					precio: "5$ por visita",
-					cantidad: "10",
-					etiqueta_uno: "Servicios",
-					etiqueta_dos: "Tecnologia",
-					etiqueta_tres: "Computadoras",
-					etiqueta_general: "Servicios"
-				},
-				{
-					id: "4",
-					titulo: "Resma de Papel Bond base 20",
-					foto: "URL",
-					descripcion: "Materiales para oficina",
-					precio: "3$",
-					cantidad: "20",
-					etiqueta_uno: "Otros",
-					etiqueta_dos: "Papeleria",
-					etiqueta_tres: "Papel",
-					etiqueta_general: "Servicios"
-				}
+				// {
+				// 	id: "1",
+				// 	titulo: "Tomates",
+				// 	foto: "URL",
+				// 	descripcion: "tomates rojos y maduros. Todo fresco",
+				// 	precio: "1$ x kg",
+				// 	cantidad: "40 kgs",
+				// 	etiqueta_uno: "Alimentos",
+				// 	etiqueta_dos: "Bebidas",
+				// 	etiqueta_tres: "Fast-Food"
+				// },
+				// {
+				// 	id: "2",
+				// 	titulo: "Bicicleta montañera",
+				// 	foto: "URL",
+				// 	descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
+				// 	precio: "50$",
+				// 	cantidad: "1",
+				// 	etiqueta_uno: "Otros",
+				// 	etiqueta_dos: "Vehiculos",
+				// 	etiqueta_tres: "Deportes",
+				// 	etiqueta_general: "Servicios"
+				// },
+				// {
+				// 	id: "3",
+				// 	titulo: "Servicio reparación TV",
+				// 	foto: "URL",
+				// 	descripcion: "Arreglamos todo tipo de Televisores",
+				// 	precio: "5$ por visita",
+				// 	cantidad: "10",
+				// 	etiqueta_uno: "Servicios",
+				// 	etiqueta_dos: "Tecnologia",
+				// 	etiqueta_tres: "Computadoras",
+				// 	etiqueta_general: "Servicios"
+				// },
+				// {
+				// 	id: "4",
+				// 	titulo: "Resma de Papel Bond base 20",
+				// 	foto: "URL",
+				// 	descripcion: "Materiales para oficina",
+				// 	precio: "3$",
+				// 	cantidad: "20",
+				// 	etiqueta_uno: "Otros",
+				// 	etiqueta_dos: "Papeleria",
+				// 	etiqueta_tres: "Papel",
+				// 	etiqueta_general: "Servicios"
+				// }
 			],
 			tienda: [
 				{
@@ -178,7 +178,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					]
 				}
-            ],
+			],
 
 			datos_registro: {
 				telefono: "",
@@ -273,22 +273,25 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// ##### Fetch para Cargar Etiquetas desde la Api ##### 2
-			fetchCargarEtiquetas: async () => {
-				let etiquetas = [];
-				let url = `https://labvendegram.herokuapp.com/etiqueta`;
+			fetchCargarEtiquetas: async etiqueta => {
+				console.log(etiqueta);
+				let url = `https://labvendegram.herokuapp.com/producto?`;
 
+				if (etiqueta != "") {
+					url += `&etiqueta=${etiqueta}`;
+				}
 				let response = await fetch(url);
 				if (response.ok) {
-					let etiquetas = await response.json();
+					let productos = await response.json();
 					setStore({
-						etiquetas: etiquetas
+						productos: productos
 					});
-					console.log(etiquetas);
+					console.log(productos);
 					return true;
 				} else {
 					console.log(`get response failure: ${response.status}`);
 					setStore({
-						etiquetas: []
+						productos: []
 					});
 					return false;
 				}

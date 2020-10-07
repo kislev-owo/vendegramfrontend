@@ -25,7 +25,7 @@ export const Buscar = () => {
 	}, []);
 
 	return (
-		<div className="d-flex align-items-center ml-4 mr-4">
+		<div className="d-flex align-items-center ml-3 mr-3">
 			{/* ##### Input options para búsqueda por Zonas #####*/}
 			<div className="mb-1 col-3">
 				<div className="input-group">

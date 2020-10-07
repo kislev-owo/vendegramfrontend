@@ -19,8 +19,8 @@ export const Etiquetas = props => {
 			<div className="jumbotron">
 				<h1 className="display-4" />
 				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
-					{store.resultadosEtiqueta &&
-						store.resultadosEtiqueta.map((item, index) => {
+					{store.productos &&
+						store.productos.map((item, index) => {
 							return (
 								<div key={index} className="container mt-2">
 									<div className="card mb-3">

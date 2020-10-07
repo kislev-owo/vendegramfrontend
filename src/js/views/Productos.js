@@ -33,7 +33,7 @@ export const Productos = props => {
 						store.productos.map((item, index) => {
 							return (
 								<div key={index} className="container mt-2">
-									<div className="card border-info mb-1 h-100">
+									<div className="card border-info mb-1">
 										<div className="no-gutters">
 											<div className="col-md-4">
 												<img

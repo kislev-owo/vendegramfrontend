@@ -11,7 +11,7 @@ export const Home = () => (
 				<Buscar />
 			</div>
 		</div>
-		<div className="jumbotron ml-3 mr-3 mt-2 pt-4 ">
+		<div className="jumbotron ml-2 mr-2 mt-2 pt-4 ">
 			<div className="text-center mb-2">
 				<button type="button" className="btn btn-light btn-sm btn-block border border-info rounded-pill mb-4">
 					<h3>¿Que estás buscando?</h3>
