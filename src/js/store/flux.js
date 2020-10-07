@@ -178,7 +178,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					]
 				}
-            ],
+			],
 
 			datos_registro: {
 				telefono: "",
