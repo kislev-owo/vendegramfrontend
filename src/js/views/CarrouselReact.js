@@ -13,7 +13,7 @@ export const Carrousel = () => {
 	return (
 		<div className="container">
 			<Carousel style={{ color: "#03989E" }}>
-				<Carousel.Item>
+				<Carousel.Item style={{ color: "#03989E" }}>
 					<img className="d-block w-75 " src={calabaza} alt="First slide" />
 					<Carousel.Caption>
 						<h3 style={{ color: "#03989E" }}>Calabaza</h3>

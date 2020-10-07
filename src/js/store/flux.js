@@ -2,7 +2,25 @@ var baseURL = "https://labvendegram.herokuapp.com";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
-			etiquetas: ["Alimentos", "Bebidas", "Fast-Food", "Servicios", "Otros"],
+			etiquetas: [
+				"alimentos",
+				"Bebidas",
+				"Cereales",
+				"Decoraciones",
+				"Detergentes",
+				"Enlatados",
+				"Jabones",
+				"Mantenimientos",
+				"Maquillajes",
+				"Medicamentos",
+				"Peluquería",
+				"Peluquería_veterinaria",
+				"Plomería",
+				"Reparaciones",
+				"Ropa",
+				"Salsas",
+				"servicios"
+			],
 			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
 			productos: [
 				{
@@ -160,7 +178,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						}
 					]
 				}
-			],
+            ],
+
 			datos_registro: {
 				telefono: "",
 				clave: "",
@@ -188,7 +207,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 		},
 		// Búsqueda por Producto o general por defecto
 		actions: {
-			buscarProductos: productoABuscar => {
+			buscarProductos: (productoABuscar, etiquetaABuscar, zonaABuscar) => {
 				const store = getStore();
 				let filteredList = store.productos.filter(
 					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
@@ -199,16 +218,80 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredList);
 			},
 
-			// Búsqueda por Etiqueta
+			// ##### Fetch para Cargar Productos desde la Api ##### 1
+			fetchCargarProductos: async (productoABuscar, etiquetaGeneralABuscar, etiquetaABuscar, zonaABuscar) => {
+				let productos = [];
+
+				console.log(productoABuscar);
+				console.log(etiquetaGeneralABuscar);
+				console.log(etiquetaABuscar);
+				let url = `https://labvendegram.herokuapp.com/producto?`;
+				if (productoABuscar == "") {
+					url = url;
+				} else {
+					url += `titulo=${productoABuscar}`;
+					console.log(url);
+				}
+				if (etiquetaGeneralABuscar != "") {
+					url += `&etiqueta_general=${etiquetaGeneralABuscar}`;
+				}
+
+				if (etiquetaABuscar != "") {
+					url += `&etiqueta=${etiquetaABuscar}`;
+				}
+				if (zonaABuscar != "") {
+					url += `&zona=${zonaABuscar}`;
+				}
+				let response = await fetch(url);
+				if (response.ok) {
+					let productos = await response.json();
+					setStore({
+						productos: productos
+					});
+					console.log(productos);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						productos: []
+					});
+					return false;
+				}
+			},
+
+			// Función para Búsqueda por Etiqueta
 			buscarEtiquetas: etiquetaABuscar => {
 				const store = getStore();
 				let filteredTagList = store.productos.filter(
-					producto => producto.etiqueta1.search(etiquetaABuscar) != -1
+					producto => producto.etiqueta_general.search(etiquetaABuscar) != -1
 				);
 				setStore({
-					resultadosBusqueda: filteredTagList
+					resultadosEtiqueta: filteredTagList
 				});
+				console.log("Esta es busqueda por la etiqueta " + etiquetaABuscar + " del flux");
 				console.log(filteredTagList);
+			},
+
+			// ##### Fetch para Cargar Etiquetas desde la Api ##### 2
+			fetchCargarEtiquetas: async () => {
+				let etiquetas = [];
+				let url = `https://labvendegram.herokuapp.com/etiqueta`;
+
+				let response = await fetch(url);
+				if (response.ok) {
+					let etiquetas = await response.json();
+					setStore({
+						etiquetas: etiquetas
+					});
+					console.log(etiquetas);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						etiquetas: []
+					});
+					return false;
+				}
 			},
 
 			// Búsqueda por Zona
@@ -344,3 +427,4 @@ const getState = ({ getStore, getActions, setStore }) => {
 export default getState;
 
 //  or producto.etiqueta2.search(etiqueta) or producto.etiqueta3.search(etiqueta))
+// ?titulo=${titulo}

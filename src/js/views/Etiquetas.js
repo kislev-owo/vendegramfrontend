@@ -10,7 +10,7 @@ export const Etiquetas = props => {
 	const { store, actions } = useContext(Context);
 
 	// Funciones que guardan el resultado de la búsqueda de etiquetas y actualizan su estado
-	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
+	//	const [buscarEtiqueta, setBuscarEtiqueta] = useState("");
 
 	return (
 		<>
@@ -19,9 +19,8 @@ export const Etiquetas = props => {
 			<div className="jumbotron">
 				<h1 className="display-4" />
 				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
-					{store.resultadosBusqueda &&
-						store.resultadosBusqueda.map((item, index) => {
-							console.log(store.resultadosBusqueda);
+					{store.resultadosEtiqueta &&
+						store.resultadosEtiqueta.map((item, index) => {
 							return (
 								<div key={index} className="container mt-2">
 									<div className="card mb-3">
@@ -49,7 +48,7 @@ export const Etiquetas = props => {
 
 												<div className="col">
 													<h5>Categorías:</h5>
-													<p>{item.etiqueta1}</p>
+													<p>{item.etiqueta_general}</p>
 												</div>
 											</div>
 										</div>
