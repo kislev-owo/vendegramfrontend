@@ -17,6 +17,7 @@ export const Buscar = () => {
 	const [etiquetaGeneralABuscar, setEtiquetaGeneralABuscar] = useState("");
 
 	console.log(productoABuscar);
+	console.log(etiquetaGeneralABuscar);
 
 	useEffect(() => {
 		//		actions.fetchCargarProductos();
@@ -55,7 +56,7 @@ export const Buscar = () => {
 				<div className="input-group">
 					<select
 						className="custom-select"
-						id="inputGroupSelect02"
+						id="inputGroupSelect01"
 						aria-label="Example select with button addon"
 						value={etiquetaGeneralABuscar}
 						onChange={e => setEtiquetaGeneralABuscar(e.target.value)}>
@@ -66,7 +67,7 @@ export const Buscar = () => {
 					<div className="input-group-append">
 						<label
 							className="input-group-text"
-							htmlFor="inputGroupSelect02"
+							htmlFor="inputGroupSelect01"
 							style={{ background: "#03989E" }}>
 							Etiqueta General
 						</label>
@@ -127,11 +128,11 @@ export const Buscar = () => {
 							console.log(
 								"Búsqueda de " +
 									productoABuscar +
-									" " +
+									"+ " +
 									etiquetaGeneralABuscar +
-									" " +
+									"+ " +
 									etiquetaABuscar +
-									" " +
+									"+ " +
 									zonaABuscar +
 									" en productos"
 							);

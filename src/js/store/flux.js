@@ -23,52 +23,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"servicios"
 			],
 			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
-			productos: [
-				// {
-				// 	id: "1",
-				// 	titulo: "Tomates",
-				// 	foto: "foto",
-				// 	descripcion: "tomates rojos y maduros. Todo fresco",
-				// 	precio: "1$ x kg",
-				// 	cantidad: "40 kgs",
-				// 	etiqueta1: "Alimentos",
-				// 	etiqueta2: "Bebidas",
-				// 	etiqueta3: "Fast-Food"
-				// },
-				// {
-				// 	id: "2",
-				// 	titulo: "Bicicleta montañera",
-				// 	foto: "foto",
-				// 	descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
-				// 	precio: "50$",
-				// 	cantidad: "1",
-				// 	etiqueta1: "Otros",
-				// 	etiqueta2: "Vehiculos",
-				// 	etiqueta3: "Deportes"
-				// },
-				// {
-				// 	id: "3",
-				// 	titulo: "Servicio reparación TV",
-				// 	foto: "foto",
-				// 	descripcion: "Arreglamos todo tipo de Televisores",
-				// 	precio: "5$ por visita",
-				// 	cantidad: "10",
-				// 	etiqueta1: "Servicios",
-				// 	etiqueta2: "Tecnologia",
-				// 	etiqueta3: "Computadoras"
-				// },
-				// {
-				// 	id: "4",
-				// 	titulo: "Resma de Papel Bond base 20",
-				// 	foto: "foto",
-				// 	descripcion: "Materiales para oficina",
-				// 	precio: "3$",
-				// 	cantidad: "20",
-				// 	etiqueta1: "Otros",
-				// 	etiqueta2: "Papeleria",
-				// 	etiqueta3: "Papel"
-				// }
-			],
+
+			productos: [],
+
 			datos_registro: {
 				telefono: "",
 				clave: "",
@@ -110,9 +67,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ##### Fetch para Cargar Productos desde la Api ##### 1
 			fetchCargarProductos: async (productoABuscar, etiquetaGeneralABuscar, etiquetaABuscar, zonaABuscar) => {
 				let productos = [];
-				console.log(etiquetaABuscar);
-				console.log(etiquetaGeneralABuscar);
 
+				console.log(productoABuscar);
+				console.log(etiquetaGeneralABuscar);
+				console.log(etiquetaABuscar);
 				let url = `https://labvendegram.herokuapp.com/producto?`;
 				if (productoABuscar == "") {
 					url = url;
