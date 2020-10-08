@@ -21,7 +21,20 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Salsas",
 				"servicios"
 			],
-			zonas: ["Altamira", "Las Mercedes", "Los Palos Grandes", "Baruta"],
+			zonas: [
+				"distrito_capital",
+				"miranda",
+				"altagracia",
+				"antímano",
+				"candelaria",
+				"caricuao",
+				"catedral",
+				"catia",
+				"caucaguita",
+				"chacao",
+				"el_cafetal",
+				"el_junquito"
+			],
 			productos: [
 				// {
 				// 	id: "1",
@@ -119,7 +132,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					]
 				},
 				{
-					id: "1",
+					id: "2",
 					nombre_tienda: "PersonitasShop",
 					foto_tienda:
 						"data:image/png;base64,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",
@@ -218,13 +231,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(filteredList);
 			},
 
-			// ##### Fetch para Cargar Productos desde la Api ##### 1
-			fetchCargarProductos: async (productoABuscar, etiquetaGeneralABuscar, etiquetaABuscar, zonaABuscar) => {
+			// ######### Fetch para hacer búsqueda y cargar Productos desde la Api ######### 1
+			fetchCargarProductos: async (productoABuscar, etiquetaABuscar, zonaABuscar) => {
 				let productos = [];
-
 				console.log(productoABuscar);
-				console.log(etiquetaGeneralABuscar);
 				console.log(etiquetaABuscar);
+				console.log(zonaABuscar);
 				let url = `https://labvendegram.herokuapp.com/producto?`;
 				if (productoABuscar == "") {
 					url = url;
@@ -232,15 +244,89 @@ const getState = ({ getStore, getActions, setStore }) => {
 					url += `titulo=${productoABuscar}`;
 					console.log(url);
 				}
-				if (etiquetaGeneralABuscar != "") {
-					url += `&etiqueta_general=${etiquetaGeneralABuscar}`;
-				}
-
 				if (etiquetaABuscar != "") {
 					url += `&etiqueta=${etiquetaABuscar}`;
 				}
 				if (zonaABuscar != "") {
 					url += `&zona=${zonaABuscar}`;
+				}
+				let response = await fetch(url);
+				if (response.ok) {
+					let productos = await response.json();
+					setStore({
+						productos: productos
+					});
+					console.log(productos);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						productos: []
+					});
+					return false;
+				}
+			},
+
+			// ######## Fetch para Cargar Productos x Etiquetas desde la Api ######## 2
+			// ##### (se llama desde el Home a través del componente EtiquetasCard) #####
+			fetchCargarEtiquetas: async etiqueta => {
+				console.log(etiqueta);
+				let url = `https://labvendegram.herokuapp.com/producto?`;
+
+				if (etiqueta != "") {
+					url += `&etiqueta=${etiqueta}`;
+				}
+				let response = await fetch(url);
+				if (response.ok) {
+					let productos = await response.json();
+					setStore({
+						productos: productos
+					});
+					console.log(productos);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						productos: []
+					});
+					return false;
+				}
+			},
+
+			// ######## Fetch para Cargar las Tiendas una vez desde la Api ######## 3
+			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- No se está usando aun
+			fetchCargarTiendas: async tienda => {
+				console.log(tienda);
+				let url = `https://labvendegram.herokuapp.com/tienda`;
+
+				// if (tienda != "") {
+				// 	url += `&tienda=${tienda}`;
+				// }
+				let response = await fetch(url);
+				if (response.ok) {
+					let productos = await response.json();
+					setStore({
+						tienda: tienda
+					});
+					console.log(tienda);
+					return true;
+				} else {
+					console.log(`get response failure: ${response.status}`);
+					setStore({
+						tienda: []
+					});
+					return false;
+				}
+			},
+
+			// ######## Fetch para Cargar Vista de Productos x Tienda desde la Api ######## 4
+			// ##### (No está en uso todavía) #####
+			fetchCargarVistaTienda: async tienda => {
+				console.log(tienda);
+				let url = `https://labvendegram.herokuapp.com/producto?`;
+
+				if (tienda != "") {
+					url += `&tienda=${tienda}`;
 				}
 				let response = await fetch(url);
 				if (response.ok) {
@@ -270,31 +356,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 				console.log("Esta es busqueda por la etiqueta " + etiquetaABuscar + " del flux");
 				console.log(filteredTagList);
-			},
-
-			// ##### Fetch para Cargar Etiquetas desde la Api ##### 2
-			fetchCargarEtiquetas: async etiqueta => {
-				console.log(etiqueta);
-				let url = `https://labvendegram.herokuapp.com/producto?`;
-
-				if (etiqueta != "") {
-					url += `&etiqueta=${etiqueta}`;
-				}
-				let response = await fetch(url);
-				if (response.ok) {
-					let productos = await response.json();
-					setStore({
-						productos: productos
-					});
-					console.log(productos);
-					return true;
-				} else {
-					console.log(`get response failure: ${response.status}`);
-					setStore({
-						productos: []
-					});
-					return false;
-				}
 			},
 
 			// Búsqueda por Zona

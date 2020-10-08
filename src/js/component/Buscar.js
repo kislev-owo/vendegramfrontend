@@ -14,24 +14,24 @@ export const Buscar = () => {
 	const [productoABuscar, setProductoABuscar] = useState("");
 	const [zonaABuscar, setZonaABuscar] = useState("");
 	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
-	const [etiquetaGeneralABuscar, setEtiquetaGeneralABuscar] = useState("");
+	//const [etiquetaGeneralABuscar, setEtiquetaGeneralABuscar] = useState("");
 
 	console.log(productoABuscar);
-	console.log(etiquetaGeneralABuscar);
 
 	useEffect(() => {
 		//		actions.fetchCargarProductos();
 		//		actions.fetchCargarEtiquetas();
+		//      actions.fetchCargarTiendas();
 	}, []);
 
 	return (
 		<div className="d-flex align-items-center ml-3 mr-3">
-			{/* ##### Input options para búsqueda por Zonas #####*/}
-			<div className="mb-1 col-3">
+			{/* ##### Input select options para búsqueda por Zonas #####*/}
+			<div className="mb-1 col-4">
 				<div className="input-group">
 					<select
 						className="custom-select"
-						id="inputGroupSelect02"
+						id="inputGroupSelect01"
 						aria-label="Example select with button addon"
 						value={zonaABuscar}
 						onChange={e => setZonaABuscar(e.target.value)}>
@@ -43,7 +43,7 @@ export const Buscar = () => {
 					<div className="input-group-append">
 						<label
 							className="input-group-text"
-							htmlFor="inputGroupSelect02"
+							htmlFor="inputGroupSelect01"
 							style={{ background: "#03989E" }}>
 							Zonas
 						</label>
@@ -51,8 +51,8 @@ export const Buscar = () => {
 				</div>
 			</div>
 
-			{/* ##### Input options para búsqueda por Etiqueta General ##### */}
-			<div className="mb-1 col-3">
+			{/* ##### Input select options para búsqueda por Etiqueta General ##### */}
+			{/* <div className="mb-1 col-3">
 				<div className="input-group">
 					<select
 						className="custom-select"
@@ -73,10 +73,10 @@ export const Buscar = () => {
 						</label>
 					</div>
 				</div>
-			</div>
+			</div> */}
 
-			{/* ##### Input options para búsqueda por Etiquetas ##### */}
-			<div className="mb-1 col-3">
+			{/* ##### Input select options para búsqueda por Etiquetas ##### */}
+			<div className="mb-1 col-4">
 				<div className="input-group">
 					<select
 						className="custom-select"
@@ -101,7 +101,7 @@ export const Buscar = () => {
 			</div>
 
 			{/* ##### Input de búsqueda general por Productos ##### */}
-			<div className="input-group mb-1 col-3 ">
+			<div className="input-group mb-1 col-4 ">
 				<input
 					type="text"
 					className="form-control"
@@ -119,21 +119,15 @@ export const Buscar = () => {
 						id="button-addon2"
 						style={{ background: "#03989E" }}
 						onClick={() => {
-							actions.fetchCargarProductos(
-								productoABuscar,
-								etiquetaGeneralABuscar,
-								etiquetaABuscar,
-								zonaABuscar
-							);
+							actions.fetchCargarProductos(productoABuscar, etiquetaABuscar, zonaABuscar);
 							console.log(
 								"Búsqueda de " +
 									productoABuscar +
-									"+ " +
-									etiquetaGeneralABuscar +
-									"+ " +
+									" " +
 									etiquetaABuscar +
-									"+ " +
+									" " +
 									zonaABuscar +
+									" " +
 									" en productos"
 							);
 							history.push("../Productos");

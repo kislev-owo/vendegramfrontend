@@ -6,9 +6,11 @@ import { Home } from "./views/home";
 import { Demo } from "./views/demo";
 import { Single } from "./views/single";
 import injectContext from "./store/appContext";
+
 import { Productos } from "./views/Productos";
 import { Etiquetas } from "./views/Etiquetas";
 import { Carrousel } from "./views/CarrouselReact";
+import { TiendasCard } from "./component/TiendasCard";
 import { DetalleProducto } from "./views/DetalleProducto";
 
 import { Navbar } from "./component/navbar";
@@ -26,6 +28,7 @@ import { Finalizar } from "./views/Finalizar";
 import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
 import { ComoFunciona } from "./views/ComoFunciona";
 import { PerfilVendedor } from "./views/PerfilVendedor";
+import { PerfilComprador } from "./views/PerfilComprador";
 
 //create your first component
 const Layout = () => {
@@ -55,6 +58,9 @@ const Layout = () => {
 						<Route exact path="/CarrouselReact">
 							<Carrousel />
 						</Route>
+						<Route exact path="/TiendasCard">
+							<TiendasCard />
+						</Route>
 
 						<Route exact path="/demo">
 							<Demo />
@@ -73,6 +79,9 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/perfil-vendedor/:tiendaId">
 							<PerfilVendedor />
+						</Route>
+						<Route exact path="/PerfilComprador">
+							<PerfilComprador />
 						</Route>
 						<Route exact path="/reg-vendedor">
 							<RegistrateVendedor />
