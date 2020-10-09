@@ -19,7 +19,7 @@ function DetalleProducto() {
 	return (
 		<>
 			{store.productos.map((item, index) => {
-				if (index === parseInt(detallesId)) {
+				if (item.id === parseInt(detallesId)) {
 					return (
 						<div key={index} className="container mt-2">
 							<div className="card mb-3">
@@ -47,7 +47,7 @@ function DetalleProducto() {
 
 										<div className="col">
 											<h5>Categorías:</h5>
-											<p>{item.etiqueta1}</p>
+											<p>{item.etiqueta}</p>
 										</div>
 									</div>
 								</div>

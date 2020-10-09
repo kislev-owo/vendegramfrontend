@@ -12,7 +12,7 @@ export const EtiquetasCard = props => {
 	const history = useHistory();
 	const [etiquetaABuscar, setEtiquetaABuscar] = useState("");
 
-	console.log(etiquetaABuscar);
+	//	console.log(etiquetaABuscar);
 
 	return (
 		<>
@@ -30,8 +30,9 @@ export const EtiquetasCard = props => {
 										value={etiqueta}
 										style={{ background: "#03989E" }}
 										onClick={() => {
-											actions.buscarEtiquetas(etiqueta);
-											history.push("../Etiquetas");
+											actions.fetchCargarEtiquetas(etiqueta);
+											console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");
+											history.push("../Productos");
 										}}>
 										<h5 className="card-title">{etiqueta}</h5>
 									</button>

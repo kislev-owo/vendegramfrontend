@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link, useHistory } from "react-router-dom";
 import { DropdownMenu, Dropdown } from "react-bootstrap";
 import { Context } from "../store/appContext";
+import { Busqueda } from "./Buscar";
 import PropTypes from "prop-types";
 
 import "../../styles/home.scss";
@@ -19,7 +20,6 @@ export const BuscarEtiqueta = props => {
 				<select className="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
 					<option selected>Elige una etiqueta...</option>
 					{store.etiquetas.map((etiqueta, index) => {
-						/*antes del 2do return mapeamos pasandole el array (store.favorites) luego creamos una funcion flecha => y la recibimos como parametro y a su vez recibe como parametro el array favorites y index... entonces q va a sucecer por cada entrada de nuestro store.favorites va a invocar la funcion flecha con los parametros ya definidos de favorites y su index en cada iteracion*/
 						return (
 							<option
 								key={index}
@@ -37,6 +37,7 @@ export const BuscarEtiqueta = props => {
 						style={{ background: "#03989E" }}
 						onClick={() => {
 							actions.buscarEtiquetas(etiquetaABuscar);
+							console.log(etiquetaABuscar);
 							history.push("../Etiquetas");
 						}}>
 						Etiquetas
