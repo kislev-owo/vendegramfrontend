@@ -7,7 +7,6 @@ import "../../styles/demo.scss";
 
 export const ProductosTienda = props => {
 	const { store, actions } = useContext(Context);
-
 	return store.tiendas[parseInt(props.nombre)].productos.map((producto, index) => {
 		return (
 			<div className="card  mt-5 text-center" style={{ width: "18rem", marginRight: "3rem" }} key={index}>
@@ -21,9 +20,6 @@ export const ProductosTienda = props => {
 		);
 	});
 };
-
-};
-
 
 ProductosTienda.propTypes = {
 	nombre: PropTypes.string
