@@ -29,7 +29,7 @@ export const ResumenInformacion = () => {
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre_usuario}`}</p>
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.correo}`}</p>
 						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.fecha_nacimiento}`}</p>
-						<p style={{ color: "#ffffff" }}>{`${store.datos_registro.nombre_tienda}`}</p>
+						<p style={{ color: "#ffffff" }}>{`${store.datos_tienda.nombre_tienda}`}</p>
 					</div>
 				</div>
 			</div>
