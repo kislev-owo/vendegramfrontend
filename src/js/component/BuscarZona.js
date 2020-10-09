@@ -17,7 +17,6 @@ export const BuscarZona = props => {
 				<select className="custom-select" id="inputGroupSelect04" aria-label="Example select with button addon">
 					<option selected>Elige una zona...</option>
 					{store.zonas.map((zona, index) => {
-						/*antes del 2do return mapeamos pasandole el array (store.favorites) luego creamos una funcion flecha => y la recibimos como parametro y a su vez recibe como parametro el array favorites y index... entonces q va a sucecer por cada entrada de nuestro store.favorites va a invocar la funcion flecha con los parametros ya definidos de favorites y su index en cada iteracion*/
 						return (
 							<option key={index} value={ZonaABuscar}>
 								{zona}
