@@ -7,24 +7,23 @@ import "../../styles/demo.scss";
 
 export const ProductosTienda = props => {
 	const { store, actions } = useContext(Context);
-	return (
-		<>
-			{store.tienda[parseInt(props.nombre)].productos.map((producto, index) => {
-				return (
-					<div className="card" style="width: 18rem;" value={index} key={index}>
-						<img src={`producto.foto`} className="card-img-top" alt="..." />
-						<div className="card-body">
-							<h5 className="card-title">{`producto.titulo`}</h5>
-							<p className="card-text">{`producto.descripcion`}</p>
-							<p className="card-text">{`producto.precio`}</p>
-						</div>
-					</div>
-				);
-			})}
-			;
-		</>
-	);
+
+	return store.tiendas[parseInt(props.nombre)].productos.map((producto, index) => {
+		return (
+			<div className="card  mt-5 text-center" style={{ width: "18rem", marginRight: "3rem" }} key={index}>
+				<img src={producto.foto} className="card-img-top" alt="..." />
+				<div className="card-body">
+					<h5 className="card-title text-wrap">{producto.titulo}</h5>
+					<p className="card-tex text-wrap">{producto.descripcion}</p>
+					<p className="card-text text-wrap">{producto.precio}</p>
+				</div>
+			</div>
+		);
+	});
 };
+
+};
+
 
 ProductosTienda.propTypes = {
 	nombre: PropTypes.string

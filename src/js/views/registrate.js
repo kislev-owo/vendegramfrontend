@@ -204,10 +204,8 @@ export const Registrate = () => {
 						className="btn btn-primary my-3 "
 						style={{ background: "#03989E", border: "none" }}
 						onClick={() => {
-							actions.datosRegistro(datos);
-						}}
-						//onClick={() => actions.addFavorite(people.name)}>
-					>
+							actions.datosRegistroUsuario(datos);
+						}}>
 						{"Soy Comprador"}
 					</Link>
 
@@ -216,7 +214,7 @@ export const Registrate = () => {
 						className="btn btn-primary my-3"
 						to="/reg-vendedor"
 						onClick={() => {
-							actions.datosRegistro(datos);
+							actions.datosRegistroUsuario(datos);
 						}}
 						style={{ background: "#03989E", border: "none" }}>
 						{"Soy Vendedor"}
