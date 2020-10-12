@@ -218,13 +218,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
-		// Búsqueda por Producto o general por defecto
+		// ##### Búsqueda de Producto por Id - se busca en el store del arreglo productos ######
 		actions: {
-			buscarProductos: (productoABuscar, etiquetaABuscar, zonaABuscar) => {
+			buscarProductoId: productoId => {
 				const store = getStore();
-				let filteredList = store.productos.filter(
-					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
-				);
+				let filteredList = store.productos.filter(producto => producto.id.search(productoId) != -1);
 				setStore({
 					resultadosBusqueda: filteredList
 				});
@@ -294,17 +292,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// ######## Fetch para Cargar las Tiendas una vez desde la Api ######## 3
-			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- No se está usando aun
-			fetchCargarTiendas: async tienda => {
-				console.log(tienda);
+			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- Listo el 09-10-20
+			fetchCargarTiendas: async () => {
+				//console.log(tienda);
 				let url = `https://labvendegram.herokuapp.com/tienda`;
 
-				// if (tienda != "") {
-				// 	url += `&tienda=${tienda}`;
-				// }
 				let response = await fetch(url);
 				if (response.ok) {
-					let productos = await response.json();
+					let tienda = await response.json();
 					setStore({
 						tienda: tienda
 					});

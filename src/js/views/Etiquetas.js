@@ -3,6 +3,8 @@ import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
+import { Buscar } from "../component/Buscar";
+import { EtiquetasCard } from "../component/EtiquetasCard";
 
 // Función que genera las vistas de los objetos filtrados por nombre del arreglo "productos"
 export const Etiquetas = props => {
@@ -14,69 +16,48 @@ export const Etiquetas = props => {
 
 	return (
 		<>
-			<h2 className="text-info ml-4 margen">Productos encontrados</h2>
+			<div className="container">
+				<div>
+					<div className="mt-1 ">
+						<Buscar />
+					</div>
+				</div>
+				<div className="jumbotron ml-2 mr-2 mt-2 pt-4 ">
+					<div className="text-center mb-2">
+						<h2 className="text-center ml-4 mb-2 m-auto">
+							<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
+								Etiquetas de Productos
+							</span>
+						</h2>
 
-			<div className="jumbotron">
-				<h1 className="display-4" />
-				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-4 pb-4">
-					{store.productos &&
-						store.productos.map((item, index) => {
-							return (
-								<div key={index} className="container mt-2">
-									<div className="card mb-3">
-										<div className="row no-gutters">
-											<div className="col-md-4">
-												<img
-													src="https://via.placeholder.com/500x400"
-													className="card-img-top"
-													alt="Foto del Producto"
-												/>
-											</div>
-											<div className="col-md-8">
-												<div className="card-body">
-													<h5 className="card-title">{item.titulo}</h5>
-												</div>
-												<div className="col">
-													<h5>Producto:</h5>
-													<p>{item.titulo}</p>
-												</div>
+						<div className="text-center mt-2 mb-2">
+							<div className="card-deck d-flex align-items-center">
+								<EtiquetasCard />
+							</div>
+						</div>
+						<div clasName="row-flex justify-content-between align-items-center">
+							<Link to="/CarrouselReact">
+								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+									Carrousel
+								</button>
+							</Link>
 
-												<div className="col">
-													<h5>Precio:</h5>
-													<p>{item.precio}</p>
-												</div>
-
-												<div className="col">
-													<h5>Categorías:</h5>
-													<p>{item.etiqueta_general}</p>
-												</div>
-											</div>
-										</div>
-									</div>
-									<div className="row more-info">
-										<button
-											className="btn btn-primary rounded-sm"
-											type="button"
-											id="button-addon2"
-											style={{ background: "#03989E" }}>
-											<h6 className="card-title">Más detalles</h6>
-										</button>
-									</div>
-								</div>
-							);
-						})}
+							<button
+								className="btn btn-primary"
+								style={{ background: "#03989E" }}
+								onClick={() => {
+									actions.fetchCargarTiendas();
+									console.log("Esta es la vista de tiendas en TiendasCard");
+									history.push("../TiendasCard");
+								}}>
+								Tiendas
+							</button>
+						</div>
+					</div>
 				</div>
 			</div>
 		</>
 	);
 };
 
-Etiquetas.propTypes = {
-	item: PropTypes.array,
-	name: PropTypes.string,
-	imagen: PropTypes.string,
-	descripcion: PropTypes.string,
-	precio: PropTypes.string,
-	cantidad: PropTypes.string,
-	categorias: PropTypes.string
-};
+Etiquetas.propTypes = {};

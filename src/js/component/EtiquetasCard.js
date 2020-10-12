@@ -19,24 +19,22 @@ export const EtiquetasCard = props => {
 			{store.etiquetas.map((etiqueta, index) => {
 				return (
 					<div className="d-flex justify-content-between align-items-center" key={index}>
-						<div className="mb-3">
-							<div className="card h-50">
-								<img src="https://via.placeholder.com/150x50" className="card-img-top" alt="Foto" />
-								<div className="card-body">
-									<button
-										className="btn btn-primary rounded-lg"
-										type="button"
-										id="button-addon2"
-										value={etiqueta}
-										style={{ background: "#03989E" }}
-										onClick={() => {
-											actions.fetchCargarEtiquetas(etiqueta);
-											console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");
-											history.push("../Productos");
-										}}>
-										<h5 className="card-title">{etiqueta}</h5>
-									</button>
-								</div>
+						<div className="card h-25 mb-2">
+							<img src="https://via.placeholder.com/75x25" className="card-img-top" alt="Foto" />
+							<div className="card-body">
+								<button
+									className="btn btn-primary rounded-lg"
+									type="button"
+									id="button-addon2"
+									value={etiqueta}
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarEtiquetas(etiqueta);
+										console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");
+										history.push("../Productos");
+									}}>
+									<p className="card-title">{etiqueta}</p>
+								</button>
 							</div>
 						</div>
 					</div>

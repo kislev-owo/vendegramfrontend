@@ -28,46 +28,55 @@ export const TiendasCard = props => {
 					</div>
 				</div>
 				<div className="jumbotron ml-2 mr-2 mt-2 pt-4 ">
-					<h2 className="text-center ml-4 m-auto">
-						<span className="badge badge-pill badge-info border mb-2" style={{ background: "#03989E" }}>
-							Tiendas Disponibles
-						</span>
-					</h2>
-
 					<div className="text-center mb-2">
-						<div className="card-deck">
-							{store.tienda.map((tienda, index) => {
-								return (
-									<div className="d-flex justify-content-between align-items-center" key={index}>
-										<div className="mb-3">
-											<div className="card h-50">
-												<img
-													src="https://via.placeholder.com/150x50"
-													className="card-img-top"
-													alt="Foto"
-												/>
-												<div className="card-body">
-													<button
-														className="btn btn-primary rounded-lg"
-														type="button"
-														id="button-addon2"
-														value={tienda}
-														style={{ background: "#03989E" }}
-														onClick={() => {
-															actions.fetchCargarVistaTienda(tienda);
-															console.log(
-																"Esta es la tienda " + tienda + " de TiendasCard"
-															);
-															history.push("../Productos");
-														}}>
-														<h5 className="card-title">{tienda.nombre_tienda}</h5>
-													</button>
-												</div>
+						<h2 className="text-center ml-4 mb-2 m-auto">
+							<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
+								Tiendas Disponibles
+							</span>
+						</h2>
+
+						<div className="text-center mb-2">
+							<div className="card-deck d-flex align-items-center mt-4">
+								{store.tienda.map((tienda, index) => {
+									return (
+										<div className="card h-50" key={index}>
+											<img
+												src="https://via.placeholder.com/150x50"
+												className="card-img-top"
+												alt="Foto"
+											/>
+											<div className="card-body">
+												<button
+													className="btn btn-primary rounded-lg"
+													type="button"
+													id="button-addon2"
+													value={tienda}
+													style={{ background: "#03989E" }}
+													onClick={() => {
+														actions.fetchCargarVistaTienda(tienda);
+														console.log("Esta es la tienda " + tienda + " de TiendasCard");
+														history.push("../Productos");
+													}}>
+													<h5 className="card-title">{tienda.nombre_tienda}</h5>
+												</button>
 											</div>
 										</div>
-									</div>
-								);
-							})}
+									);
+								})}
+							</div>
+						</div>
+						<div clasName="row-flex text-center align-items-center mt-1">
+							<Link to="/Etiquetas">
+								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+									Etiquetas
+								</button>
+							</Link>
+
+							<Link to="/CarrouselReact">
+								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+									Carrousel
+								</button>
+							</Link>
 						</div>
 					</div>
 				</div>
