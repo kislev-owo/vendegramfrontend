@@ -26,7 +26,7 @@ export const Etiquetas = props => {
 					<div className="text-center mb-2">
 						<h2 className="text-center ml-4 mb-2 m-auto">
 							<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
-								Etiquetas de Productos
+								Categorías de Productos
 							</span>
 						</h2>
 

@@ -35,7 +35,7 @@ export const Home = () => {
 
 							<Link to="/Etiquetas">
 								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-									Etiquetas
+									Categorías
 								</button>
 							</Link>
 
