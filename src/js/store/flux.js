@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Peluquería",
 				"Peluquería_veterinaria",
 				"Plomería",
+				"productos",
 				"Reparaciones",
 				"Ropa",
 				"Salsas",
@@ -33,7 +34,28 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"caucaguita",
 				"chacao",
 				"el_cafetal",
-				"el_junquito"
+				"el_junquito",
+				"el_paraíso",
+				"el_recreo",
+				"el_valle",
+				"fila_de_mariches",
+				"la_dolorita",
+				"la_pastora",
+				"la_vega",
+				"las_minas",
+				"leoncio_martínez",
+				"macarao",
+				"nuestra_señora_del_rosario",
+				"petare",
+				"san_agustín",
+				"san_bernardino",
+				"san_josé",
+				"san_juan",
+				"san_pedro",
+				"santa_rosalía",
+				"santa_rosalía_de_palermo",
+				"santa_teresa",
+				"ventitrés_de_enero"
 			],
 			productos: [
 				// {
@@ -91,6 +113,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			usuarios: [],
 			tienda: {},
 			productos_tienda: [],
+			
+
 			tiendas: [
 				{
 					id: "2",
@@ -168,13 +192,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				}
 			]
 		},
-		// Búsqueda por Producto o general por defecto
+		// ##### Búsqueda de Producto por Id - se busca en el store del arreglo productos ######
 		actions: {
-			buscarProductos: (productoABuscar, etiquetaABuscar, zonaABuscar) => {
+			buscarProductoId: productoId => {
 				const store = getStore();
-				let filteredList = store.productos.filter(
-					producto => producto.titulo.toLowerCase().search(productoABuscar) != -1
-				);
+				let filteredList = store.productos.filter(producto => producto.id.search(productoId) != -1);
 				setStore({
 					resultadosBusqueda: filteredList
 				});
@@ -256,7 +278,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// ######## Fetch para Cargar Productos x Etiquetas desde la Api ######## 2
 			// ##### (se llama desde el Home a través del componente EtiquetasCard) #####
-			fetchCargarEtiquetas: async etiqueta => {
+			fetchCargarProductoEtiquetas: async etiqueta => {
 				console.log(etiqueta);
 				let url = `https://labvendegram.herokuapp.com/producto?`;
 
@@ -281,26 +303,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			// ######## Fetch para Cargar las Tiendas una vez desde la Api ######## 3
-			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- No se está usando aun
-			fetchCargarTiendas: async tienda => {
-				console.log(tienda);
+			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- Listo el 09-10-20
+			fetchCargarTiendas: async () => {
+				//console.log(tienda);
 				let url = `https://labvendegram.herokuapp.com/tienda`;
 
-				// if (tienda != "") {
-				// 	url += `&tienda=${tienda}`;
-				// }
 				let response = await fetch(url);
 				if (response.ok) {
-					let productos = await response.json();
+					let tiendas = await response.json();
 					setStore({
-						tienda: tienda
+						tiendas: tiendas
 					});
-					console.log(tienda);
+					console.log(tiendas);
 					return true;
 				} else {
 					console.log(`get response failure: ${response.status}`);
 					setStore({
-						tienda: []
+						tiendas: []
 					});
 					return false;
 				}
