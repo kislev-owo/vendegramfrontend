@@ -180,12 +180,15 @@ export const Registrate = () => {
 					<input
 						type="text"
 						className="form-control rounded-lg"
-						id="exampleInputEmail1"
+						id="fechaHelp"
 						value={datos.fecha_nacimiento}
 						onChange={e => {
 							setDatos({ ...datos, fecha_nacimiento: e.target.value });
 						}}
 					/>
+					<small id="fechaHelp" className="form-text text-muted">
+						{"Por ejemplo: año-mes-día 1990-12-31"}
+					</small>
 				</div>
 				<div className="form-group form-check text-center">
 					<input type="checkbox" className="form-check-input" id="exampleCheck1" />

@@ -1,5 +1,5 @@
-// var baseURL = "https://labvendegram.herokuapp.com";
-var baseURL = "http://localhost:5000";
+var baseURL = "https://labvendegram.herokuapp.com";
+//var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -212,7 +212,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				console.log(productoABuscar);
 				console.log(etiquetaABuscar);
 				console.log(zonaABuscar);
-				let url = `https://labvendegram.herokuapp.com/producto?`;
+				let url = `${baseURL}/producto?`;
 				if (productoABuscar == "") {
 					url = url;
 				} else {
@@ -283,7 +283,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ##### (se llama desde el Home a través del componente EtiquetasCard) #####
 			fetchCargarProductoEtiquetas: async etiqueta => {
 				console.log(etiqueta);
-				let url = `https://labvendegram.herokuapp.com/producto?`;
+				let url = `${baseURL}/producto?`;
 
 				if (etiqueta != "") {
 					url += `&etiqueta=${etiqueta}`;
@@ -309,7 +309,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ##### (se llama desde el Home con el botón Ver Tiendas) ##### -- Listo el 09-10-20
 			fetchCargarTiendas: async () => {
 				//console.log(tienda);
-				let url = `https://labvendegram.herokuapp.com/tienda`;
+				let url = `${baseURL}/tienda`;
 
 				let response = await fetch(url);
 				if (response.ok) {
@@ -332,7 +332,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ##### (No está en uso todavía) #####
 			fetchCargarVistaTienda: async tienda => {
 				console.log(tienda);
-				let url = `https://labvendegram.herokuapp.com/producto?`;
+				let url = `${baseURL}/producto?`;
 
 				if (tienda != "") {
 					url += `&tienda=${tienda}`;
