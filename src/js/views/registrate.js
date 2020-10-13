@@ -1,24 +1,21 @@
 import React, { useState, useEffect, useContext } from "react";
+import ReactDOM from "react-dom";
 import { Link } from "react-router-dom";
-
 import { Context } from "../store/appContext";
-
-import "../../styles/demo.scss";
 
 export const Registrate = () => {
 	const { store, actions } = useContext(Context);
 	const [cont2, setCont2] = useState("");
 	const [cont1, setCont1] = useState("");
-	//const [codigo, setCodigo] = useState("");
 	const [datos, setDatos] = useState({
-		correo: store.datos_registro.correo,
+		correo: store.correo,
 		numero: "",
 		codigo: "",
 		clave: "",
-		nombre: store.datos_registro.nombre,
-		apellido: store.datos_registro.apellido,
-		nombre_usuario: store.datos_registro.nombre_usuario,
-		fecha_nacimiento: store.datos_registro.fecha_nacimiento,
+		nombre: store.nombre,
+		apellido: store.apellido,
+		nombre_usuario: store.nombre_usuario,
+		fecha_nacimiento: store.fecha_nacimiento,
 		administrador: false,
 		foto_perfil: "",
 		subscripcion: false
@@ -200,24 +197,13 @@ export const Registrate = () => {
 				<div className="justify-content-around d-flex">
 					<Link
 						type="submit"
-						to="/resumen-informacion"
-						className="btn btn-primary my-3 "
-						style={{ background: "#03989E", border: "none" }}
-						onClick={() => {
-							actions.datosRegistroUsuario(datos);
-						}}>
-						{"Soy Comprador"}
-					</Link>
-
-					<Link
-						type="submit"
 						className="btn btn-primary my-3"
 						to="/reg-vendedor"
 						onClick={() => {
 							actions.datosRegistroUsuario(datos);
 						}}
 						style={{ background: "#03989E", border: "none" }}>
-						{"Soy Vendedor"}
+						{"Continuar"}
 					</Link>
 				</div>
 			</form>

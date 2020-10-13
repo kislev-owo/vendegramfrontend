@@ -454,19 +454,31 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(`explote`);
 				}
 			},
-			datosRegistroUsuario: datos => {
-				const store = getStore();
-				setStore({
-					datos_registro: {
+			datosRegistroUsuario: async datos => {
+				let response = await fetch(baseURL + "/" + "usuario", {
+					method: "POST",
+					body: JSON.stringify({
 						nombre: datos.nombre,
 						apellido: datos.apellido,
 						correo: datos.correo,
 						telefono: datos.codigo + datos.numero,
 						nombre_usuario: datos.nombre_usuario,
 						clave: datos.clave,
-						fecha_nacimiento: datos.fecha_nacimiento
+						fecha_nacimiento: datos.fecha_nacimiento,
+						foto_perfil: "url",
+						suscripcion: 1,
+						administrador: false
+					}),
+					headers: {
+						"Content-Type": "application/json"
 					}
 				});
+				if (response.ok) {
+					// await getActions().login(email, password);
+					return true;
+				} else {
+					return false;
+				}
 			},
 			datosRegistroTienda: tienda => {
 				console.log("Entre en la funcion");
@@ -541,6 +553,27 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			signUp: async (vendor_name, email, password, phone) => {
+				let response = await fetch(baseURL + "/" + "usuario", {
+					method: "POST",
+					body: JSON.stringify({
+						vendor_name: vendor_name,
+						email: email,
+						password: password,
+						phone: phone
+					}),
+					headers: {
+						"Content-Type": "application/json"
+					}
+				});
+				if (response.ok) {
+					await getActions().login(email, password);
+					return true;
+				} else {
+					return false;
+				}
 			}
 		}
 	};
