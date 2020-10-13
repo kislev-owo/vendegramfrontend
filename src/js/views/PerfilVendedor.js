@@ -8,7 +8,11 @@ import { Context } from "../store/appContext";
 
 export const PerfilVendedor = () => {
 	const { tiendaId } = useParams();
+
+	//	let productos = store.tienda.productos;
+
 	const { store, actions } = useContext(Context);
+
 	return (
 		<div className="container">
 			<div className="row ">
@@ -20,7 +24,7 @@ export const PerfilVendedor = () => {
 						/>
 					</div>
 					<div className="row justify-content-center">
-						<h2>{`${store.tiendas[tiendaId].nombre_usuario}`}</h2>
+						<h2>{`${store.tienda.usuario_nombre}`}</h2>
 					</div>
 				</div>
 				<div className="col-8">
@@ -34,7 +38,7 @@ export const PerfilVendedor = () => {
 						<div className="col-5">
 							<p>
 								<i className="fas fa-phone-alt mx-2" style={{ color: "#03989E" }} />
-								{`${store.tiendas[tiendaId].telefono_tienda}`}
+								{`${store.tienda.telefono_tienda}`}
 							</p>
 						</div>
 						<div className="col-7">
@@ -45,19 +49,19 @@ export const PerfilVendedor = () => {
 							<div className="row justify-content-center">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
-									{`${store.tiendas[tiendaId].zona_uno}`}
+									{`${store.tienda.zona_uno}`}
 								</p>
 							</div>
 							<div className="row justify-content-center">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
-									{`${store.tiendas[tiendaId].zona_dos}`}
+									{`${store.tienda.zona_dos}`}
 								</p>
 							</div>
 							<div className="row justify-content-center">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
-									{`${store.tiendas[tiendaId].zona_tres}`}
+									{`${store.tienda.zona_tres}`}
 								</p>
 							</div>
 						</div>
@@ -66,19 +70,19 @@ export const PerfilVendedor = () => {
 						<div className="col-4">
 							<p>
 								<i className="fab fa-facebook mx-2" style={{ color: "#03989E" }} />
-								{`${store.tiendas[tiendaId].facebook_tienda}`}
+								{`${store.tienda.facebook_tienda}`}
 							</p>
 						</div>
 						<div className="col-4">
 							<p>
 								<i className="fab fa-twitter mx-2" style={{ color: "#03989E" }} />
-								{`${store.tiendas[tiendaId].twitter_tienda}`}
+								{`${store.tienda.twitter_tienda}`}
 							</p>
 						</div>
 						<div className="col-4">
 							<p>
 								<i className="fab fa-instagram mx-2" style={{ color: "#03989E" }} />
-								{`${store.tiendas[tiendaId].instagram_tienda}`}
+								{`${store.tienda.instagram_tienda}`}
 							</p>
 						</div>
 					</div>
@@ -89,7 +93,7 @@ export const PerfilVendedor = () => {
 			</div>
 			<div className="row my-5">
 				<div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}>
-					<ProductosTienda nombre={tiendaId} />
+					<ProductosTienda nombre={store.token_usuario.id} />
 				</div>
 			</div>
 		</div>

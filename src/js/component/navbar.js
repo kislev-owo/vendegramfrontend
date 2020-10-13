@@ -58,9 +58,9 @@ export const Navbar = () => {
 								</Link>
 							</li>
 							<li className="nav-item">
-								<a className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
+								<Link to="/ingresar" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
 									Ingresa
-								</a>
+								</Link>
 							</li>
 						</ul>
 					</div>

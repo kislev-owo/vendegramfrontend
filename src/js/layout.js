@@ -29,6 +29,7 @@ import { FinalizarRegistroVendedor } from "./views/FinalizarRegistroVendedor";
 import { ComoFunciona } from "./views/ComoFunciona";
 import { PerfilVendedor } from "./views/PerfilVendedor";
 import { PerfilComprador } from "./views/PerfilComprador";
+import { Ingresar } from "./views/Ingresa";
 
 //create your first component
 const Layout = () => {
@@ -77,7 +78,7 @@ const Layout = () => {
 						<Route exact path="/contactanos">
 							<Contactanos />
 						</Route>
-						<Route exact path="/perfil-vendedor/:tiendaId">
+						<Route exact path="/perfil-vendedor">
 							<PerfilVendedor />
 						</Route>
 						<Route exact path="/PerfilComprador">
@@ -85,6 +86,10 @@ const Layout = () => {
 						</Route>
 						<Route exact path="/reg-vendedor">
 							<RegistrateVendedor />
+						</Route>
+
+						<Route exact path="/ingresar">
+							<Ingresar />
 						</Route>
 
 						<Route exact path="/plan">
