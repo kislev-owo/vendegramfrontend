@@ -1,7 +1,11 @@
-var baseURL = "https://labvendegram.herokuapp.com";
+// var baseURL = "https://labvendegram.herokuapp.com";
+var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
+			usuarioLogin: [],
+
 			etiquetas: [
 				"alimentos",
 				"Bebidas",
@@ -428,6 +432,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(`explote`);
 				}
 			},
+
+			/////////////  INIT- POST: REGISTRO USUARIO //////////////////////////////////////
+
 			datosRegistroUsuario: async datos => {
 				let response = await fetch(baseURL + "/" + "usuario", {
 					method: "POST",
@@ -448,12 +455,54 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				if (response.ok) {
-					// await getActions().login(email, password);
+					await getActions().ingresando(datos);
 					return true;
 				} else {
 					return false;
 				}
 			},
+
+			/////////////  FINISH- POST:REGRISTRO  USUARIO //////////////////////////////////////
+
+			/////////////  INIT- POST: INGRESAR //////////////////////////////////////
+
+			ingresando: async datos => {
+				let usuario = [];
+				let response = await fetch(baseURL + "/" + "ingresar", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						correo: datos.correo,
+						clave: datos.clave
+					})
+				});
+				if (response.ok) {
+					usuario = await response.json();
+					// token => token.json();
+					// token => {
+					localStorage.setItem("token", usuario.jwt);
+					setStore({ usuario, token: usuario.jwt });
+					// setStore({ token: token.jwt });
+					return true;
+					// };
+				} else {
+					return false;
+				}
+			},
+
+			/////////////  FINISH- POST: INGRESAR //////////////////////////////////////
+
+			/////////////  INIT- LOGOUT //////////////////////////////////////
+
+			salir: () => {
+				localStorage.removeItem("token");
+				setStore({ token: null });
+			},
+
+			/////////////  FINISH- LOGOUT //////////////////////////////////////
+
 			datosRegistroTienda: tienda => {
 				const store = getStore();
 				setStore({
@@ -536,4 +585,3 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
-

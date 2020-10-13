@@ -1,9 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 import { Home } from "../views/home.js";
 import { Buscar } from "./Buscar";
+import { Context } from "../store/appContext";
 
 export const Navbar = () => {
+	const { store, actions } = useContext(Context);
+	const [cont2, setCont2] = useState("");
+	const [cont1, setCont1] = useState("");
+	const [datos, setDatos] = useState({
+		correo: store.correo,
+		numero: "",
+		codigo: "",
+		clave: "",
+		nombre: store.nombre,
+		apellido: store.apellido,
+		nombre_usuario: store.nombre_usuario,
+		fecha_nacimiento: store.fecha_nacimiento,
+		administrador: false,
+		foto_perfil: "",
+		subscripcion: false
+	});
 	return (
 		<>
 			<nav className="navbar navbar-expand-lg navbar-light " style={{ background: "#C4C4C4" }}>
@@ -52,16 +69,63 @@ export const Navbar = () => {
 									Nosotros
 								</Link>
 							</li>
+
 							<li className="nav-item">
+								{store.token != null ? (
+									<Link
+										onClick={() => actions.salir()}
+										type="button"
+										href="#"
+										tabIndex="-1"
+										aria-disabled="true"
+										className="nav-link">
+										{"Salir"}
+									</Link>
+								) : (
+									<Link
+										className="nav-link"
+										href="#"
+										tabIndex="-1"
+										aria-disabled="true"
+										to="/ingresar">
+										{" Ingresar"}
+									</Link>
+								)}
+							</li>
+
+							<li className="nav-item">
+								{store.token != null ? (
+									<Link />
+								) : (
+									<Link
+										className="nav-link"
+										href="#"
+										tabIndex="-1"
+										aria-disabled="true"
+										to="/registrate">
+										{" Registrate"}
+									</Link>
+								)}
+							</li>
+
+							{/* <li className="nav-item">
+								<Link className="nav-link" href="#" tabIndex="-1" aria-disabled="true" to="/registrate">
+									{" Registrate"}
+								</Link>
+							</li> */}
+
+							{/* <li className="nav-item">
 								<Link className="nav-link" href="#" tabIndex="-1" aria-disabled="true" to="/registrate">
 									{" Registrate"}
 								</Link>
 							</li>
+
+
 							<li className="nav-item">
 								<Link to="/ingresar" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
 									Ingresa
 								</Link>
-							</li>
+							</li> */}
 						</ul>
 					</div>
 				</div>
