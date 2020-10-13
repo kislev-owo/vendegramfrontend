@@ -13,7 +13,7 @@ export const Footer = () => (
 				</div>
 
 				<div className="col-4 text-center">
-					<div className="row justify-content-center">
+					{/* <div className="row justify-content-center">
 						<button
 							type="button"
 							className="btn btn-primary rounded-lg"
@@ -21,7 +21,7 @@ export const Footer = () => (
 							<i className="fas fa-question-circle mx-2" style={{ background: "000000" }} />
 							{`Preguntas Frecuentes`}
 						</button>
-					</div>
+					</div> */}
 					<div className="row justify-content-center my-2">
 						<i className="fas fa-phone-alt mx-2" style={{ color: "#03989E" }} />
 						0212-2575258

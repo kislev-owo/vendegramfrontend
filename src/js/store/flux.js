@@ -84,8 +84,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	etiqueta_general: "Servicios"
 				// }
 			],
+			token_usuario: {
+				id: "2",
+				token: ""
+			},
 			usuarios: [],
-			tienda: [],
+			tienda: {},
+			productos_tienda: [],
 			tiendas: [
 				{
 					id: "2",
@@ -101,49 +106,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					zona_uno: "La Trinidad",
 					zona_dos: "Santa Fe",
 					zona_tres: "Los Samanes",
-					nombre_usuario: "Albany",
+					usuario_id: "1",
+					usuario_nombre: "Albany",
 					productos: [1, 2, 3, 4]
-					// productos: [
-					// 	{
-					// 		id: "7",
-					// 		titulo: "Parches de superheroes",
-					// 		foto: "https://via.placeholder.com/150",
-					// 		descripcion: "Parches de 12cm x16cm de tus superheroes favoritos",
-					// 		precio: "3$",
-					// 		cantidad: "20",
-					// 		etiqueta_uno: "Parches",
-					// 		etiqueta_dos: "Ropa",
-					// 		etiqueta_tres: "Textil",
-					// 		etiqueta_general: "Servicios"
-					// 	},
-					// 	{
-					// 		id: "8",
-					// 		titulo: "Servicio de bordado de nombres",
-					// 		foto: "https://via.placeholder.com/150",
-					// 		descripcion: "Ofrecemos servicio de bordados tamaño 10cm x 10cm",
-					// 		precio: "5$ c/u",
-					// 		cantidad: "10",
-					// 		etiqueta_uno: "Ropa",
-					// 		etiqueta_dos: "Textil",
-					// 		etiqueta_tres: "Otros",
-					// 		etiqueta_general: "Servicios"
-					// 	},
-					// 	{
-					// 		id: "9",
-					// 		titulo: "Colores Prismacolor",
-					// 		foto: "https://via.placeholder.com/150",
-					// 		descripcion: "Caja de colores surtidos. 24 unidades",
-					// 		precio: "5$ c/u",
-					// 		cantidad: "10",
-					// 		etiqueta_uno: "Escolar",
-					// 		etiqueta_dos: "Papelería",
-					// 		etiqueta_tres: "Otros",
-					// 		etiqueta_general: "Servicios"
-					// 	}
-					// ]
 				},
 				{
-					id: "2",
+					id: "1",
 					nombre_tienda: "PersonitasShop",
 					foto_tienda: "https://via.placeholder.com/150",
 					visibilidad: false,
@@ -156,60 +124,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					zona_uno: "La Urbina",
 					zona_dos: "Palo Verde",
 					zona_tres: "La California",
-					nombre_usuario: "Albany",
-					nombre_usuario: "Alexandra",
-					productos: [4, 5, 6]
-					// productos: [
-					// 	{
-					// 		id: "4",
-					// 		titulo: "Resma de Papel Bond base 20",
-					// 		foto: "https://via.placeholder.com/150",
-					// 		descripcion: "Materiales para oficina",
-					// 		precio: "3$",
-					// 		cantidad: "20",
-					// 		etiqueta_uno: "Otros",
-					// 		etiqueta_dos: "Papeleria",
-					// 		etiqueta_tres: "Papel",
-					// 		etiqueta_general: "Servicios"
-					// 	},
-					// 	{
-					// 		id: "3",
-					// 		titulo: "Cuadernos Caribe",
-					// 		foto: "https://www.cuadernoscaribe.com/image/fundacion/montaje-1.png",
-					// 		descripcion: "Cuaderno de una línea tamaño carta, 100 hojas",
-					// 		precio: "5$ c/u",
-					// 		cantidad: "10",
-					// 		etiqueta_uno: "Escolar",
-					// 		etiqueta_dos: "Papelería",
-					// 		etiqueta_tres: "Otros",
-					// 		etiqueta_general: "Servicios"
-					// 	},
-					// 	{
-					// 		id: "5",
-					// 		titulo: "Colores Prismacolor",
-					// 		foto:
-					// 			"https://http2.mlstatic.com/colores-prismacolor-36-original-caja-de-lujo-nuevos-D_NQ_NP_669724-MLV32053902113_092019-O.webp",
-					// 		descripcion: "Caja de colores surtidos. 24 unidades",
-					// 		precio: "5$ c/u",
-					// 		cantidad: "10",
-					// 		etiqueta_uno: "Escolar",
-					// 		etiqueta_dos: "Papelería",
-					// 		etiqueta_tres: "Otros",
-					// 		etiqueta_general: "Servicios"
-					// 	},
-					// 	{
-					// 		id: "6",
-					// 		titulo: "Secador de cabello",
-					// 		foto: "https://venegangas.com/138-thickbox_default/secador-de-cabello.jpg",
-					// 		descripcion: "Secador de cabello de tres velocidades y dos temperaturas",
-					// 		precio: "40$ c/u",
-					// 		cantidad: "10",
-					// 		etiqueta_uno: "Peluqueria",
-					// 		etiqueta_dos: "Estilismo",
-					// 		etiqueta_tres: "Cabello",
-					// 		etiqueta_general: "Servicios"
-					// 	}
-					// ]
+					usuario_nombre: "Pedro",
+					usuario_id: "2",
+					productos: [4, 5]
 				}
 			],
 
@@ -297,6 +214,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 						productos: []
 					});
 					return false;
+				}
+			},
+			// ######## Funcion que Filtra las tiendas segun el id del usuario ########
+			// ##### Si está funcionando  #####
+			buscarTienda: () => {
+				const store = getStore();
+				var arrPorId = store.tiendas.filter(obj => {
+					if ("usuario_id" in obj && obj.usuario_id == store.token_usuario.id && !isNaN(obj.usuario_id)) {
+						return true;
+					} else {
+						return false;
+					}
+				});
+				setStore({
+					tienda: arrPorId[0]
+				});
+			},
+			getProductosTienda: async () => {
+				const store = getStore();
+				var producto_id = store.tienda.productos;
+				console.log(producto_id);
+				for (var i = 0; i < producto_id.length; i++) {
+					console.log(producto_id[i]);
+					try {
+						const response = await fetch(`${baseURL}/producto/${producto_id[i]}`);
+						if (response.ok) {
+							let producto = await response.json();
+							console.log("Pude traer el producto con exito");
+							setStore({
+								productos_tienda: producto
+							});
+						} else {
+							console.log(`Error al traer el producto. ${response.status} ${response.statusText}`);
+						}
+					} catch (error) {
+						console.log(`explote al traer el producto`);
+					}
 				}
 			},
 
@@ -405,6 +359,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			exampleFunction: () => {
 				getActions().changeColor(0, "green");
 			},
+			// ######## Fetch para Crear un Usuario ######## 4
+			// ##### Si funciona  #####
 			crearUsuario: async () => {
 				const store = getStore();
 				var dato = {
@@ -454,6 +410,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(`explote`);
 				}
 			},
+			// ######## Funcion que carga los datos del registro en el store ######## 4
+			// ##### Si funciona #####
 			datosRegistroUsuario: datos => {
 				const store = getStore();
 				setStore({
@@ -469,7 +427,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				});
 			},
 			datosRegistroTienda: tienda => {
-				console.log("Entre en la funcion");
 				const store = getStore();
 				setStore({
 					correo_tienda: tienda.correo_tienda,
@@ -485,25 +442,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 					zona_uno: ""
 				});
 			},
-			getTiendas: async () => {
-				try {
-					const response = await fetch(`${baseUrl}/tienda`);
-
-					if (response.ok) {
-						let tiendasApi = await response.json();
-						setStore({
-							tiendas: tiendasApi
-						});
-						console.log("Logré traer las tiendas con exito");
-					} else {
-						console.log(
-							`Hubo un problema trayendo las tiendas respuesta: ${response.status} ${response.statusText}`
-						);
-					}
-				} catch (error) {
-					console.log(`No me pude comunicar con el servidor al buscar las tiendas : ${error}`);
-				}
-			},
+			// ######## Fetch para cargar todos los usuarios en el store ########
+			// ##### (No está en uso todavía y creo que le faltan cosas) #####
 			getUsuarios: async () => {
 				try {
 					const response = await fetch(`${baseUrl}/usuario`);

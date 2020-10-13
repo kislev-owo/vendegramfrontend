@@ -56,7 +56,7 @@ export const PlanSubscripcion = () => {
 					</div>
 				</div>
 
-				<div className="col-5">
+				{/* <div className="col-5">
 					<div className="text-center rounded-top" style={{ background: "#03989E" }}>
 						<h1 style={{ color: "#ffffff" }}>
 							<i className="fas fa-user-circle  mx-2 my-2" style={{ color: "#ffffff" }} />
@@ -92,7 +92,7 @@ export const PlanSubscripcion = () => {
 							{"$5 *tarifa mensual"}
 						</Link>
 					</div>
-				</div>
+				</div> */}
 			</div>
 			<div className="row justify-content-center my-5">
 				<Link

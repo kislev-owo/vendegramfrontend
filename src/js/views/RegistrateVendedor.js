@@ -171,14 +171,9 @@ export const RegistrateVendedor = () => {
 				<Link
 					type="submit"
 					to="/plan"
-<<<<<<< HEAD
-					onClick={() => {
-						actions.datosRegistro(datos);
-=======
 					onClick={e => {
 						actions.datosRegistroUsuario(datos);
 						actions.datosRegistroTienda(tienda);
->>>>>>> albany
 					}}
 					className="btn btn-primary my-3   "
 					style={{ background: "#03989E", border: "none" }}>

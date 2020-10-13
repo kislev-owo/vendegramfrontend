@@ -206,9 +206,9 @@ export const Registrate = () => {
 						onClick={() => {
 							actions.datosRegistroUsuario(datos);
 						}}>
-						{"Soy Comprador"}
+						{"Continuar"}
 					</Link>
-
+					{/* 
 					<Link
 						type="submit"
 						className="btn btn-primary my-3"
@@ -218,7 +218,7 @@ export const Registrate = () => {
 						}}
 						style={{ background: "#03989E", border: "none" }}>
 						{"Soy Vendedor"}
-					</Link>
+					</Link> */}
 				</div>
 			</form>
 		</div>
