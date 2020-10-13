@@ -53,7 +53,7 @@ export const Contactanos = () => {
 				</div>
 				<div className="form-group px-3">
 					<label htmlFor="exampleInputEmail1">{`Mensaje`}</label>
-					<input type="password" className="form-control rounded-lg" id="exampleInputEmail1" />
+					<input type="text" className="form-control rounded-lg" id="exampleInputEmail1" />
 				</div>
 				<div className="justify-content-around d-flex">
 					<Link
