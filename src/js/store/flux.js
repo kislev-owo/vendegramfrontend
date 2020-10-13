@@ -2,6 +2,9 @@ var baseURL = "https://labvendegram.herokuapp.com";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
+			token: null,
+			usuarioLogin: [],
+
 			etiquetas: [
 				"alimentos",
 				"Bebidas",
@@ -410,6 +413,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					console.log(`explote`);
 				}
 			},
+
+			/////////////  INIT- POST: REGISTRO USUARIO //////////////////////////////////////
+
 			datosRegistroUsuario: async datos => {
 				let response = await fetch(baseURL + "/" + "usuario", {
 					method: "POST",
@@ -436,6 +442,39 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
+
+			/////////////  FINISH- POST:REGRISTRO  USUARIO //////////////////////////////////////
+
+			/////////////  INIT- POST: INGRESAR //////////////////////////////////////
+
+			login: async datos => {
+				let response = await fetch(baseURL + "/" + "ingresar", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify({
+						correo: datos.correo,
+						clave: datos.clave
+					})
+				});
+				if (response.ok) {
+					response => response.json();
+					token => {
+						if (typeof token.msg != "undefined") {
+							// Notify.error(token.msg);
+						} else {
+							setStore({ token: token.jwt, usuarioLogin: token.usuarioLogin });
+						}
+						return true;
+					};
+				} else {
+					return false;
+				}
+			},
+
+			/////////////  FINISH- POST: INGRESAR //////////////////////////////////////
+
 			datosRegistroTienda: tienda => {
 				const store = getStore();
 				setStore({
@@ -518,4 +557,3 @@ const getState = ({ getStore, getActions, setStore }) => {
 };
 
 export default getState;
-
