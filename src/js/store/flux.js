@@ -1,4 +1,5 @@
-var baseURL = "https://labvendegram.herokuapp.com";
+// var baseURL = "https://labvendegram.herokuapp.com";
+var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
@@ -436,7 +437,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				if (response.ok) {
-					// await getActions().login(email, password);
+					await getActions().ingresando(datos);
 					return true;
 				} else {
 					return false;
@@ -447,7 +448,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			/////////////  INIT- POST: INGRESAR //////////////////////////////////////
 
-			login: async datos => {
+			ingresando: async datos => {
+				let usuario = [];
 				let response = await fetch(baseURL + "/" + "ingresar", {
 					method: "POST",
 					headers: {
@@ -459,21 +461,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 				});
 				if (response.ok) {
-					response => response.json();
-					token => {
-						if (typeof token.msg != "undefined") {
-							// Notify.error(token.msg);
-						} else {
-							setStore({ token: token.jwt, usuarioLogin: token.usuarioLogin });
-						}
-						return true;
-					};
+					usuario = await response.json();
+					// token => token.json();
+					// token => {
+					localStorage.setItem("token", usuario.jwt);
+					setStore({ usuario, token: usuario.jwt });
+					// setStore({ token: token.jwt });
+					return true;
+					// };
 				} else {
 					return false;
 				}
 			},
 
 			/////////////  FINISH- POST: INGRESAR //////////////////////////////////////
+
+			/////////////  INIT- LOGOUT //////////////////////////////////////
+
+			salir: () => {
+				localStorage.removeItem("token");
+				setStore({ token: null });
+			},
+
+			/////////////  FINISH- LOGOUT //////////////////////////////////////
 
 			datosRegistroTienda: tienda => {
 				const store = getStore();

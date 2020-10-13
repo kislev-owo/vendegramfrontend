@@ -55,7 +55,7 @@ export const Ingresar = () => {
 						className="btn btn-primary my-3 "
 						style={{ background: "#03989E", border: "none" }}
 						onClick={() => {
-							actions.login(datos);
+							actions.ingresando(datos);
 						}}>
 						{"Continuar"}
 					</Link>
