@@ -113,7 +113,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 			usuarios: [],
 			tienda: {},
 			productos_tienda: [],
-			
 
 			tiendas: [
 				{
