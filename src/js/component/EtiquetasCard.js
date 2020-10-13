@@ -29,7 +29,7 @@ export const EtiquetasCard = props => {
 									value={etiqueta}
 									style={{ background: "#03989E" }}
 									onClick={() => {
-										actions.fetchCargarEtiquetas(etiqueta);
+										actions.fetchCargarProductoEtiquetas(etiqueta);
 										console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");
 										history.push("../Productos");
 									}}>

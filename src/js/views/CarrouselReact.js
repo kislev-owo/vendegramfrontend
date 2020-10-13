@@ -5,73 +5,120 @@ import { useHistory } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import { Buscar } from "../component/Buscar";
-import calabaza from "../../img/calabaza.jpg";
-import coliflor from "../../img/coliflor.jpg";
-import pimiento from "../../img/pimiento.jpg";
+import frutas from "../../img/Frutas.png";
+import paprika from "../../img/paprika.jpg";
+import bandeja from "../../img/bandeja.png";
+import reparaciones from "../../img/reparaciones.png";
 //import rigoBaby from "../../img/rigo-baby.png";
 
 export const Carrousel = () => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
+	const [value, setValue] = useState("");
 
 	return (
 		<div className="container">
-			<div>
-				<div className="mt-1 ">
-					<Buscar />
-				</div>
-			</div>
-
 			<div className="jumbotron h-auto ml-1 mr-1 mt-2 pt-4 ">
 				<div className="text-center mb-2">
 					<Carousel style={{ color: "#03989E" }}>
 						<Carousel.Item style={{ color: "#03989E" }}>
-							<img className="d-block w-100 img-thumbnail" src={calabaza} alt="First slide" />
+							<img
+								className="d-block m-auto img-thumbnail"
+								src={frutas}
+								alt="First slide"
+								style={{ width: 650, height: 500 }}
+							/>
 							<Carousel.Caption>
-								<h3 style={{ color: "#03989E" }}>Calabaza</h3>
-								<p style={{ color: "#03989E" }}>
-									Nulla vitae elit libero, a pharetra augue mollis interdum.
-								</p>
+								<button
+									className="btn btn-primary rounded-lg"
+									type="button"
+									id="button-addon2"
+									value="productos"
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarProductoEtiquetas("productos");
+										console.log("Esta es la etiqueta Productos de EtiquetasCard");
+										history.push("../Productos");
+									}}>
+									<p className="card-title">productos</p>
+								</button>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="d-block w-100 img-thumbnail " src={pimiento} alt="Third slide" />
+							<img
+								className="d-block m-auto img-thumbnail "
+								src={bandeja}
+								alt="Second slide"
+								style={{ width: 650, height: 500 }}
+							/>
 
 							<Carousel.Caption>
-								<h3 style={{ color: "#03989E" }}>Pimiento</h3>
-								<p style={{ color: "#03989E" }}>
-									Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-								</p>
+								<button
+									className="btn btn-primary rounded-lg"
+									type="button"
+									id="button-addon2"
+									value="servicios"
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarProductoEtiquetas("servicios");
+										console.log("Esta es la etiqueta Servicios de EtiquetasCard");
+										history.push("../Productos");
+									}}>
+									<p className="card-title">Servicios</p>
+								</button>
+								<p style={{ color: "#03989E" }}>Accede a todo tipo de servicios.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
-							<img className="d-block w-100 img-thumbnail" src={coliflor} alt="Third slide" />
+							<img
+								className="d-block  m-auto img-thumbnail"
+								src={paprika}
+								alt="Third slide"
+								style={{ width: 650, height: 500 }}
+							/>
 
 							<Carousel.Caption>
-								<h3 style={{ color: "#03989E" }}>Coliflor</h3>
-								<p style={{ color: "#03989E" }}>
-									Praesent commodo cursus magna, vel scelerisque nisl consectetur.
-								</p>
+								<button
+									className="btn btn-primary rounded-lg"
+									type="button"
+									id="button-addon2"
+									value="alimentos"
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarProductoEtiquetas("alimentos");
+										console.log("Esta es la etiqueta alimentos de EtiquetasCard");
+										history.push("../Productos");
+									}}>
+									<p className="card-title">Alimentos</p>
+								</button>
+							</Carousel.Caption>
+						</Carousel.Item>
+						<Carousel.Item>
+							<img
+								className="d-block m-auto img-thumbnail"
+								src={reparaciones}
+								alt="Fourth slide"
+								style={{ width: 600, height: 500 }}
+							/>
+
+							<Carousel.Caption>
+								<button
+									className="btn btn-primary rounded-lg"
+									type="button"
+									id="button-addon2"
+									value="reparaciones"
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarProductoEtiquetas("reparaciones");
+										console.log("Esta es la etiqueta reparaciones de EtiquetasCard");
+										history.push("../Productos");
+									}}>
+									<p className="card-title">reparaciones</p>
+								</button>
+								<p style={{ color: "#03989E" }}>Encuentra Proveedores de servicios de reparaciones.</p>
 							</Carousel.Caption>
 						</Carousel.Item>
 					</Carousel>
-					<div className="mt-2 mb-2">
-						<Link to="/Etiquetas">
-							<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-								Etiquetas
-							</button>
-						</Link>
-						<button
-							className="btn btn-primary"
-							style={{ background: "#03989E" }}
-							onClick={() => {
-								actions.fetchCargarTiendas();
-								console.log("Esta es la vista de tiendas en TiendasCard");
-								history.push("../TiendasCard");
-							}}>
-							Tiendas
-						</button>
-					</div>
 				</div>
 			</div>
 		</div>

@@ -16,6 +16,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Peluquería",
 				"Peluquería_veterinaria",
 				"Plomería",
+				"productos",
 				"Reparaciones",
 				"Ropa",
 				"Salsas",
@@ -33,58 +34,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"caucaguita",
 				"chacao",
 				"el_cafetal",
-				"el_junquito"
+				"el_junquito",
+				"el_paraíso",
+				"el_recreo",
+				"el_valle",
+				"fila_de_mariches",
+				"la_dolorita",
+				"la_pastora",
+				"la_vega",
+				"las_minas",
+				"leoncio_martínez",
+				"macarao",
+				"nuestra_señora_del_rosario",
+				"petare",
+				"san_agustín",
+				"san_bernardino",
+				"san_josé",
+				"san_juan",
+				"san_pedro",
+				"santa_rosalía",
+				"santa_rosalía_de_palermo",
+				"santa_teresa",
+				"ventitrés_de_enero"
 			],
-			productos: [
-				// {
-				// 	id: "1",
-				// 	titulo: "Tomates",
-				// 	foto: "URL",
-				// 	descripcion: "tomates rojos y maduros. Todo fresco",
-				// 	precio: "1$ x kg",
-				// 	cantidad: "40 kgs",
-				// 	etiqueta_uno: "Alimentos",
-				// 	etiqueta_dos: "Bebidas",
-				// 	etiqueta_tres: "Fast-Food"
-				// },
-				// {
-				// 	id: "2",
-				// 	titulo: "Bicicleta montañera",
-				// 	foto: "URL",
-				// 	descripcion: "Bicicleta montañera en oferta. Marca Murray. Rin 26",
-				// 	precio: "50$",
-				// 	cantidad: "1",
-				// 	etiqueta_uno: "Otros",
-				// 	etiqueta_dos: "Vehiculos",
-				// 	etiqueta_tres: "Deportes",
-				// 	etiqueta_general: "Servicios"
-				// },
-				// {
-				// 	id: "3",
-				// 	titulo: "Servicio reparación TV",
-				// 	foto: "URL",
-				// 	descripcion: "Arreglamos todo tipo de Televisores",
-				// 	precio: "5$ por visita",
-				// 	cantidad: "10",
-				// 	etiqueta_uno: "Servicios",
-				// 	etiqueta_dos: "Tecnologia",
-				// 	etiqueta_tres: "Computadoras",
-				// 	etiqueta_general: "Servicios"
-				// },
-				// {
-				// 	id: "4",
-				// 	titulo: "Resma de Papel Bond base 20",
-				// 	foto: "URL",
-				// 	descripcion: "Materiales para oficina",
-				// 	precio: "3$",
-				// 	cantidad: "20",
-				// 	etiqueta_uno: "Otros",
-				// 	etiqueta_dos: "Papeleria",
-				// 	etiqueta_tres: "Papel",
-				// 	etiqueta_general: "Servicios"
-				// }
-			],
-			tienda: [
+			productos: [],
+
+			tiendas: [
 				{
 					id: "1",
 					nombre_tienda: "Bordaclick",
@@ -267,7 +242,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			// ######## Fetch para Cargar Productos x Etiquetas desde la Api ######## 2
 			// ##### (se llama desde el Home a través del componente EtiquetasCard) #####
-			fetchCargarEtiquetas: async etiqueta => {
+			fetchCargarProductoEtiquetas: async etiqueta => {
 				console.log(etiqueta);
 				let url = `https://labvendegram.herokuapp.com/producto?`;
 
@@ -299,16 +274,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				let response = await fetch(url);
 				if (response.ok) {
-					let tienda = await response.json();
+					let tiendas = await response.json();
 					setStore({
-						tienda: tienda
+						tiendas: tiendas
 					});
-					console.log(tienda);
+					console.log(tiendas);
 					return true;
 				} else {
 					console.log(`get response failure: ${response.status}`);
 					setStore({
-						tienda: []
+						tiendas: []
 					});
 					return false;
 				}

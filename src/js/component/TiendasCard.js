@@ -37,7 +37,7 @@ export const TiendasCard = props => {
 
 						<div className="text-center mb-2">
 							<div className="card-deck d-flex align-items-center mt-4">
-								{store.tienda.map((tienda, index) => {
+								{store.tiendas.map((tienda, index) => {
 									return (
 										<div className="card h-50" key={index}>
 											<img
@@ -69,12 +69,6 @@ export const TiendasCard = props => {
 							<Link to="/Etiquetas">
 								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
 									Etiquetas
-								</button>
-							</Link>
-
-							<Link to="/CarrouselReact">
-								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-									Carrousel
 								</button>
 							</Link>
 						</div>

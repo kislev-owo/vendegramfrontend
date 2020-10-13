@@ -36,12 +36,6 @@ export const Etiquetas = props => {
 							</div>
 						</div>
 						<div clasName="row-flex justify-content-between align-items-center">
-							<Link to="/CarrouselReact">
-								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-									Carrousel
-								</button>
-							</Link>
-
 							<button
 								className="btn btn-primary"
 								style={{ background: "#03989E" }}

@@ -26,11 +26,11 @@ export const DetalleProducto = () => {
 					if (item.id === parseInt(detallesId)) {
 						return (
 							<div key={id} className="container w-50 mt-2">
-								<div className="card border-info mb-1 m-auto w-75">
+								<div className="card border-info mb-1 m-auto w-75 h-75">
 									<div className="no-gutters">
 										<div className="col">
 											<img
-												src="https://via.placeholder.com/500x400"
+												src="https://via.placeholder.com/300x200"
 												className="card-img-top"
 												alt="Foto del Producto"
 											/>
