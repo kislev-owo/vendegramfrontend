@@ -5,7 +5,6 @@ import { useHistory } from "react-router-dom";
 import { Context } from "../store/appContext";
 import { Buscar } from "../component/Buscar";
 
-// Función que genera las vistas de los objetos filtrados por nombre del arreglo "productos"
 export const Productos = props => {
 	const history = useHistory();
 	const { store, actions } = useContext(Context);
@@ -15,64 +14,70 @@ export const Productos = props => {
 
 	return (
 		<>
-			<div className="container">
-				<div>
-					<div className="mt-1 ">
-						<Buscar />
-					</div>
+			<div>
+				<div className="mt-1 ">
+					<Buscar />
 				</div>
+			</div>
 
-				<div className="jumbotron mt-2 pt-4">
-					<h2 className="text-center ml-4 mb-2 m-auto">
-						<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
-							Productos encontrados
-						</span>
-					</h2>
+			<div className="jumbotron ml-1 mr-1 mt-2 pt-4">
+				<h2 className="text-center ml-4 mb-2 m-auto">
+					<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
+						Productos encontrados
+					</span>
+				</h2>
+				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4">
+					{
+						// Función que genera las vistas de los objetos filtrados del arreglo "productos"
+					}
+					{store.productos &&
+						store.productos.map((item, id) => {
+							return (
+								<div key={id} className="container mt-2">
+									<div className="card border-info mb-1">
+										<div className="no-gutters">
+											<div className="col">
+												<img
+													src="https://via.placeholder.com/150x100"
+													className="card-img-top"
+													alt="Foto del Producto"
+												/>
+											</div>
+											<div className="">
+												<div className="card-body">
+													<h6 className="card-title">
+														<strong>{item.titulo}</strong>
+													</h6>
 
-					<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-2">
-						{store.productos &&
-							store.productos.map((item, index) => {
-								return (
-									<div key={index} className="container mt-2">
-										<div className="card border-info mb-1">
-											<div className="no-gutters">
-												<div className="col-md-4">
-													<img
-														src="https://via.placeholder.com/500x400"
-														className="card-img-top"
-														alt="Foto del Producto"
-													/>
+													<div className="row-flex align-items-center">
+														<strong>Precio: </strong>
+
+														<span>{item.precio}</span>
+													</div>
+													<div className="">
+														<p>
+															<strong>Categoría:</strong>
+														</p>
+
+														<span>{item.etiqueta_general}</span>
+													</div>
 												</div>
-												<div className="">
-													<div className="card-body">
-														<h6 className="card-title">{item.titulo}</h6>
-
-														<div className="col">
-															<h6>Precio:</h6>
-															<p>{item.precio}</p>
-														</div>
-														<div className="col">
-															<h6>Categoría:</h6>
-															<p>{item.etiqueta_general}</p>
-														</div>
-													</div>
-													<div className="card-footer">
-														<button
-															className="btn btn-primary rounded-sm"
-															type="button"
-															id="button-addon2"
-															style={{ background: "#03989E" }}
-															onClick={e => history.push(`./DetalleProducto/${item.id}`)}>
-															<h6 className="card-title">Más detalles</h6>
-														</button>
-													</div>
+												<div className="card-footer m-auto">
+													<button
+														className="btn btn-primary btn-sm rounded-sm"
+														type="button"
+														id="button-addon2"
+														style={{ background: "#03989E" }}
+														onClick={e => history.push(`./DetalleProducto/${item.id}`)}>
+														<span className="">Detalles</span>
+													</button>
 												</div>
 											</div>
 										</div>
 									</div>
-								);
-							})}
-					</div>
+								</div>
+							);
+						})}
 				</div>
 			</div>
 		</>
@@ -86,7 +91,7 @@ Productos.propTypes = {
 	descripcion: PropTypes.string,
 	precio: PropTypes.string,
 	cantidad: PropTypes.string,
-	etiqueta1: PropTypes.string
+	etiqueta_general: PropTypes.string
 };
 
 // onClick={e => history.push(`/DetalleProducto/${index}`)}
@@ -95,4 +100,4 @@ Productos.propTypes = {
 //);
 //console.log(productoFiltrado);
 
-// <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4">
+// <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4"></div>

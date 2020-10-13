@@ -18,12 +18,6 @@ export const Buscar = () => {
 
 	console.log(productoABuscar);
 
-	useEffect(() => {
-		//		actions.fetchCargarProductos();
-		//		actions.fetchCargarEtiquetas();
-		//      actions.fetchCargarTiendas();
-	}, []);
-
 	return (
 		<div className="d-flex align-items-center ml-3 mr-3">
 			{/* ##### Input select options para búsqueda por Zonas #####*/}
@@ -94,7 +88,7 @@ export const Buscar = () => {
 							className="input-group-text"
 							htmlFor="inputGroupSelect02"
 							style={{ background: "#03989E" }}>
-							Etiquetas
+							Categorías
 						</label>
 					</div>
 				</div>
@@ -105,7 +99,7 @@ export const Buscar = () => {
 				<input
 					type="text"
 					className="form-control"
-					placeholder="Escribir búsqueda"
+					placeholder="Buscar Producto o Servicio"
 					aria-label="Recipient's username"
 					aria-describedby="basic-addon2"
 					value={productoABuscar}
@@ -132,7 +126,7 @@ export const Buscar = () => {
 							);
 							history.push("../Productos");
 						}}>
-						{"Ver todos"}
+						{"Buscar"}
 					</button>
 				</div>
 			</div>
