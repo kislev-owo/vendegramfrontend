@@ -4,7 +4,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
-			usuarioLogin: [],
+			usuarioLogin: [2],
+			nombreUsuario: [],
 
 			etiquetas: [
 				"alimentos",
@@ -110,10 +111,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 				// 	etiqueta_general: "Servicios"
 				// }
 			],
-			token_usuario: {
-				id: "2",
-				token: ""
-			},
+			// token_usuario: {
+			// 	id: "2",
+			// 	token: []
+			// },
 			usuarios: [],
 			tienda: {},
 			productos_tienda: [],
@@ -246,7 +247,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			buscarTienda: () => {
 				const store = getStore();
 				var arrPorId = store.tiendas.filter(obj => {
-					if ("usuario_id" in obj && obj.usuario_id == store.token_usuario.id && !isNaN(obj.usuario_id)) {
+					if ("usuario_id" in obj && obj.usuario_id == store.usuarioLogin && !isNaN(obj.usuario_id)) {
 						return true;
 					} else {
 						return false;
@@ -484,7 +485,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// token => {
 					localStorage.setItem("token", usuario.jwt);
 					setStore({ usuario, token: usuario.jwt });
-					// setStore({ token: token.jwt });
+					localStorage.setItem("usuarioLogin", usuario.id);
+					setStore({ usuario, usuarioLogin: usuario.id });
+					localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
+					setStore({ usuario, nombreUsuario: usuario.nombre_usuario });
 					return true;
 					// };
 				} else {

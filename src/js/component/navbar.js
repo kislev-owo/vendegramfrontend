@@ -108,6 +108,21 @@ export const Navbar = () => {
 								)}
 							</li>
 
+							<li className="nav-item">
+								{store.token != null ? (
+									<Link
+										className="nav-link"
+										href="#"
+										tabIndex="-1"
+										aria-disabled="true"
+										to="/registrate2">
+										{" Registrate2"}
+									</Link>
+								) : (
+									<Link />
+								)}
+							</li>
+
 							{/* <li className="nav-item">
 								<Link className="nav-link" href="#" tabIndex="-1" aria-disabled="true" to="/registrate">
 									{" Registrate"}
