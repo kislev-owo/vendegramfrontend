@@ -260,6 +260,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			getProductosTienda: async () => {
 				const store = getStore();
 				var producto_id = store.tienda.productos;
+				var arreglo = [];
 				console.log(producto_id);
 				for (var i = 0; i < producto_id.length; i++) {
 					console.log(producto_id[i]);
@@ -268,9 +269,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						if (response.ok) {
 							let producto = await response.json();
 							console.log("Pude traer el producto con exito");
-							setStore({
-								productos_tienda: producto
-							});
+							arreglo.push(producto);
 						} else {
 							console.log(`Error al traer el producto. ${response.status} ${response.statusText}`);
 						}
@@ -278,6 +277,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log(`explote al traer el producto`);
 					}
 				}
+				setStore({
+					productos_tienda: arreglo
+				});
 			},
 
 			// ######## Fetch para Cargar Productos x Etiquetas desde la Api ######## 2
