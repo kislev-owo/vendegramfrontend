@@ -1,9 +1,9 @@
 //////////////////   URL DE HEROKU    /////
 
-//var baseURL = "https://labvendegram.herokuapp.com";
+var baseURL = "https://labvendegram.herokuapp.com";
 
 ///////////////// URL DE OSCAR (LOCAL) /////////
-var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io/";
+// var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io/";
 
 //var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
@@ -473,7 +473,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					}
 				});
 				if (response.ok) {
-					await getActions().ingresando(datos);
+					// await getActions().ingresando(datos);
 					return true;
 				} else {
 					return false;
