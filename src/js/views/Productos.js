@@ -26,54 +26,55 @@ export const Productos = props => {
 						Productos encontrados
 					</span>
 				</h2>
-				<div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4">
+				{/* <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4"> */}
+				<div className="row row-cols-1 row-cols-md-5 mt-3">
 					{
 						// Función que genera las vistas de los objetos filtrados del arreglo "productos"
 					}
 					{store.productos &&
 						store.productos.map((item, id) => {
 							return (
-								<div key={id} className="container mt-2">
-									<div className="card border-info mb-1">
-										<div className="no-gutters">
-											<div className="col">
-												<img
-													src="https://via.placeholder.com/150x100"
-													className="card-img-top"
-													alt="Foto del Producto"
-												/>
+								<div key={id} className="d-flex col mb-2 mt-2">
+									<div className="card border-info h-100 w-100 mb-2">
+										{/* <div className="no-gutters"> */}
+										{/* <div className="col"> */}
+										<img
+											src="https://via.placeholder.com/150x100"
+											className="card-img-top"
+											alt="Foto del Producto"
+										/>
+										{/* </div> */}
+										{/* <div className=""> */}
+										<div className="card-body">
+											<h6 className="card-title">
+												<strong>{item.titulo}</strong>
+											</h6>
+
+											<div className="row-flex align-items-center">
+												<strong>Precio: </strong>
+
+												<span>{item.precio}</span>
 											</div>
 											<div className="">
-												<div className="card-body">
-													<h6 className="card-title">
-														<strong>{item.titulo}</strong>
-													</h6>
+												<p>
+													<strong>Categoría:</strong>
+												</p>
 
-													<div className="row-flex align-items-center">
-														<strong>Precio: </strong>
-
-														<span>{item.precio}</span>
-													</div>
-													<div className="">
-														<p>
-															<strong>Categoría:</strong>
-														</p>
-
-														<span>{item.etiqueta_general}</span>
-													</div>
-												</div>
-												<div className="card-footer m-auto">
-													<button
-														className="btn btn-primary btn-sm rounded-sm"
-														type="button"
-														id="button-addon2"
-														style={{ background: "#03989E" }}
-														onClick={e => history.push(`./DetalleProducto/${item.id}`)}>
-														<span className="">Detalles</span>
-													</button>
-												</div>
+												<span>{item.etiqueta_general}</span>
 											</div>
 										</div>
+										<div className="card-footer m-auto">
+											<button
+												className="btn btn-primary btn-sm rounded-sm"
+												type="button"
+												id="button-addon2"
+												style={{ background: "#03989E" }}
+												onClick={e => history.push(`./DetalleProducto/${item.id}`)}>
+												<span className="">Detalles</span>
+											</button>
+										</div>
+										{/* </div> */}
+										{/* </div> */}
 									</div>
 								</div>
 							);

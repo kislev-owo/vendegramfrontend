@@ -35,8 +35,8 @@ export const TiendasCard = props => {
 							</span>
 						</h2>
 
-						<div className="text-center mb-2">
-							<div className="card-deck d-flex align-items-center mt-4">
+						<div className="text-center mb-2 mt-3">
+							<div className="card-deck d-flex align-items-center mb-5">
 								{store.tiendas.map((tienda, index) => {
 									return (
 										<div className="card h-50" key={index}>
@@ -65,7 +65,7 @@ export const TiendasCard = props => {
 								})}
 							</div>
 						</div>
-						<div clasName="row-flex text-center align-items-center mt-1">
+						<div clasName="row-flex text-center align-items-center mt-3">
 							<Link to="/Etiquetas">
 								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
 									Categorías

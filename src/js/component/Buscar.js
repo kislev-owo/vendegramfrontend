@@ -29,7 +29,7 @@ export const Buscar = () => {
 						aria-label="Example select with button addon"
 						value={zonaABuscar}
 						onChange={e => setZonaABuscar(e.target.value)}>
-						<option selected />
+						<option selected>Seleccione una Zona</option>
 						{store.zonas.map((zona, index) => {
 							return <option key={index}>{zona}</option>;
 						})}
@@ -78,7 +78,7 @@ export const Buscar = () => {
 						aria-label="Example select with button addon"
 						value={etiquetaABuscar}
 						onChange={e => setEtiquetaABuscar(e.target.value)}>
-						<option selected />
+						<option selected>Selecione una Categoría</option>
 						{store.etiquetas.map((etiqueta, index) => {
 							return <option key={index}>{etiqueta}</option>;
 						})}
@@ -137,10 +137,3 @@ export const Buscar = () => {
 //	const productosFiltrado = store.productos.filter(producto =>
 //		producto.nombre.toLowerCase().includes(buscarProducto.toLowerCase())
 //	);
-
-{
-	/* Componente para búsqueda por Etiquetas*/
-}
-//			<div className="mb-1 col-4">
-//				<BuscarEtiqueta state={etiquetaABuscar} setState={setEtiquetaABuscar} />
-//			</div>

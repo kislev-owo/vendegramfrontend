@@ -31,11 +31,12 @@ export const Etiquetas = props => {
 						</h2>
 
 						<div className="text-center mt-2 mb-2">
-							<div className="card-deck d-flex align-items-center">
+							{/* <div className="card-deck d-flex align-items-center"> */}
+							<div className="row row-cols-1 row-cols-md-4 mt-3 mb-5">
 								<EtiquetasCard />
 							</div>
 						</div>
-						<div clasName="row-flex justify-content-between align-items-center">
+						<div clasName="row-flex justify-content-between align-items-center mt-3">
 							<button
 								className="btn btn-primary"
 								style={{ background: "#03989E" }}
