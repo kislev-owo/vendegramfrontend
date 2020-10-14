@@ -14,7 +14,7 @@ export const PerfilVendedor = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="container">
+		<div className="container my-5">
 			<div className="row ">
 				<div className="col-4 ">
 					<div className="row justify-content-center ">
@@ -87,13 +87,16 @@ export const PerfilVendedor = () => {
 						</div>
 					</div>
 					<div className="row ">
-						<p>{`Descripción de la tienda`}</p>
+						<h1>
+							{`Productos`}
+							<i className="fas fa-plus-circle" style={{ color: "#03989E" }} />
+						</h1>
 					</div>
 				</div>
 			</div>
 			<div className="row my-5">
 				<div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}>
-					<ProductosTienda nombre={store.token_usuario.id} />
+					<ProductosTienda nombre={store.usuarioLogin.usuario_id} />
 				</div>
 			</div>
 		</div>
