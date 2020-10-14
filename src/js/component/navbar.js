@@ -75,20 +75,13 @@ export const Navbar = () => {
 									<>
 										<Link
 											onClick={() => actions.salir()}
+											to="/"
 											type="button"
 											href="#"
 											tabIndex="-1"
 											aria-disabled="true"
 											className="nav-link">
 											{"Salir"}
-										</Link>
-										<Link
-											className="nav-link"
-											href="#"
-											tabIndex="-1"
-											aria-disabled="true"
-											to="/perfil-vendedor">
-											{"Mi perfil"}
 										</Link>
 									</>
 								) : (
@@ -125,8 +118,8 @@ export const Navbar = () => {
 										href="#"
 										tabIndex="-1"
 										aria-disabled="true"
-										to="/registrate2">
-										{" Registrate2"}
+										to="/perfil-vendedor">
+										{" Mi Perfil"}
 									</Link>
 								) : (
 									<Link />
