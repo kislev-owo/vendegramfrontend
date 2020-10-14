@@ -18,16 +18,16 @@ export const EtiquetasCard = props => {
 		<>
 			{store.etiquetas.map((etiqueta, index) => {
 				return (
-					<div className="d-flex justify-content-between align-items-center" key={index}>
-						<div className="card h-25 mb-2">
-							<img src="https://via.placeholder.com/75x25" className="card-img-top" alt="Foto" />
+					<div className="d-flex col mb-2" key={index}>
+						<div className="card h-100 w-100 mb-2 p-10">
+							{/* <img src="https://via.placeholder.com/75x25" className="card-img-top" alt="Foto" /> */}
 							<div className="card-body">
 								<button
 									className="btn btn-primary rounded-lg"
 									type="button"
 									id="button-addon2"
 									value={etiqueta}
-									style={{ background: "#03989E" }}
+									style={{ background: "#03989E", width: "100px;" }}
 									onClick={() => {
 										actions.fetchCargarProductoEtiquetas(etiqueta);
 										console.log("Esta es la etiqueta " + etiqueta + " de EtiquetasCard");

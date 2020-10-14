@@ -40,7 +40,7 @@ export const Carrousel = () => {
 										console.log("Esta es la etiqueta Productos de EtiquetasCard");
 										history.push("../Productos");
 									}}>
-									<p className="card-title">productos</p>
+									<p className="card-title">Productos</p>
 								</button>
 							</Carousel.Caption>
 						</Carousel.Item>
@@ -66,7 +66,7 @@ export const Carrousel = () => {
 									}}>
 									<p className="card-title">Servicios</p>
 								</button>
-								<p style={{ color: "#03989E" }}>Accede a todo tipo de servicios.</p>
+								{/* <p style={{ color: "#03989E" }}>Accede a todo tipo de servicios.</p> */}
 							</Carousel.Caption>
 						</Carousel.Item>
 						<Carousel.Item>
@@ -113,9 +113,9 @@ export const Carrousel = () => {
 										console.log("Esta es la etiqueta reparaciones de EtiquetasCard");
 										history.push("../Productos");
 									}}>
-									<p className="card-title">reparaciones</p>
+									<p className="card-title">Reparaciones</p>
 								</button>
-								<p style={{ color: "#03989E" }}>Encuentra Proveedores de servicios de reparaciones.</p>
+								{/* <p style={{ color: "#03989E" }}>Encuentra Proveedores de servicios de reparaciones.</p> */}
 							</Carousel.Caption>
 						</Carousel.Item>
 					</Carousel>

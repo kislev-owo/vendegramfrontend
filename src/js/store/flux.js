@@ -19,7 +19,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//nombreUsuario: [],
 
 			etiquetas: [
-				"alimentos",
+				"Alimentos",
 				"Bebidas",
 				"Cereales",
 				"Decoraciones",
@@ -32,15 +32,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Peluquería",
 				"Peluquería_veterinaria",
 				"Plomería",
-				"productos",
+				"Productos",
 				"Reparaciones",
 				"Ropa",
 				"Salsas",
-				"servicios"
+				"Servicios"
 			],
 			zonas: [
-				"distrito_capital",
-				"miranda",
+				"Distrito_capital",
+				"Miranda",
 				"altagracia",
 				"antímano",
 				"candelaria",
@@ -228,14 +228,18 @@ const getState = ({ getStore, getActions, setStore }) => {
 				if (productoABuscar == "") {
 					url = url;
 				} else {
-					url += `titulo=${productoABuscar}`;
+					url += `titulo=${productoABuscar.toLowerCase()}`;
 					console.log(url);
 				}
-				if (etiquetaABuscar != "") {
-					url += `&etiqueta=${etiquetaABuscar}`;
+				if (etiquetaABuscar != "Seleccione una Categoría") {
+					url += `&etiqueta=${etiquetaABuscar.toLowerCase()}`;
+				} else {
+					url = url;
 				}
-				if (zonaABuscar != "") {
-					url += `&zona=${zonaABuscar}`;
+				if (zonaABuscar != "Seleccione una Zona") {
+					url += `&zona=${zonaABuscar.toLowerCase()}`;
+				} else {
+					url = url;
 				}
 				let response = await fetch(url);
 				if (response.ok) {
@@ -304,7 +308,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				let url = `${baseURL}/producto?`;
 
 				if (etiqueta != "") {
-					url += `&etiqueta=${etiqueta}`;
+					url += `&etiqueta=${etiqueta.toLowerCase()}`;
 				}
 				let response = await fetch(url);
 				if (response.ok) {
