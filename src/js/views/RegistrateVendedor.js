@@ -7,20 +7,20 @@ import "../../styles/demo.scss";
 
 export const RegistrateVendedor = () => {
 	const { store, actions } = useContext(Context);
-	const [datos, setDatos] = useState({
-		correo: store.datos_registro.correo,
-		numero: "",
-		codigo: "",
-		clave: "",
-		nombre_tienda: store.datos_registro.nombre_tienda,
-		nombre: store.datos_registro.nombre,
-		apellido: store.datos_registro.apellido,
-		nombre_usuario: store.datos_registro.nombre_usuario,
-		fecha_nacimiento: store.datos_registro.fecha_nacimiento,
-		administrador: false,
-		foto_perfil: "",
-		subscripcion: false
-	});
+	// const [datos, setDatos] = useState({
+	// 	correo: store.datos_registro.correo,
+	// 	numero: "",
+	// 	codigo: "",
+	// 	clave: "",
+	// 	nombre_tienda: store.datos_registro.nombre_tienda,
+	// 	nombre: store.datos_registro.nombre,
+	// 	apellido: store.datos_registro.apellido,
+	// 	nombre_usuario: store.datos_registro.nombre_usuario,
+	// 	fecha_nacimiento: store.datos_registro.fecha_nacimiento,
+	// 	administrador: false,
+	// 	foto_perfil: "",
+	// 	subscripcion: false
+	// });
 	const [tienda, setTienda] = useState({
 		correo_tienda: "",
 		facebook_tienda: "",
@@ -29,7 +29,6 @@ export const RegistrateVendedor = () => {
 		foto_tienda: "",
 		instagram_tienda: "",
 		nombre_tienda: "",
-		correo_tienda: "",
 		twitter_tienda: "",
 		zona_dos: "",
 		zona_general: "",
@@ -53,7 +52,7 @@ export const RegistrateVendedor = () => {
 						<input
 							type="text"
 							className="form-control rounded-lg"
-							value={datos.nombre_tienda}
+							value={tienda.nombre_tienda}
 							id="exampleInputEmail1"
 							onChange={e => {
 								setTienda({ ...tienda, nombre_tienda: e.target.value });
@@ -70,10 +69,11 @@ export const RegistrateVendedor = () => {
 							<select
 								className="custom-select mr-sm-2"
 								id="inlineFormCustomSelect"
+								value={tienda.codigo}
 								onChange={e => {
 									setTienda({ ...tienda, codigo: e.target.value });
 								}}>
-								<option selected>{`Escoja`}</option>
+								<option value="" selected>{`Escoja`}</option>
 								<option value="0412">{`0412`}</option>
 								<option value="0414">{`0414`}</option>
 								<option value="0416">{`0416`}</option>
@@ -89,7 +89,7 @@ export const RegistrateVendedor = () => {
 								className="form-control rounded-lg"
 								id="exampleInputEmail1"
 								aria-describedby="telefonoHelp"
-								//value={datos.telefono}
+								value={tienda.numero}
 								onChange={e => {
 									let telf = e.target.value;
 									setTienda({ ...tienda, numero: telf });
@@ -172,7 +172,7 @@ export const RegistrateVendedor = () => {
 					type="submit"
 					to="/plan"
 					onClick={e => {
-						actions.datosRegistroUsuario(datos);
+						//actions.datosRegistroUsuario(datos);
 						actions.datosRegistroTienda(tienda);
 					}}
 					className="btn btn-primary my-3   "
