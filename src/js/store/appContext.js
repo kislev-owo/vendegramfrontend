@@ -22,8 +22,8 @@ const injectContext = PassedComponent => {
 		);
 
 		useEffect(() => {
-			state.actions.buscarTienda();
-			state.actions.getProductosTienda();
+			// state.actions.buscarTienda();
+			// state.actions.getProductosTienda();
 			state.actions.fetchCargarTiendas();
 			/**
 			 * EDIT THIS!

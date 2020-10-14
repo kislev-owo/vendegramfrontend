@@ -1,11 +1,22 @@
-var baseURL = "https://labvendegram.herokuapp.com";
+//////////////////   URL DE HEROKU    /////
+
+//var baseURL = "https://labvendegram.herokuapp.com";
+
+///////////////// URL DE OSCAR (LOCAL) /////////
+var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io/";
+
 //var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
 	return {
 		store: {
 			token: null,
-			usuarioLogin: [2],
-			nombreUsuario: [],
+			//usuarioLogin: [2],
+			usuarioLogin: {
+				usuario_id: "",
+				nombre_usuario: ""
+			},
+
+			//nombreUsuario: [],
 
 			etiquetas: [
 				"alimentos",
@@ -120,42 +131,42 @@ const getState = ({ getStore, getActions, setStore }) => {
 			productos_tienda: [],
 
 			tiendas: [
-				{
-					id: "2",
-					nombre_tienda: "Bordaclick",
-					foto_tienda: "https://via.placeholder.com/150",
-					visibilidad: false,
-					telefono_tienda: "04122587430",
-					correo_tienda: "pedidos@bordaclick.com",
-					facebook_tienda: "/Bordaclick",
-					instagram_tienda: "@bordaclick",
-					twitter_tienda: "@bordaclick",
-					zona_general: "Las Mercedes",
-					zona_uno: "La Trinidad",
-					zona_dos: "Santa Fe",
-					zona_tres: "Los Samanes",
-					usuario_id: "1",
-					usuario_nombre: "Albany",
-					productos: [1, 2, 3, 4]
-				},
-				{
-					id: "1",
-					nombre_tienda: "PersonitasShop",
-					foto_tienda: "https://via.placeholder.com/150",
-					visibilidad: false,
-					telefono_tienda: "02122587430",
-					correo_tienda: "pedidos@personitas.com",
-					facebook_tienda: "/personitas_shop",
-					instagram_tienda: "@personitas",
-					twitter_tienda: "@personit4s",
-					zona_general: "Macaracuay",
-					zona_uno: "La Urbina",
-					zona_dos: "Palo Verde",
-					zona_tres: "La California",
-					usuario_nombre: "Pedro",
-					usuario_id: "2",
-					productos: [4, 5]
-				}
+				// {
+				// 	id: "2",
+				// 	nombre_tienda: "Bordaclick",
+				// 	foto_tienda: "https://via.placeholder.com/150",
+				// 	visibilidad: false,
+				// 	telefono_tienda: "04122587430",
+				// 	correo_tienda: "pedidos@bordaclick.com",
+				// 	facebook_tienda: "/Bordaclick",
+				// 	instagram_tienda: "@bordaclick",
+				// 	twitter_tienda: "@bordaclick",
+				// 	zona_general: "Las Mercedes",
+				// 	zona_uno: "La Trinidad",
+				// 	zona_dos: "Santa Fe",
+				// 	zona_tres: "Los Samanes",
+				// 	usuario_id: "1",
+				// 	usuario_nombre: "Albany",
+				// 	productos: [1, 2, 3, 4]
+				// },
+				// {
+				// 	id: "1",
+				// 	nombre_tienda: "PersonitasShop",
+				// 	foto_tienda: "https://via.placeholder.com/150",
+				// 	visibilidad: false,
+				// 	telefono_tienda: "02122587430",
+				// 	correo_tienda: "pedidos@personitas.com",
+				// 	facebook_tienda: "/personitas_shop",
+				// 	instagram_tienda: "@personitas",
+				// 	twitter_tienda: "@personit4s",
+				// 	zona_general: "Macaracuay",
+				// 	zona_uno: "La Urbina",
+				// 	zona_dos: "Palo Verde",
+				// 	zona_tres: "La California",
+				// 	usuario_nombre: "Pedro",
+				// 	usuario_id: "2",
+				// 	productos: [4, 5]
+				// }
 			],
 
 			datos_registro: {
@@ -247,7 +258,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			buscarTienda: () => {
 				const store = getStore();
 				var arrPorId = store.tiendas.filter(obj => {
-					if ("usuario_id" in obj && obj.usuario_id == store.usuarioLogin && !isNaN(obj.usuario_id)) {
+					if (
+						"usuario_id" in obj &&
+						obj.usuario_id == store.usuarioLogin.usuario_id &&
+						!isNaN(obj.usuario_id)
+					) {
 						return true;
 					} else {
 						return false;
@@ -468,9 +483,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 			/////////////  FINISH- POST:REGRISTRO  USUARIO //////////////////////////////////////
 
 			/////////////  INIT- POST: INGRESAR //////////////////////////////////////
-
 			ingresando: async datos => {
 				let usuario = [];
+				const store = getStore();
+				let id;
+				let nombre;
 				let response = await fetch(baseURL + "/" + "ingresar", {
 					method: "POST",
 					headers: {
@@ -487,16 +504,49 @@ const getState = ({ getStore, getActions, setStore }) => {
 					// token => {
 					localStorage.setItem("token", usuario.jwt);
 					setStore({ usuario, token: usuario.jwt });
-					localStorage.setItem("usuarioLogin", usuario.id);
-					setStore({ usuario, usuarioLogin: usuario.id });
-					localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
-					setStore({ usuario, nombreUsuario: usuario.nombre_usuario });
+					//localStorage.setItem("usuarioLogin", usuario.id);
+					id = usuario.id;
+					nombre = usuario.nombre;
+					setStore({ usuarioLogin: { usuario_id: id, usuario_nombre: nombre } });
+					//localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
+					//setStore({ usuarioLogin, nombre_usuario: usuario.nombre_usuario });
+					getActions().buscarTienda();
+					getActions().getProductosTienda();
 					return true;
 					// };
 				} else {
 					return false;
 				}
 			},
+
+			// ingresando: async datos => {
+			// 	let usuario = [];
+			// 	let response = await fetch(baseURL + "/" + "ingresar", {
+			// 		method: "POST",
+			// 		headers: {
+			// 			"Content-Type": "application/json"
+			// 		},
+			// 		body: JSON.stringify({
+			// 			correo: datos.correo,
+			// 			clave: datos.clave
+			// 		})
+			// 	});
+			// 	if (response.ok) {
+			// 		usuario = await response.json();
+			// 		// token => token.json();
+			// 		// token => {
+			// 		localStorage.setItem("token", usuario.jwt);
+			// 		setStore({ usuario, token: usuario.jwt });
+			// 		localStorage.setItem("usuarioLogin", usuario.id);
+			// 		setStore({ usuario, usuarioLogin: usuario.id });
+			// 		localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
+			// 		setStore({ usuario, nombreUsuario: usuario.nombre_usuario });
+			// 		return true;
+			// 		// };
+			// 	} else {
+			// 		return false;
+			// 	}
+			// },
 
 			/////////////  FINISH- POST: INGRESAR //////////////////////////////////////
 
