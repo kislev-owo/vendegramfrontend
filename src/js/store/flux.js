@@ -219,11 +219,15 @@ const getState = ({ getStore, getActions, setStore }) => {
 					url += `titulo=${productoABuscar.toLowerCase()}`;
 					console.log(url);
 				}
-				if (etiquetaABuscar != "Selecione una Categoría") {
+				if (etiquetaABuscar != "Seleccione una Categoría") {
 					url += `&etiqueta=${etiquetaABuscar.toLowerCase()}`;
+				} else {
+					url = url;
 				}
-				if (zonaABuscar != "Selecione una Zona") {
+				if (zonaABuscar != "Seleccione una Zona") {
 					url += `&zona=${zonaABuscar.toLowerCase()}`;
+				} else {
+					url = url;
 				}
 				let response = await fetch(url);
 				if (response.ok) {

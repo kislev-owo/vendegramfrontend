@@ -53,7 +53,7 @@ export const Home = () => {
 							<Carrousel />
 						</div>
 
-						<div clasName="row-flex justify-content-between align-items-center" />
+						{/* <div className="row-flex justify-content-between align-items-center" /> */}
 					</div>
 				</div>
 

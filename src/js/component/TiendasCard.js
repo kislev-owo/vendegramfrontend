@@ -65,7 +65,7 @@ export const TiendasCard = props => {
 								})}
 							</div>
 						</div>
-						<div clasName="row-flex text-center align-items-center mt-3">
+						<div className="row-flex text-center align-items-center mt-3">
 							<Link to="/Etiquetas">
 								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
 									Categorías

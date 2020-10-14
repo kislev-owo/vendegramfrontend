@@ -24,6 +24,9 @@ export const Productos = props => {
 				<h2 className="text-center ml-4 mb-2 m-auto">
 					<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
 						Productos encontrados
+						<span className="badge badge-pill badge-light ml-1" style={{ color: "#03989E" }}>
+							{store.productos.length}
+						</span>
 					</span>
 				</h2>
 				{/* <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4"> */}

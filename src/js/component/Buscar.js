@@ -78,7 +78,7 @@ export const Buscar = () => {
 						aria-label="Example select with button addon"
 						value={etiquetaABuscar}
 						onChange={e => setEtiquetaABuscar(e.target.value)}>
-						<option selected>Selecione una Categoría</option>
+						<option selected>Seleccione una Categoría</option>
 						{store.etiquetas.map((etiqueta, index) => {
 							return <option key={index}>{etiqueta}</option>;
 						})}
