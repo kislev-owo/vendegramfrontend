@@ -72,15 +72,25 @@ export const Navbar = () => {
 
 							<li className="nav-item">
 								{store.token != null ? (
-									<Link
-										onClick={() => actions.salir()}
-										type="button"
-										href="#"
-										tabIndex="-1"
-										aria-disabled="true"
-										className="nav-link">
-										{"Salir"}
-									</Link>
+									<>
+										<Link
+											onClick={() => actions.salir()}
+											type="button"
+											href="#"
+											tabIndex="-1"
+											aria-disabled="true"
+											className="nav-link">
+											{"Salir"}
+										</Link>
+										<Link
+											className="nav-link"
+											href="#"
+											tabIndex="-1"
+											aria-disabled="true"
+											to="/perfil-vendedor">
+											{"Mi perfil"}
+										</Link>
+									</>
 								) : (
 									<Link
 										className="nav-link"
