@@ -36,18 +36,18 @@ export const Etiquetas = props => {
 								<EtiquetasCard />
 							</div>
 						</div>
-						<div clasName="row-flex justify-content-between align-items-center mt-3">
-							<button
-								className="btn btn-primary"
-								style={{ background: "#03989E" }}
-								onClick={() => {
-									actions.fetchCargarTiendas();
-									console.log("Esta es la vista de tiendas en TiendasCard");
-									history.push("../TiendasCard");
-								}}>
-								Tiendas
-							</button>
-						</div>
+						{/* <div className="row-flex justify-content-between align-items-center mt-3"> */}
+						<button
+							className="btn btn-primary"
+							style={{ background: "#03989E" }}
+							onClick={() => {
+								actions.fetchCargarTiendas();
+								console.log("Esta es la vista de tiendas en TiendasCard");
+								history.push("../TiendasCard");
+							}}>
+							Tiendas
+						</button>
+						{/* </div> */}
 					</div>
 				</div>
 			</div>
