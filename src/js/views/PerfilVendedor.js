@@ -99,9 +99,9 @@ export const PerfilVendedor = () => {
 			<div className="row my-5">
 				<div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}>
 					<ProductosTienda nombre={store.usuarioLogin.usuario_id} />
-					<ImageContextProvider>
+					{/* <ImageContextProvider>
 						<ProductoImages />
-					</ImageContextProvider>
+					</ImageContextProvider> */}
 				</div>
 			</div>
 		</div>
