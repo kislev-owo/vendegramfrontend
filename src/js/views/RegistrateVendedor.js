@@ -2,7 +2,6 @@ import React, { useState, useEffect, useContext } from "react";
 import { Link } from "react-router-dom";
 
 import { Context } from "../store/appContext";
-
 import "../../styles/demo.scss";
 
 export const RegistrateVendedor = () => {
@@ -114,6 +113,75 @@ export const RegistrateVendedor = () => {
 							aria-describedby="correoTiendaHelp"
 						/>
 						<small id="correoTiendaHelp" className="form-text text-muted">
+							{""}
+						</small>
+					</div>
+					<div className="form-group px-3">
+						<label htmlFor="exampleInputEmail1">{`Ubicacion de la Tienda`}</label>
+						<select
+							className="custom-select"
+							id="inputGroupSelect01"
+							aria-label="Example select with button addon"
+							value={tienda.zona_general}
+							onChange={e => {
+								setTienda({ ...tienda, zona_general: e.target.value });
+							}}>
+							<option value="" selected>{`Seleccione una Zona`}</option>
+							<option value="Miranda">{`Miranda`}</option>
+							<option value="Distrito Capital">{`Distrito Capital`}</option>
+						</select>
+						<small id="UbicacionTiendaHelp" className="form-text text-muted">
+							{""}
+						</small>
+					</div>
+					<div className="form-group px-3">
+						<label htmlFor="exampleInputEmail1">{`Zonas de delivery`}</label>
+						<select
+							className="custom-select"
+							id="inputGroupSelect01"
+							aria-label="Example select with button addon"
+							value={tienda.zona_uno}
+							onChange={e => {
+								setTienda({ ...tienda, zona_uno: e.target.value });
+							}}>
+							<option selected>Seleccione una Zona</option>
+							{store.zonas_delivery.map((zona, index) => {
+								return <option key={index}>{zona}</option>;
+							})}
+						</select>
+						<small id="UbicacionTiendaHelp" className="form-text text-muted">
+							{""}
+						</small>
+						<select
+							className="custom-select"
+							id="inputGroupSelect01"
+							aria-label="Example select with button addon"
+							value={tienda.zona_dos}
+							onChange={e => {
+								setTienda({ ...tienda, zona_dos: e.target.value });
+							}}>
+							<option selected>Seleccione una Zona</option>
+							{store.zonas_delivery.map((zona, index) => {
+								return <option key={index}>{zona}</option>;
+							})}
+						</select>
+						<small id="UbicacionTiendaHelp" className="form-text text-muted">
+							{""}
+						</small>
+						<select
+							className="custom-select"
+							id="inputGroupSelect01"
+							aria-label="Example select with button addon"
+							value={tienda.zona_tres}
+							onChange={e => {
+								setTienda({ ...tienda, zona_tres: e.target.value });
+							}}>
+							<option selected>Seleccione una Zona</option>
+							{store.zonas_delivery.map((zona, index) => {
+								return <option key={index}>{zona}</option>;
+							})}
+						</select>
+						<small id="UbicacionTiendaHelp" className="form-text text-muted">
 							{""}
 						</small>
 					</div>
