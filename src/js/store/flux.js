@@ -75,6 +75,41 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"santa_teresa",
 				"ventitrés_de_enero"
 			],
+			zonas_delivery: [
+				"Distrito Capital",
+				"Miranda",
+				"Altagracia",
+				"Antímano",
+				"Candelaria",
+				"Caricuao",
+				"Catedral",
+				"Catia",
+				"Caucaguita",
+				"Chacao",
+				"El Cafetal",
+				"El Junquito",
+				"El Paraíso",
+				"El Recreo",
+				"El Valle",
+				"Fila De Mariches",
+				"La Dolorita",
+				"La Pastora",
+				"La Vega",
+				"Las Minas",
+				"Leoncio Martínez",
+				"Macarao",
+				"Nuestra Señora del Rosario",
+				"Petare",
+				"San Agustín",
+				"San Bernardino",
+				"San José",
+				"San Juan",
+				"San Pedro",
+				"Santa Rosalía",
+				"Santa Rosalía de Palermo",
+				"Santa Teresa",
+				"Ventitrés de Enero"
+			],
 			productos: [
 				// {
 				// 	id: "1",
@@ -264,6 +299,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// ######## Funcion que Filtra las tiendas segun el id del usuario ########
 			// ##### Si está funcionando  #####
 			buscarTienda: usuario_id => {
+				console.log("Entre en buscar tienda");
 				const store = getStore();
 				var arrPorId = store.tiendas.filter(obj => {
 					if ("usuario_id" in obj && obj.usuario_id == usuario_id && !isNaN(obj.usuario_id)) {
@@ -272,6 +308,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 						return false;
 					}
 				});
+				console.log(`Aqui esta la tienda del usuario:`);
+				console.log(`${arrPorId}`);
 				setStore({
 					tienda: arrPorId[0] || { productos: [] }
 				});
@@ -475,36 +513,13 @@ const getState = ({ getStore, getActions, setStore }) => {
 						administrador: false
 					}
 				});
-				// let response = await fetch(baseURL + "/" + "usuario", {
-				// 	method: "POST",
-				// 	body: JSON.stringify({
-				// nombre: datos.nombre,
-				// apellido: datos.apellido,
-				// correo: datos.correo,
-				// telefono: datos.codigo + datos.numero,
-				// nombre_usuario: datos.nombre_usuario,
-				// clave: datos.clave,
-				// fecha_nacimiento: datos.fecha_nacimiento,
-				// foto_perfil: "url",
-				// suscripcion: 1,
-				// administrador: false
-				// 	}),
-				// 	headers: {
-				// 		"Content-Type": "application/json"
-				// 	}
-				// });
-				// if (response.ok) {
-				// 	// await getActions().ingresando(datos);
-				// 	return true;
-				// } else {
-				// 	return false;
-				// }
 			},
 
 			/////////////  FINISH- POST:REGRISTRO  USUARIO //////////////////////////////////////
 
 			/////////////  INIT- POST: INGRESAR //////////////////////////////////////
 			ingresando: async datos => {
+				console.log("entre en ingresando");
 				let usuario = [];
 				const store = getStore();
 				let id;
@@ -531,6 +546,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ usuarioLogin: { usuario_id: id, usuario_nombre: nombre } });
 					//localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
 					//setStore({ usuarioLogin, nombre_usuario: usuario.nombre_usuario });
+					console.log(`Aqui esta el id del usuario que esta registrado: ${id}`);
 					let id_productos = await getActions().buscarTienda(id);
 					getActions().getProductosTienda(id_productos);
 					return id;
@@ -539,35 +555,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return false;
 				}
 			},
-
-			// ingresando: async datos => {
-			// 	let usuario = [];
-			// 	let response = await fetch(baseURL + "/" + "ingresar", {
-			// 		method: "POST",
-			// 		headers: {
-			// 			"Content-Type": "application/json"
-			// 		},
-			// 		body: JSON.stringify({
-			// 			correo: datos.correo,
-			// 			clave: datos.clave
-			// 		})
-			// 	});
-			// 	if (response.ok) {
-			// 		usuario = await response.json();
-			// 		// token => token.json();
-			// 		// token => {
-			// 		localStorage.setItem("token", usuario.jwt);
-			// 		setStore({ usuario, token: usuario.jwt });
-			// 		localStorage.setItem("usuarioLogin", usuario.id);
-			// 		setStore({ usuario, usuarioLogin: usuario.id });
-			// 		localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
-			// 		setStore({ usuario, nombreUsuario: usuario.nombre_usuario });
-			// 		return true;
-			// 		// };
-			// 	} else {
-			// 		return false;
-			// 	}
-			// },
 
 			/////////////  FINISH- POST: INGRESAR //////////////////////////////////////
 
