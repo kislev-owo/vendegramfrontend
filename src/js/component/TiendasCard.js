@@ -32,6 +32,9 @@ export const TiendasCard = props => {
 						<h2 className="text-center ml-4 mb-2 m-auto">
 							<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
 								Tiendas Disponibles
+								<span className="badge badge-pill badge-light ml-1" style={{ color: "#03989E" }}>
+									{store.tiendas.length}
+								</span>
 							</span>
 						</h2>
 

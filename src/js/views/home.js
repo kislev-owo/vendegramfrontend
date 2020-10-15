@@ -56,10 +56,10 @@ export const Home = () => {
 						{/* <div className="row-flex justify-content-between align-items-center" /> */}
 					</div>
 				</div>
-
-				{/* <div className="container-fluid">
+			</div>
+			{/* <div className="container-fluid">
 					<div className="row"> */}
-				{/* <div className="col-5">
+			{/* <div className="col-5">
 							<ul className="list-group list-group-flush">
 								<li className="list-group-item list-group-item-secondary">Actividad Reciente</li>
 								<li className="list-group-item">Kislev se registró como vendedora</li>
@@ -68,9 +68,8 @@ export const Home = () => {
 							</ul>
 						</div> */}
 
-				{/* </div>
-				</div> */}
-			</div>
+			{/* </div>
+			</div> */}
 		</>
 	);
 };
