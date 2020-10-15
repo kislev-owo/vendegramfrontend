@@ -1,9 +1,11 @@
 //////////////////   URL DE HEROKU    /////
 
-var baseURL = "https://labvendegram.herokuapp.com";
+//var baseURL = "https://labvendegram.herokuapp.com";
+
+var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io";
 
 ///////////////// URL DE OSCAR (LOCAL) /////////
-//var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io/";
+// var baseURL = "https://5000-f3338a26-702f-4add-9cf4-5cb8f9c5e44d.ws-us02.gitpod.io/";
 
 //var baseURL = "http://localhost:5000";
 const getState = ({ getStore, getActions, setStore }) => {
@@ -127,7 +129,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// 	token: []
 			// },
 			usuarios: [],
-			tienda: {},
+			tienda: {
+				productos: []
+			},
 			productos_tienda: [],
 
 			tiendas: [
@@ -259,26 +263,23 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// ######## Funcion que Filtra las tiendas segun el id del usuario ########
 			// ##### Si está funcionando  #####
-			buscarTienda: () => {
+			buscarTienda: usuario_id => {
 				const store = getStore();
 				var arrPorId = store.tiendas.filter(obj => {
-					if (
-						"usuario_id" in obj &&
-						obj.usuario_id == store.usuarioLogin.usuario_id &&
-						!isNaN(obj.usuario_id)
-					) {
+					if ("usuario_id" in obj && obj.usuario_id == usuario_id && !isNaN(obj.usuario_id)) {
 						return true;
 					} else {
 						return false;
 					}
 				});
 				setStore({
-					tienda: arrPorId[0]
+					tienda: arrPorId[0] || { productos: [] }
 				});
+				return arrPorId[0] ? arrPorId[0].productos : [];
 			},
 			getProductosTienda: async () => {
 				const store = getStore();
-				var producto_id = store.tienda.productos;
+				var producto_id = store.tienda.productos; //futuro lista de id o algo mas exlicativo :)
 				var arreglo = [];
 				console.log(producto_id);
 				for (var i = 0; i < producto_id.length; i++) {
@@ -343,11 +344,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 					return true;
 				} else {
 					console.log(`get response failure: ${response.status}`);
-					setStore({
-						tiendas: []
-					});
-					return false;
 				}
+				setStore({
+					tiendas: []
+				});
+				return false;
 			},
 
 			// ######## Fetch para Cargar Vista de Productos x Tienda desde la Api ######## 4
@@ -431,36 +432,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 					if (response.ok) {
 						console.log("Pude crear el usuario correctamente");
-						setStore({
-							datos_registro: {
-								nombre: "",
-								apellido: "",
-								correo: "",
-								foto_perfil: "",
-								telefono: "",
-								nombre_usuario: "",
-								clave: "",
-								fecha_nacimiento: "",
-								codigo: "",
-								nombre_tienda: "",
-								suscripcion: null,
-								admin: false
-							}
-						});
+						return true;
+						// setStore({
+						// 	datos_registro: {
+						// 		nombre: "",
+						// 		apellido: "",
+						// 		correo: "",
+						// 		foto_perfil: "",
+						// 		telefono: "",
+						// 		nombre_usuario: "",
+						// 		clave: "",
+						// 		fecha_nacimiento: "",
+						// 		codigo: "",
+						// 		nombre_tienda: "",
+						// 		suscripcion: null,
+						// 		admin: false
+						// 	}
+						// });
 					} else {
 						console.log(`Error al crear el usuario. ${response.status} ${response.statusText}`);
 					}
 				} catch (error) {
 					console.log(`explote`);
 				}
+				return false;
 			},
 
 			/////////////  INIT- POST: REGISTRO USUARIO //////////////////////////////////////
 
 			datosRegistroUsuario: async datos => {
-				let response = await fetch(baseURL + "/" + "usuario", {
-					method: "POST",
-					body: JSON.stringify({
+				setStore({
+					datos_registro: {
 						nombre: datos.nombre,
 						apellido: datos.apellido,
 						correo: datos.correo,
@@ -471,17 +473,32 @@ const getState = ({ getStore, getActions, setStore }) => {
 						foto_perfil: "url",
 						suscripcion: 1,
 						administrador: false
-					}),
-					headers: {
-						"Content-Type": "application/json"
 					}
 				});
-				if (response.ok) {
-					await getActions().ingresando(datos);
-					return true;
-				} else {
-					return false;
-				}
+				// let response = await fetch(baseURL + "/" + "usuario", {
+				// 	method: "POST",
+				// 	body: JSON.stringify({
+				// nombre: datos.nombre,
+				// apellido: datos.apellido,
+				// correo: datos.correo,
+				// telefono: datos.codigo + datos.numero,
+				// nombre_usuario: datos.nombre_usuario,
+				// clave: datos.clave,
+				// fecha_nacimiento: datos.fecha_nacimiento,
+				// foto_perfil: "url",
+				// suscripcion: 1,
+				// administrador: false
+				// 	}),
+				// 	headers: {
+				// 		"Content-Type": "application/json"
+				// 	}
+				// });
+				// if (response.ok) {
+				// 	// await getActions().ingresando(datos);
+				// 	return true;
+				// } else {
+				// 	return false;
+				// }
 			},
 
 			/////////////  FINISH- POST:REGRISTRO  USUARIO //////////////////////////////////////
@@ -514,9 +531,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 					setStore({ usuarioLogin: { usuario_id: id, usuario_nombre: nombre } });
 					//localStorage.setItem("nombreUsuario", usuario.nombre_usuario);
 					//setStore({ usuarioLogin, nombre_usuario: usuario.nombre_usuario });
-					getActions().buscarTienda();
-					getActions().getProductosTienda();
-					return true;
+					let id_productos = await getActions().buscarTienda(id);
+					getActions().getProductosTienda(id_productos);
+					return id;
 					// };
 				} else {
 					return false;
@@ -563,21 +580,44 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			/////////////  FINISH- LOGOUT //////////////////////////////////////
 
-			datosRegistroTienda: tienda => {
+			datosRegistroTienda: async tienda => {
 				const store = getStore();
-				setStore({
-					correo_tienda: tienda.correo_tienda,
-					facebook_tienda: tienda.facebook_tienda,
-					foto_tienda: "",
-					instagram_tienda: tienda.instagram_tienda,
-					nombre_tienda: tienda.nombre_tienda,
-					telefono_tienda: tienda.codigo + tienda.numero,
-					twitter_tienda: tienda.twitter_tienda,
-					zona_dos: "",
-					zona_general: "",
-					zona_tres: "",
-					zona_uno: ""
-				});
+				let usuario = await getActions().crearUsuario();
+				if (usuario) {
+					const usuarioId = await getActions().ingresando({
+						correo: store.datos_registro.correo,
+						clave: store.datos_registro.clave
+					});
+					if (usuarioId != false) {
+						tienda.usuario_id = usuarioId;
+						tienda.telefono_tienda = tienda.codigo + tienda.numero;
+						delete tienda.codigo;
+						delete tienda.numero;
+						const response = await fetch(`${baseURL}/tienda`, {
+							method: "POST",
+							body: JSON.stringify(tienda),
+							headers: {
+								"Content-Type": "application/json",
+								Authorization: `Bearer ${store.token}`
+							}
+						});
+					} else {
+						alert("estoy fallando manao");
+					}
+				}
+				// setStore({
+				// 	correo_tienda: tienda.correo_tienda,
+				// 	facebook_tienda: tienda.facebook_tienda,
+				// 	foto_tienda: "",
+				// 	instagram_tienda: tienda.instagram_tienda,
+				// 	nombre_tienda: tienda.nombre_tienda,
+				// 	telefono_tienda: tienda.codigo + tienda.numero,
+				// 	twitter_tienda: tienda.twitter_tienda,
+				// 	zona_dos: "",
+				// 	zona_general: "",
+				// 	zona_tres: "",
+				// 	zona_uno: ""
+				// });
 			},
 			// ######## Fetch para cargar todos los usuarios en el store ########
 			// ##### (No está en uso todavía y creo que le faltan cosas) #####
@@ -618,28 +658,29 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
-			},
-
-			signUp: async (vendor_name, email, password, phone) => {
-				let response = await fetch(baseURL + "/" + "usuario", {
-					method: "POST",
-					body: JSON.stringify({
-						vendor_name: vendor_name,
-						email: email,
-						password: password,
-						phone: phone
-					}),
-					headers: {
-						"Content-Type": "application/json"
-					}
-				});
-				if (response.ok) {
-					await getActions().login(email, password);
-					return true;
-				} else {
-					return false;
-				}
 			}
+
+			//revisar y borrar
+			// signUp: async (vendor_name, email, password, phone) => {
+			// 	let response = await fetch(baseURL + "/" + "usuario", {
+			// 		method: "POST",
+			// 		body: JSON.stringify({
+			// 			vendor_name: vendor_name,
+			// 			email: email,
+			// 			password: password,
+			// 			phone: phone
+			// 		}),
+			// 		headers: {
+			// 			"Content-Type": "application/json"
+			// 		}
+			// 	});
+			// 	if (response.ok) {
+			// 		await getActions().login(email, password);
+			// 		return true;
+			// 	} else {
+			// 		return false;
+			// 	}
+			// }
 		}
 	};
 };

@@ -5,10 +5,10 @@ import { useHistory } from "react-router-dom";
 import { Carousel } from "react-bootstrap";
 import { Context } from "../store/appContext";
 import { Buscar } from "../component/Buscar";
+import productos from "../../img/productos2.jpg";
 import frutas from "../../img/Frutas.png";
-import paprika from "../../img/paprika.jpg";
-import bandeja from "../../img/bandeja.png";
-import reparaciones from "../../img/reparaciones.png";
+import servicios from "../../img/servicios2.jpeg";
+import reparaciones from "../../img/reparaciones2.jpg";
 //import rigoBaby from "../../img/rigo-baby.png";
 
 export const Carrousel = () => {
@@ -24,9 +24,9 @@ export const Carrousel = () => {
 						<Carousel.Item style={{ color: "#03989E" }}>
 							<img
 								className="d-block m-auto img-thumbnail"
-								src={frutas}
+								src={productos}
 								alt="First slide"
-								style={{ width: 650, height: 500 }}
+								style={{ width: 850, height: 550 }}
 							/>
 							<Carousel.Caption>
 								<button
@@ -47,9 +47,9 @@ export const Carrousel = () => {
 						<Carousel.Item>
 							<img
 								className="d-block m-auto img-thumbnail "
-								src={bandeja}
+								src={servicios}
 								alt="Second slide"
-								style={{ width: 650, height: 500 }}
+								style={{ width: 850, height: 550 }}
 							/>
 
 							<Carousel.Caption>
@@ -72,9 +72,9 @@ export const Carrousel = () => {
 						<Carousel.Item>
 							<img
 								className="d-block  m-auto img-thumbnail"
-								src={paprika}
+								src={frutas}
 								alt="Third slide"
-								style={{ width: 650, height: 500 }}
+								style={{ width: 850, height: 550 }}
 							/>
 
 							<Carousel.Caption>
@@ -98,7 +98,7 @@ export const Carrousel = () => {
 								className="d-block m-auto img-thumbnail"
 								src={reparaciones}
 								alt="Fourth slide"
-								style={{ width: 600, height: 500 }}
+								style={{ width: 850, height: 550 }}
 							/>
 
 							<Carousel.Caption>

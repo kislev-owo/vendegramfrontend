@@ -82,6 +82,23 @@ export const Productos = props => {
 								</div>
 							);
 						})}
+					<div className="row-flex m-auto">
+						<Link to="/Etiquetas">
+							<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+								Categorías
+							</button>
+						</Link>
+
+						<button
+							className="btn btn-primary"
+							style={{ background: "#03989E" }}
+							onClick={() => {
+								console.log("Esta es la vista de tiendas en TiendasCard");
+								history.push("../TiendasCard");
+							}}>
+							Tiendas
+						</button>
+					</div>
 				</div>
 			</div>
 		</>

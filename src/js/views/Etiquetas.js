@@ -25,7 +25,21 @@ export const Etiquetas = props => {
 				<div className="jumbotron ml-2 mr-2 mt-2 pt-4 ">
 					<div className="text-center mb-2">
 						<h2 className="text-center ml-4 mb-2 m-auto">
-							<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
+							<div>
+								<button
+									className="btn btn-primary"
+									style={{ background: "#03989E" }}
+									onClick={() => {
+										actions.fetchCargarTiendas();
+										console.log("Esta es la vista de tiendas en TiendasCard");
+										history.push("../TiendasCard");
+									}}>
+									Tiendas
+								</button>
+							</div>
+							<span
+								className="badge badge-pill badge-info border mt-3 mb-2"
+								style={{ background: "#03989E" }}>
 								Categorías de Productos
 							</span>
 						</h2>
@@ -36,18 +50,6 @@ export const Etiquetas = props => {
 								<EtiquetasCard />
 							</div>
 						</div>
-						{/* <div className="row-flex justify-content-between align-items-center mt-3"> */}
-						<button
-							className="btn btn-primary"
-							style={{ background: "#03989E" }}
-							onClick={() => {
-								actions.fetchCargarTiendas();
-								console.log("Esta es la vista de tiendas en TiendasCard");
-								history.push("../TiendasCard");
-							}}>
-							Tiendas
-						</button>
-						{/* </div> */}
 					</div>
 				</div>
 			</div>

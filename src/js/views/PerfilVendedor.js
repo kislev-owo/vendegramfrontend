@@ -5,6 +5,8 @@ import { Zona } from "../component/Zonas";
 import { ProductosTienda } from "../component/ProductosTienda";
 import { useEffect } from "react";
 import { Context } from "../store/appContext";
+import ProductoImages from "../views/ProductoImages";
+import ImageContextProvider from "../store/ImageContext";
 
 export const PerfilVendedor = () => {
 	const { tiendaId } = useParams();
@@ -97,6 +99,9 @@ export const PerfilVendedor = () => {
 			<div className="row my-5">
 				<div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}>
 					<ProductosTienda nombre={store.usuarioLogin.usuario_id} />
+					<ImageContextProvider>
+						<ProductoImages />
+					</ImageContextProvider>
 				</div>
 			</div>
 		</div>

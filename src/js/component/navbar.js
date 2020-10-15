@@ -23,11 +23,11 @@ export const Navbar = () => {
 	});
 	return (
 		<>
-			<nav className="navbar navbar-expand-lg navbar-light " style={{ background: "#C4C4C4" }}>
+			<nav className="navbar navbar-expand-lg navbar-light ">
 				<div className="row mr-auto p-2">
 					<Link className="navbar-brand " to="/" href="#">
 						<img
-							src={`https://res.cloudinary.com/vendegram/image/upload/v1600811711/Search-Bot_2_dzesqu.png`}
+							src={`https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png`}
 							width="80"
 							height="80"
 							alt=""
@@ -42,16 +42,17 @@ export const Navbar = () => {
 							</a>
 						</div>
 						<div>
-							<span className="navbar-text">Tu vendedor de confianza</span>
+							<span className="navbar-brand">Tu vendedor de confianza</span>
 						</div>
 					</div>
 				</div>
 				<div className="p-2">
 					<div className="collapse navbar-collapse" id="navbarNav">
 						<ul className="navbar-nav">
-							<li className="nav-item active">
+							<li className="nav-item ">
 								<Link className="nav-link" href="#" to="/">
-									Inicio <span className="sr-only">(current)</span>
+									Inicio
+									{/*  <span className="sr-only">(current)</span> */}
 								</Link>
 							</li>
 							<li className="nav-item">
@@ -66,7 +67,7 @@ export const Navbar = () => {
 							</li>
 							<li className="nav-item">
 								<Link to="/nosotros" className="nav-link" href="#" tabIndex="-1" aria-disabled="true">
-									Nosotros
+									Desarrolladores
 								</Link>
 							</li>
 

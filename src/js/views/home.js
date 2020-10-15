@@ -27,27 +27,28 @@ export const Home = () => {
 						<div className="row-flex">
 							<div>
 								<h2 className="text-center ml-4 mb-2 m-auto">
-									<span className="badge badge-pill badge-light border border-info mb-4">
+									<span className="badge badge-pill badge-light border border-info mb-2">
 										¿Que estás buscando?
 									</span>
 								</h2>
+								<div>
+									<Link to="/Etiquetas">
+										<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+											Categorías
+										</button>
+									</Link>
+
+									<button
+										className="btn btn-primary"
+										style={{ background: "#03989E" }}
+										onClick={() => {
+											console.log("Esta es la vista de tiendas en TiendasCard");
+											history.push("../TiendasCard");
+										}}>
+										Tiendas
+									</button>
+								</div>
 							</div>
-
-							<Link to="/Etiquetas">
-								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-									Categorías
-								</button>
-							</Link>
-
-							<button
-								className="btn btn-primary"
-								style={{ background: "#03989E" }}
-								onClick={() => {
-									console.log("Esta es la vista de tiendas en TiendasCard");
-									history.push("../TiendasCard");
-								}}>
-								Tiendas
-							</button>
 						</div>
 						<div className="card-deck d-flex align-items-center">
 							<Carrousel />
