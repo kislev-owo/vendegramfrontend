@@ -42,7 +42,7 @@ export const Productos = props => {
 										{/* <div className="no-gutters"> */}
 										{/* <div className="col"> */}
 										<img
-											src="https://via.placeholder.com/150x100"
+											src="https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png"
 											className="card-img-top"
 											alt="Foto del Producto"
 										/>
@@ -82,23 +82,23 @@ export const Productos = props => {
 								</div>
 							);
 						})}
-					<div className="row-flex m-auto">
-						<Link to="/Etiquetas">
-							<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-								Categorías
-							</button>
-						</Link>
-
-						<button
-							className="btn btn-primary"
-							style={{ background: "#03989E" }}
-							onClick={() => {
-								console.log("Esta es la vista de tiendas en TiendasCard");
-								history.push("../TiendasCard");
-							}}>
-							Tiendas
+				</div>
+				<div className="row-flex text-center">
+					<Link to="/Etiquetas">
+						<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+							Categorías
 						</button>
-					</div>
+					</Link>
+
+					<button
+						className="btn btn-primary"
+						style={{ background: "#03989E" }}
+						onClick={() => {
+							console.log("Esta es la vista de tiendas en TiendasCard");
+							history.push("../TiendasCard");
+						}}>
+						Tiendas
+					</button>
 				</div>
 			</div>
 		</>

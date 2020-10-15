@@ -44,7 +44,7 @@ export const TiendasCard = props => {
 									return (
 										<div className="card h-50" key={index}>
 											<img
-												src="https://via.placeholder.com/150x50"
+												src="https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png"
 												className="card-img-top"
 												alt="Foto"
 											/>

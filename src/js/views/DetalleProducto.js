@@ -30,7 +30,7 @@ export const DetalleProducto = () => {
 									{/* <div className="no-gutters"> */}
 									{/* <div className="col"> */}
 									<img
-										src="https://via.placeholder.com/300x200"
+										src="https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png"
 										className="card-img-top"
 										alt="Foto del Producto"
 									/>
