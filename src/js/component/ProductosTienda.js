@@ -11,7 +11,11 @@ export const ProductosTienda = props => {
 	return store.productos_tienda.map((producto, index) => {
 		return (
 			<div className="card  mt-5 text-center" style={{ width: "18rem", marginRight: "3rem" }} key={index}>
-				<img src={producto.foto} className="card-img-top" alt="..." />
+				<img
+					src="https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png"
+					className="card-img-top"
+					alt="..."
+				/>
 				<div className="card-body">
 					<h5 className="card-title text-wrap">{`${producto.titulo}`}</h5>
 					<p className="card-tex text-wrap">{`Descripción: ${producto.descripcion}`}</p>

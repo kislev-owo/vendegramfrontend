@@ -7,6 +7,7 @@ export const Footer = () => (
 			<div className="container-fluid">
 				<div className="row d-flex justify-content-end m-3 " style={{ background: "#ffffff" }}>
 					<a href="https://t.me/VendegramBot" target="_blank" rel="noopener noreferrer">
+						{/* <h3 className="p-2">{`Ve a nuestro Telegram`}</h3> */}
 						<i className="fab fa-3x fa-telegram" style={{ color: "#03989E" }} />
 					</a>
 				</div>
