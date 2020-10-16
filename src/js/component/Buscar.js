@@ -30,7 +30,7 @@ export const Buscar = () => {
 						value={zonaABuscar}
 						onChange={e => setZonaABuscar(e.target.value)}>
 						<option selected>Seleccione una Zona</option>
-						{store.zonas.map((zona, index) => {
+						{store.zonas_delivery.map((zona, index) => {
 							return <option key={index}>{zona}</option>;
 						})}
 					</select>

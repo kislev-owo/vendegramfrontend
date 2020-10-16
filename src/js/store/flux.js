@@ -75,6 +75,43 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"santa_teresa",
 				"ventitrés_de_enero"
 			],
+
+			zonas_delivery: [
+				"Distrito Capital",
+				"Miranda",
+				"Altagracia",
+				"Antimano",
+				"Candelaria",
+				"Caricuao",
+				"Catedral",
+				"Catia",
+				"Caucagüita",
+				"Chacao",
+				"El Cafetal",
+				"El Junquito",
+				"El Paraíso",
+				"El Recreo",
+				"El Valle",
+				"Fila De Mariches",
+				"La Dolorita",
+				"La Pastora",
+				"La Vega",
+				"Las Minas",
+				"Leoncio Martínez",
+				"Macarao",
+				"Nuestra Señora Del Rosario",
+				"Petare",
+				"San Agustín",
+				"San Bernardino",
+				"San José",
+				"San Juan",
+				"San Pedro",
+				"Santa Rosalía",
+				"Santa Rosalía De Palermo",
+				"Santa Teresa",
+				"ventitrés De Enero"
+			],
+
 			productos: [
 				// {
 				// 	id: "1",
@@ -601,6 +638,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 								Authorization: `Bearer ${store.token}`
 							}
 						});
+						if (response.ok) {
+							console.log("se creo la tienda con éxito");
+							getActions().fetchCargarTiendas();
+						}
 					} else {
 						alert("estoy fallando manao");
 					}

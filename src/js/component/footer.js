@@ -6,10 +6,27 @@ export const Footer = () => (
 		<footer className="footer mt-auto py-3">
 			<div className="container-fluid">
 				<div className="row d-flex justify-content-end m-3 " style={{ background: "#ffffff" }}>
-					<a href="https://t.me/VendegramBot" target="_blank" rel="noopener noreferrer">
-						<i className="fab fa-3x fa-telegram" style={{ color: "#03989E" }} />
-					</a>
+					{/* <button
+						className="btn btn-lg"
+						href="https://t.me/VendegramBot"
+						target="_blank"
+						rel="noopener noreferrer">
+						Ve a Telegram
+						<i className="fab fa-2x p-2 fa-telegram" style={{ color: "#03989E" }} />
+					</button> */}
+					<div className="row d-flex justify-content-end m-3 ">
+						<a
+							href="https://t.me/VendegramBot"
+							className="btn btn-lg btn-info align-center"
+							style={{ background: "#03989E" }}>
+							Ve a nuestro Telegram
+							<a href="#" className="badge">
+								<i className="fa fa-paper-plane" aria-hidden="true" style={{ color: "#ffffff" }} />
+							</a>
+						</a>
+					</div>
 				</div>
+
 				<div className="row " style={{ background: "#C4C4C4" }}>
 					<div className="col-4 text-center">
 						<div className="row justify-content-center">{"Elaborado por:"}</div>

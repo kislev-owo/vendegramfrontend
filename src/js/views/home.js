@@ -18,16 +18,16 @@ export const Home = () => {
 		<>
 			<div className="container-fluid">
 				<div>
-					<div className="mt-1 ">
+					<div className="mt-3 ">
 						<Buscar />
 					</div>
 				</div>
-				<div className="jumbotron mt-2 pt-4 ">
+				<div className="jumbotron mt-2 pt-4 pb-3 ">
 					<div className="text-center mb-2">
 						<div className="row-flex">
 							<div>
 								<h2 className="text-center ml-4 mb-2 m-auto">
-									<span className="badge badge-pill badge-light border border-info mb-2">
+									<span className="badge badge-pill badge-light border border-info mb-3">
 										¿Que estás buscando?
 									</span>
 								</h2>

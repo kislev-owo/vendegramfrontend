@@ -32,20 +32,14 @@ export const PlanSubscripcion = () => {
 						</h1>
 					</div>
 					<div className="text-center rounded-top" style={{ background: "#c4c4c4" }}>
-						<ol>
-							<li>
-								<p style={{ color: "#ffffff" }}>{`-Permite asociar una zona de entrega`}</p>
-							</li>
-							<p style={{ color: "#ffffff" }}>{`-Permite publicar 3 productos o servicios`}</p>
-							<li>
-								<p style={{ color: "#ffffff" }}>
-									{`-Incluye visualización de comentarios y calificaciones`}
-								</p>
-							</li>
-							<li>
-								<p style={{ color: "#ffffff" }}>{`-Incluye aparición en las búsquedas por telegram`}</p>
-							</li>
-						</ol>
+						<p style={{ color: "#ffffff" }}>{`-Permite asociar una zona de entrega`}</p>
+
+						<p style={{ color: "#ffffff" }}>{`-Permite publicar 3 productos o servicios`}</p>
+
+						<p style={{ color: "#ffffff" }}>{`-Incluye visualización de comentarios y calificaciones`}</p>
+
+						<p style={{ color: "#ffffff" }}>{`-Incluye aparición en las búsquedas por telegram`}</p>
+
 						<Link
 							type="submit"
 							className="btn btn-primary my-3"
