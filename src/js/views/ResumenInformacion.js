@@ -11,7 +11,7 @@ export const ResumenInformacion = () => {
 	return (
 		<div className="container">
 			<div className="row  justify-content-center">
-				<h1>{`Verifica tu informción personal`}</h1>
+				<h1>{`Verifica tu información personal`}</h1>
 				<p>{`En el futuro no podras cambiar tus datos a menos que hagas una solicitud al equipo técnico`}</p>
 			</div>
 			<div className="row  justify-content-center">
@@ -37,19 +37,19 @@ export const ResumenInformacion = () => {
 				<Link
 					type="submit"
 					className="btn btn-primary my-3"
-					to="/finalizar"
-					onClick={() => {
-						actions.crearUsuario();
-					}}
+					to="/registrate"
 					style={{ background: "#03989E", border: "none" }}>
-					{"Continuar"}
+					{"Volver al formulario"}
 				</Link>
 				<Link
 					type="submit"
 					className="btn btn-primary my-3"
-					to="/registrate"
+					to="/finalizar"
+					// onClick={() => {
+					// 	// actions.crearUsuario();
+					// }}
 					style={{ background: "#03989E", border: "none" }}>
-					{"Volver al formulario"}
+					{"Continuar"}
 				</Link>
 			</div>
 		</div>

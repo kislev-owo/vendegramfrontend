@@ -36,13 +36,14 @@ export const TiendasCard = props => {
 									{store.tiendas.length}
 								</span>
 							</span>
-						</h2>
-
-						<div className="text-center mb-2 mt-3">
-							<div className="card-deck d-flex align-items-center mb-5">
-								{store.tiendas.map((tienda, index) => {
-									return (
-										<div className="card h-50" key={index}>
+						</h2>{" "}
+						<div className="row row-cols-1 row-cols-md-4 mt-3">
+							{/* <div className="text-center mb-2 mt-3"> */}
+							{/* <div className="card-deck d-flex align-items-center mb-5"> */}
+							{store.tiendas.map((tienda, index) => {
+								return (
+									<div key={index} className="d-flex col mb-2 mt-2">
+										<div className="card h-100 w-100">
 											<img
 												src="https://res.cloudinary.com/vendegram/image/upload/v1602723366/logo_d80dzm.png"
 												className="card-img-top"
@@ -64,19 +65,21 @@ export const TiendasCard = props => {
 												</button>
 											</div>
 										</div>
-									);
-								})}
-							</div>
-						</div>
-						<div className="row-flex text-center align-items-center mt-3">
-							<Link to="/Etiquetas">
-								<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
-									Categorías
-								</button>
-							</Link>
+									</div>
+								);
+							})}
+							{/* </div> */}
 						</div>
 					</div>
+					<div className="row-flex text-center align-items-center mt-3">
+						<Link to="/Etiquetas">
+							<button className="btn btn-primary mr-1" style={{ background: "#03989E" }}>
+								Categorías
+							</button>
+						</Link>
+					</div>
 				</div>
+				{/* </div> */}
 			</div>
 		</>
 	);

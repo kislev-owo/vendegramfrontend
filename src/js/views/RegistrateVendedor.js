@@ -117,7 +117,8 @@ export const RegistrateVendedor = () => {
 						</small>
 					</div>
 					<div className="form-group px-3">
-						<label htmlFor="exampleInputEmail1">{`Ubicacion de la Tienda`}</label>
+						{" "}
+						<label htmlFor="exampleInputEmail1">{`Ubicacion de la Tienda`}</label>{" "}
 						<select
 							className="custom-select"
 							id="inputGroupSelect01"
@@ -126,16 +127,19 @@ export const RegistrateVendedor = () => {
 							onChange={e => {
 								setTienda({ ...tienda, zona_general: e.target.value });
 							}}>
-							<option value="" selected>{`Seleccione una Zona`}</option>
-							<option value="Miranda">{`Miranda`}</option>
-							<option value="Distrito Capital">{`Distrito Capital`}</option>
-						</select>
+							{" "}
+							<option value="" selected>{`Seleccione una Zona`}</option>{" "}
+							<option value="Miranda">{`Miranda`}</option>{" "}
+							<option value="Distrito Capital">{`Distrito Capital`}</option>{" "}
+						</select>{" "}
 						<small id="UbicacionTiendaHelp" className="form-text text-muted">
-							{""}
-						</small>
+							{" "}
+							{""}{" "}
+						</small>{" "}
 					</div>
 					<div className="form-group px-3">
-						<label htmlFor="exampleInputEmail1">{`Zonas de delivery`}</label>
+						{" "}
+						<label htmlFor="exampleInputEmail1">{`Zonas de delivery`}</label>{" "}
 						<select
 							className="custom-select"
 							id="inputGroupSelect01"
@@ -144,14 +148,16 @@ export const RegistrateVendedor = () => {
 							onChange={e => {
 								setTienda({ ...tienda, zona_uno: e.target.value });
 							}}>
-							<option selected>Seleccione una Zona</option>
+							{" "}
+							<option selected>Seleccione una Zona</option>{" "}
 							{store.zonas_delivery.map((zona, index) => {
 								return <option key={index}>{zona}</option>;
-							})}
-						</select>
+							})}{" "}
+						</select>{" "}
 						<small id="UbicacionTiendaHelp" className="form-text text-muted">
-							{""}
-						</small>
+							{" "}
+							{""}{" "}
+						</small>{" "}
 						<select
 							className="custom-select"
 							id="inputGroupSelect01"
@@ -160,14 +166,16 @@ export const RegistrateVendedor = () => {
 							onChange={e => {
 								setTienda({ ...tienda, zona_dos: e.target.value });
 							}}>
-							<option selected>Seleccione una Zona</option>
+							{" "}
+							<option selected>Seleccione una Zona</option>{" "}
 							{store.zonas_delivery.map((zona, index) => {
 								return <option key={index}>{zona}</option>;
-							})}
-						</select>
+							})}{" "}
+						</select>{" "}
 						<small id="UbicacionTiendaHelp" className="form-text text-muted">
-							{""}
-						</small>
+							{" "}
+							{""}{" "}
+						</small>{" "}
 						<select
 							className="custom-select"
 							id="inputGroupSelect01"
@@ -176,15 +184,18 @@ export const RegistrateVendedor = () => {
 							onChange={e => {
 								setTienda({ ...tienda, zona_tres: e.target.value });
 							}}>
-							<option selected>Seleccione una Zona</option>
+							{" "}
+							<option selected>Seleccione una Zona</option>{" "}
 							{store.zonas_delivery.map((zona, index) => {
 								return <option key={index}>{zona}</option>;
-							})}
-						</select>
+							})}{" "}
+						</select>{" "}
 						<small id="UbicacionTiendaHelp" className="form-text text-muted">
-							{""}
-						</small>
+							{" "}
+							{""}{" "}
+						</small>{" "}
 					</div>
+
 					<div className="form-group px-3">
 						<label htmlFor="exampleInputEmail1">{`Facebook de la tienda`}</label>
 						<input

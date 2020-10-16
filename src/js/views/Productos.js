@@ -15,12 +15,12 @@ export const Productos = props => {
 	return (
 		<>
 			<div>
-				<div className="mt-1 ">
+				<div className="mt-3 ">
 					<Buscar />
 				</div>
 			</div>
 
-			<div className="jumbotron ml-1 mr-1 mt-2 pt-4">
+			<div className="jumbotron ml-1 mr-1 mt-2 pt-4 pb-3">
 				<h2 className="text-center ml-4 mb-2 m-auto">
 					<span className="badge badge-pill badge-info border" style={{ background: "#03989E" }}>
 						Productos encontrados
@@ -30,7 +30,7 @@ export const Productos = props => {
 					</span>
 				</h2>
 				{/* <div className=" scrolling-wrapper row flex-row wrapper flex-nowrap mt-3 pb-4"> */}
-				<div className="row row-cols-1 row-cols-md-5 mt-3">
+				<div className="row row-cols-1 row-cols-md-4 mt-3">
 					{
 						// Función que genera las vistas de los objetos filtrados del arreglo "productos"
 					}

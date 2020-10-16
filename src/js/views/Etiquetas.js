@@ -22,7 +22,7 @@ export const Etiquetas = props => {
 						<Buscar />
 					</div>
 				</div>
-				<div className="jumbotron ml-2 mr-2 mt-2 pt-4 ">
+				<div className="jumbotron ml-2 mr-2 mt-2 pt-4 pb-3">
 					<div className="text-center mb-2">
 						<h2 className="text-center ml-4 mb-2 m-auto">
 							<span

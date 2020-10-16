@@ -48,19 +48,21 @@ export const PerfilVendedor = () => {
 								<i className="fas fa-truck mx-2" style={{ color: "#03989E" }} />
 								{`Zonas de entrega`}
 							</label>
-							<div className="row justify-content-center">
+
+							<div className="row">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
 									{`${store.tienda.zona_uno}`}
 								</p>
 							</div>
-							<div className="row justify-content-center">
+							<div className="row">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
 									{`${store.tienda.zona_dos}`}
 								</p>
 							</div>
-							<div className="row justify-content-center">
+
+							<div className="row">
 								<p>
 									<i className="fas fa-map-marker-alt mx-2" style={{ color: "#03989E" }} />
 									{`${store.tienda.zona_tres}`}
@@ -88,21 +90,22 @@ export const PerfilVendedor = () => {
 							</p>
 						</div>
 					</div>
-					<div className="row ">
-						<h1>
-							{`Productos`}
-							<i className="fas fa-plus-circle" style={{ color: "#03989E" }} />
-						</h1>
-					</div>
 				</div>
 			</div>
-			<div className="row my-5">
-				<div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}>
-					<ProductosTienda nombre={store.usuarioLogin.usuario_id} />
-					{/* <ImageContextProvider>
+			<div className="row justify-content-center mt-4 ">
+				<h1>
+					{`Productos`}
+					<i className="fas fa-plus-circle p-2" style={{ color: "#03989E" }} />
+				</h1>
+			</div>
+			<div className="row row-cols-1 row-cols-md-4 mt-3">
+				{/* <div className="row my-5"> */}
+				{/* <div className="scrollmenu d-flex" style={{ overflow: "auto", whiteSpace: "nowrap" }}> */}
+				<ProductosTienda nombre={store.usuarioLogin.usuario_id} />
+				{/* <ImageContextProvider>
 						<ProductoImages />
 					</ImageContextProvider> */}
-				</div>
+				{/* </div> */}
 			</div>
 		</div>
 	);

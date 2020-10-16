@@ -19,7 +19,7 @@ export const Nosotros = () => {
 					/>
 					<div className="card-body">
 						<h5 className="card-title">{`Kislev Zambrano`}</h5>
-						<p className="card-text">
+						<p className="card-text text-justify">
 							{`Soy Kislev pero me llaman Kiss, estudio ingeniería en sistemas y en mi tiempo libre me gusta hacer manualidades y customizar ropa. 4geeksAcademy me dió la oportunidad de realizar un curso de programación, siendo la ganadora de un sorteo en sus redes sociales.`}
 						</p>
 						<p className="card-text">
@@ -45,7 +45,7 @@ export const Nosotros = () => {
 					/>
 					<div className="card-body">
 						<h5 className="card-title">{`Albany Padrón`}</h5>
-						<p className="card-text">
+						<p className="card-text text-justify">
 							{`Soy Albany Padron, Ingeniero Electricista. Siempre dispuesta a adquirir nuevas herramientas que me permitan llevar a la vida nuevos proyectos de automatización.`}
 						</p>
 						<p className="card-text">
@@ -72,7 +72,7 @@ export const Nosotros = () => {
 					/>
 					<div className="card-body">
 						<h5 className="card-title">{`Francisco Fossi`}</h5>
-						<p className="card-text">
+						<p className="card-text text-justify">
 							{`Soy Francisco Fossi. Ingeniero de profesión, he trabajado por varios años en la Industria de los Alimentos. Me gustan los deportes al aire libre y la tecnología. `}
 						</p>
 						<p className="card-text">
@@ -97,7 +97,7 @@ export const Nosotros = () => {
 					/>
 					<div className="card-body">
 						<h5 className="card-title">{`Oscar Mariño`}</h5>
-						<p className="card-text">
+						<p className="card-text text-justify">
 							{`Soy Oscar Mariño, aficionado a la tecnología y a la programación. Mucho tiempo trabaje con soluciones Avaya (PBX y soluciones de call center) pero ya estoy de regreso, para utilizar lo aprendido para el desarrollo de soluciones WEB.`}
 						</p>
 						<p className="card-text">

@@ -79,12 +79,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Distrito Capital",
 				"Miranda",
 				"Altagracia",
-				"Antímano",
+				"Antimano",
 				"Candelaria",
 				"Caricuao",
 				"Catedral",
 				"Catia",
-				"Caucaguita",
+				"Caucagüita",
 				"Chacao",
 				"El Cafetal",
 				"El Junquito",
@@ -98,7 +98,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"Las Minas",
 				"Leoncio Martínez",
 				"Macarao",
-				"Nuestra Señora del Rosario",
+				"Nuestra Señora Del Rosario",
 				"Petare",
 				"San Agustín",
 				"San Bernardino",
@@ -106,10 +106,11 @@ const getState = ({ getStore, getActions, setStore }) => {
 				"San Juan",
 				"San Pedro",
 				"Santa Rosalía",
-				"Santa Rosalía de Palermo",
+				"Santa Rosalía De Palermo",
 				"Santa Teresa",
-				"Ventitrés de Enero"
+				"ventitrés De Enero"
 			],
+
 			productos: [
 				// {
 				// 	id: "1",
@@ -588,6 +589,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 								Authorization: `Bearer ${store.token}`
 							}
 						});
+						if (response.ok) {
+							console.log("se creo la tienda con éxito");
+							getActions().fetchCargarTiendas();
+						}
 					} else {
 						alert("estoy fallando manao");
 					}
